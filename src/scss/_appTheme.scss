@@ -1,0 +1,78 @@
+// _variables.scss
+// $primary: #3498db;
+// $secondary: #e67e22;
+// $success: #2ecc71;
+// $info:          $cyan !default;
+// $warning:       $yellow !default;
+// $danger: #e74c3c;
+// $light:         $gray-100 !default;
+// $dark:          $gray-800 !default;
+
+
+// $theme-colors: (
+//     "primary": #84329b,
+//     "secondary": #02bceb
+// );
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Muli', "Helvetica", Arial, sans-serif;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+h1, h2 {
+  color: #5e5e5e;
+  border-bottom: 1px solid #9c9c9c;
+}
+
+
+/*
+ *  STYLE 4
+ */
+
+ ::-webkit-scrollbar-track
+ {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   background-color: #F5F5F5;
+ }
+
+// ::-webkit-scrollbar
+//  {
+//    width: 10px;
+//    background-color: #F5F5F5;
+//  }
+
+//   ::-webkit-scrollbar-thumb
+//  {
+//    background-color: #000000;
+//    border: 2px solid #555555;
+//  }
+
+/*
+ *  STYLE 1
+ */
+
+ ::-webkit-scrollbar-track
+ {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   border-radius: 4px;
+   background-color: #F5F5F5;
+ }
+
+ ::-webkit-scrollbar
+ {
+   width: 12px;
+   background-color: #F5F5F5;
+ }
+
+ ::-webkit-scrollbar-thumb
+ {
+   border-radius: 4px;
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   background-color: #2b3046//#555;
+ }

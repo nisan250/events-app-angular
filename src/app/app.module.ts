@@ -2,15 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 import { AppComponent } from './app.component';
+import { DemoComponent } from './demo/demo.component';
+import { HomeComponent } from './home/home.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LicensesComponent } from './licenses/licenses.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DemoComponent,
+    HomeComponent,
+    NavigationComponent,
+    LicensesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
