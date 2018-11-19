@@ -1,25 +1,5 @@
-<div class="app-container d-flex flex-column">
-  <header class="header-area">
-      <!-- <h1 class="text-center">{{appTitle}}</h1> -->
-      <aa-navigation></aa-navigation>
-  </header>
-  <div class="main-area p-3">
-    <router-outlet></router-outlet>
-  </div>
-  <footer class="footer-area container-fluid">
-    <nav class="pull-left">
-        <ul>
-            <li>
-                <a [routerLink]="['/license']">
-                    License
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <div class="copyright pull-right">
-        2018, made with
-        <i class="fa fa-heart heart"></i>
-        by <a [routerLink]="['/home']">Web Ninja NS</a>
-    </div>
-  </footer>
-</div>
+<!-- <div class="app-container d-flex flex-column"> -->
+  <aa-header></aa-header>
+  <aa-main></aa-main>
+  <aa-footer></aa-footer>
+<!-- </div> -->

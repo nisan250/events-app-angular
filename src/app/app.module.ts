@@ -10,6 +10,9 @@ import { DemoComponent } from './demo/demo.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LicensesComponent } from './licenses/licenses.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { LicensesComponent } from './licenses/licenses.component';
     DemoComponent,
     HomeComponent,
     NavigationComponent,
-    LicensesComponent
+    LicensesComponent,
+    FooterComponent,
+    HeaderComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
