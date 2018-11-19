@@ -1,6 +1,8 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -13,6 +15,9 @@ import { LicensesComponent } from './licenses/licenses.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
+import { EventsListComponent } from './events/events-list.component';
+import { EventThumbnailComponent } from './events/event-thumbnail.component';
+import { EventService } from './events/shared/event.service';
 
 @NgModule({
   declarations: [
@@ -23,15 +28,18 @@ import { MainComponent } from './main/main.component';
     LicensesComponent,
     FooterComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    EventsListComponent,
+    EventThumbnailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CarouselModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

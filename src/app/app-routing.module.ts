@@ -4,8 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DemoComponent } from './demo/demo.component';
 import { LicensesComponent } from './licenses/licenses.component';
+import { EventsListComponent } from './events/events-list.component';
 
 const routes: Routes = [
+  { path: 'events', component: EventsListComponent},
   { path: 'demo', component: DemoComponent},
   { path: 'home', component: HomeComponent},
   { path: 'license', component: LicensesComponent},
