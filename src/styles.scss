@@ -14,18 +14,8 @@
 
 @import "~font-awesome/css/font-awesome.css";
 
-
 .app-container {
   display: flex;
-  flex-direction: column;
   height: 100%;
-}
-.app-header-container {
-
-}
-.app-main-container {
-  flex: 1 1 100%;
-}
-.app-footer-container {
-
+  flex-direction: column;
 }

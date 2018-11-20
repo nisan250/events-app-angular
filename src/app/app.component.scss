@@ -1,4 +1,5 @@
-.app-container {
-
-  height: 100%;
+.app-main-container {
+  overflow: auto;
+  flex-grow: 1;
+  background: #dbdbdb;
 }

@@ -16,7 +16,7 @@ export class EventService {
     return EVENTS;
   }
   getEvent(eventId) {
-    return EVENTS.find((event) => eventId.id === event.id);
+    return EVENTS.find((event) => eventId === event.id);
   }
 
 }

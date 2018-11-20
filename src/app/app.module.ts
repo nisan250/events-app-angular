@@ -19,6 +19,7 @@ import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from './events/shared/event.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
     EventsListComponent,
     EventThumbnailComponent,
     EventDetailsComponent,
+    CreateEventComponent,
   ],
   imports: [
     BrowserModule,

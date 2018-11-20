@@ -3,6 +3,7 @@
       <h4> {{event?.name}}</h4>
     </div>
     <div class="card-body">
+      <img [src]="event.imageUrl" width=200>
       <div>Date: {{event?.date}}</div>
       <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">Time: {{event?.time}} -
         <span [ngSwitch]="event?.time">

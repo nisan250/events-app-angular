@@ -9,16 +9,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/home']" routerLinkActive="active">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/events']">Events</a>
+            <a class="nav-link" [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+              true}">All Events</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/events/new']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">Create Event</a>
             </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/demo']">Demo</a>
+            <a class="nav-link" [routerLink]="['/demo']" routerLinkActive="active">Demo</a>
           </li>
         </ul>
       </div>

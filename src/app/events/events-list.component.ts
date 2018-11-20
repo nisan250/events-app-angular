@@ -17,7 +17,7 @@ export class EventsListComponent implements OnInit {
     console.log(this.events);
   }
 
-  handleEventClicked(data) {
-    console.log('from events list component - ', data);
-  }
+  // handleEventClicked(data) {
+  //   console.log('from events list component - ', data);
+  // }
 }

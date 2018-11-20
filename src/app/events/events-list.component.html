@@ -3,7 +3,8 @@
     <aa-event-thumbnail
       [event]="event"
       *ngFor="let event of events"
-      (eventClick)="handleEventClicked($event)"></aa-event-thumbnail>
+      [routerLink]="[ '/events', event.id ]"
+      ></aa-event-thumbnail>
 </div>
-
+<!--(eventClick)="handleEventClicked($event)"-->
 
