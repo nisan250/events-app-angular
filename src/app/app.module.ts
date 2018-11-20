@@ -20,6 +20,8 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from './events/shared/event.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
+import { Error404Component } from './errors/error-404.component';
+import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
     EventThumbnailComponent,
     EventDetailsComponent,
     CreateEventComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
     CarouselModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [EventService],
+  providers: [EventService, EventRouteActivator],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
