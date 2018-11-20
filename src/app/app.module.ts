@@ -18,6 +18,7 @@ import { MainComponent } from './main/main.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from './events/shared/event.service';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EventService } from './events/shared/event.service';
     MainComponent,
     EventsListComponent,
     EventThumbnailComponent,
+    EventDetailsComponent,
   ],
   imports: [
     BrowserModule,

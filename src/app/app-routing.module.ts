@@ -5,8 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { DemoComponent } from './demo/demo.component';
 import { LicensesComponent } from './licenses/licenses.component';
 import { EventsListComponent } from './events/events-list.component';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
 
 const routes: Routes = [
+  { path: 'events/:id', component: EventDetailsComponent},
   { path: 'events', component: EventsListComponent},
   { path: 'demo', component: DemoComponent},
   { path: 'home', component: HomeComponent},
