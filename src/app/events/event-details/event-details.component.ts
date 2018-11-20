@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventDetailsComponent implements OnInit {
   event: any;
+  pageTitle = 'Event Deatail';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 

@@ -8,8 +8,8 @@ import { EventService } from './shared/event.service';
 })
 export class EventsListComponent implements OnInit {
   events: any[];
-
   pageTitle = 'Events';
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {

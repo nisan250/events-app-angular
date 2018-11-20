@@ -12,7 +12,12 @@
   box-shadow: inset 0px -1px 0px 0px #9c9c9c;
 }
 
-.nav-link {
+.nav-item {
+  cursor: pointer;
+  outline: 0;
+}
+.nav-link,
+a.nav-link:not([href]) {
   color: #fff;
   // margin: 0;
   line-height: 30px;
@@ -25,7 +30,7 @@
 .nav-link:hover, .nav-link:focus {
   opacity: 1;
 }
-.active  {
+.active  .nav-link{
   color: #ab9768;
   opacity: 1;
 }

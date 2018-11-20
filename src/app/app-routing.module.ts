@@ -9,7 +9,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { CreateEventComponent } from './events/create-event/create-event.component';
 
 const routes: Routes = [
-  { path: 'events/:new', component: CreateEventComponent},
+  { path: 'events/new', component: CreateEventComponent},
   { path: 'events', component: EventsListComponent},
   { path: 'events/:id', component: EventDetailsComponent},
   { path: 'demo', component: DemoComponent},
