@@ -31,7 +31,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/",
+            "baseHref": "/events-app-angular/",
             "deployUrl": "/events-app-angular/"
           },
           "configurations": {
