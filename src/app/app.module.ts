@@ -46,7 +46,22 @@ import { EventRouteActivator } from './events/event-details/event-route-activato
     CarouselModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [EventService, EventRouteActivator],
+  providers: [
+    EventService, // shorthand {provide: EventService, useValue: EventService}
+    EventRouteActivator,
+    // we suppling the string canDeactivateCreateEvent and attaching a function
+    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
+
+export function checkDirtyState (component: CreateEventComponent) {
+  console.log('sd');
+  if (component.isDirty) {
+    return window.confirm('you have not saved this event. prees ok to leave.');
+  }
+  return false;
+}

@@ -11,7 +11,7 @@ import { Error404Component } from './errors/error-404.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 
 const routes: Routes = [
-  { path: 'events/new', component: CreateEventComponent},
+  { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
   { path: 'events', component: EventsListComponent},
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator]},
   { path: 'demo', component: DemoComponent},
@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full'},
   { path: '**', component: HomeComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
