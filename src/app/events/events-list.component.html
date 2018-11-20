@@ -1,8 +1,9 @@
-<h4>All events</h4>
-<p>
-  {{events | json}}
-</p>
-<h4>event ID is: {{event.id}}</h4>
-<p>
-    {{event | json}}
-  </p>
+<h2>{{pageTitle}}</h2>
+<div class="card-columns">
+    <aa-event-thumbnail
+      [event]="event"
+      *ngFor="let event of events"
+      (eventClick)="handleEventClicked($event)"></aa-event-thumbnail>
+</div>
+
+

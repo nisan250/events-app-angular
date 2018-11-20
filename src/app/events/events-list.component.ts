@@ -9,6 +9,8 @@ import { EventService } from './shared/event.service';
 export class EventsListComponent implements OnInit {
   events: any[];
   event;
+
+  pageTitle = 'Events';
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
@@ -18,4 +20,7 @@ export class EventsListComponent implements OnInit {
     console.log(this.events);
   }
 
+  handleEventClicked(data) {
+    console.log('from events list component - ', data);
+  }
 }

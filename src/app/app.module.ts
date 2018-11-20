@@ -30,7 +30,7 @@ import { EventService } from './events/shared/event.service';
     HeaderComponent,
     MainComponent,
     EventsListComponent,
-    EventThumbnailComponent
+    EventThumbnailComponent,
   ],
   imports: [
     BrowserModule,

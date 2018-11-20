@@ -1,3 +1,31 @@
-<p>
-  event-thumbnail works!
-</p>
+<div class="card">
+    <div class="card-header">
+      <h4> {{event?.name}}</h4>
+    </div>
+    <div class="card-body">
+      <div>Date: {{event?.date}}</div>
+      <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">Time: {{event?.time}} -
+        <span [ngSwitch]="event?.time">
+          <span *ngSwitchCase="'8:00 am'">
+            Early Start
+          </span>
+          <span *ngSwitchCase="'10:00 am'">
+            Late Start
+          </span>
+          <span *ngSwitchDefault>
+            Normal Start
+          </span>
+        </span>
+      </div>
+      <div>Price: {{event?.price}}</div>
+      <div *ngIf="event?.location">
+        <span>Location: {{event?.location?.address}}</span>
+        <span>&nbsp;</span>
+        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>
+      </div>
+      <div *ngIf="event?.onlineUrl">
+        Online URL: <a href="event?.onlineUrl">{{event?.onlineUrl}}</a>
+      </div>
+      <button class="btn btn-primary" (click)="handleClick()">click</button>
+    </div>
+</div>
