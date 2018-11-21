@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,21 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
+import {
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventService,
+  EventDetailsComponent,
+  EventRouteActivatorService,
+  CreateEventComponent,
+  EventsListResolverService,
+ } from './events/index';
+
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { HomeComponent } from './home/home.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './main/navigation/navigation.component';
 import { LicensesComponent } from './licenses/licenses.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './main/footer/footer.component';
+import { HeaderComponent } from './main/header/header.component';
 import { MainComponent } from './main/main.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail.component';
-import { EventService } from './events/shared/event.service';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Error404Component } from './errors/error-404.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 
 @NgModule({
   declarations: [
@@ -48,18 +51,20 @@ import { EventRouteActivator } from './events/event-details/event-route-activato
   ],
   providers: [
     EventService, // shorthand {provide: EventService, useValue: EventService}
-    EventRouteActivator,
+    EventRouteActivatorService,
     // we suppling the string canDeactivateCreateEvent and attaching a function
-    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}
+    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
+    EventsListResolverService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 
 }
 
 export function checkDirtyState (component: CreateEventComponent) {
-  console.log('sd');
   if (component.isDirty) {
     return window.confirm('you have not saved this event. prees ok to leave.');
   }

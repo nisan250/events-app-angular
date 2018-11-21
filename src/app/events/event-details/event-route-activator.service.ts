@@ -7,7 +7,7 @@ import { EventService } from '../shared/event.service';
 //  if a detail page not exist   than 404 will show
 
 @Injectable({providedIn: 'root'})
-export class EventRouteActivator implements CanActivate {
+export class EventRouteActivatorService implements CanActivate {
   constructor(private eventService: EventService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot) {

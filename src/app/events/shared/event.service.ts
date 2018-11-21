@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
+// import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+// import { Subject } from 'rxjs/RX';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
   private EventsUrl = 'api/events-data.json';
 
-  constructor(private http: HttpClient) {
+  constructor() {
 
   }
 
   getAllEvents() {
+    // let subject = new Subject();
+    const subject = new Subject();
     // return this.http.get(this.EventsUrl);
-    return EVENTS;
+    setTimeout(() => {
+      subject.next(EVENTS); subject.complete();
+    }, 100);
+    return subject;
   }
-  getEvent(eventId) {
+
+  getEvent(eventId: number) {
     return EVENTS.find((event) => eventId === event.id);
   }
 
