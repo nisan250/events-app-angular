@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from './shared/event.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { IEvent } from './shared/index';
 @Component({
   // selector: 'aa-events-list',
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.scss']
 })
 export class EventsListComponent implements OnInit {
-  events: any;
+  events: IEvent[];
   pageTitle = 'Events';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
