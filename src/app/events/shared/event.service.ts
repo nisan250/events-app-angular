@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 // import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // import { Subject } from 'rxjs/RX';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { IEvent } from './event.model';
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
   private EventsUrl = 'api/events-data.json';
 
-  constructor() {
+  constructor() {}
 
-  }
-
-  getAllEvents() {
+  getAllEvents(): Observable<IEvent[]> {
     // let subject = new Subject();
-    const subject = new Subject();
+    const subject = new Subject<IEvent[]>();
     // return this.http.get(this.EventsUrl);
     setTimeout(() => {
       subject.next(EVENTS); subject.complete();
@@ -22,16 +21,16 @@ export class EventService {
     return subject;
   }
 
-  getEvent(eventId: number) {
+  getEvent(eventId: number): IEvent {
     return EVENTS.find((event) => eventId === event.id);
   }
 
 }
-const EVENTS = [
+const EVENTS: IEvent[] = [
 {
   id: 1,
   name: 'Angular Connect',
-  date: '2/10/2019',
+  date: new Date('2/10/2019'),
   time: '8:00 am',
   price: 599.99,
   imageUrl: 'https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg',
@@ -64,7 +63,7 @@ const EVENTS = [
 {
   id: 2,
   name: 'Angular meetup',
-  date: '3/11/2019',
+  date: new Date('3/11/2019'),
   time: '10:00 am',
   price: 399.99,
   imageUrl: 'https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg',
