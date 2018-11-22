@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from './../../user/auth.service';
 
 @Component({
   selector: 'aa-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class NavigationComponent {
+  constructor(private auth: AuthService) {
+    console.log(auth, 'auth');
   }
-
 }

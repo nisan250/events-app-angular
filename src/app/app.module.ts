@@ -25,6 +25,7 @@ import { FooterComponent } from './main/footer/footer.component';
 import { HeaderComponent } from './main/header/header.component';
 import { MainComponent } from './main/main.component';
 import { Error404Component } from './errors/error-404.component';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { Error404Component } from './errors/error-404.component';
     EventRouteActivatorService,
     // we suppling the string canDeactivateCreateEvent and attaching a function
     {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
-    EventsListResolverService
+    EventsListResolverService,
+    AuthService
   ],
   bootstrap: [
     AppComponent

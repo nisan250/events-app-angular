@@ -13,8 +13,9 @@ import { LoginComponent } from './login.component';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild( userRoutes ),
-    FormsModule
+    FormsModule,
+    RouterModule.forChild( userRoutes )
   ]
 })
 export class UserModule {}
+

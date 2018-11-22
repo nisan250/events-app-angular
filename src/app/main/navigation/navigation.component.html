@@ -9,27 +9,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto" >
-          <li class="nav-item" [routerLink]="['/home']" routerLinkActive="active">
-            <a class="nav-link" >Home
+          <li class="nav-item"  routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/home']">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item" [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
             true}">
-            <a class="nav-link">All Events</a>
+            <a  [routerLink]="['/events']" class="nav-link">All Events</a>
           </li>
-          <li class="nav-item" [routerLink]="['/events/new']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
             true}">
-              <a class="nav-link" >Create Event</a>
+              <a class="nav-link" [routerLink]="['/events/new']">Create Event</a>
           </li>
-          <li class="nav-item" [routerLink]="['/demo']" routerLinkActive="active">
-            <a class="nav-link" >Demo</a>
+          <li class="nav-item" routerLinkActive="active">
+            <a [routerLink]="['/demo']" class="nav-link" >Demo</a>
           </li>
-          <li class="nav-item user-link" [routerLink]="['/user/profile']" routerLinkActive="active">
-            <a class="nav-link" >Hi Nisan</a>
-          </li>
-          <li class="nav-item user-link" [routerLink]="['/user/login']" routerLinkActive="active">
-            <a class="nav-link" > Login</a>
+          <li class="nav-item user-link" routerLinkActive="active">
+            <a *ngIf="!auth?.isAuthenticated()" [routerLink]="['/user/login']"  class="nav-link" > Login</a>
+            <a *ngIf="auth?.isAuthenticated()" [routerLink]="['/user/profile']" class="nav-link" >Hi {{auth?.currentUser?.firstName}}</a>
           </li>
         </ul>
       </div>
