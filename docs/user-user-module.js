@@ -6416,7 +6416,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h2>Edit Your Profile </h2>\n  <div class=\"col-md-4\">\n    <form autocomplete=\"off\" novalidate>\n      <div class=\"form-group\">\n        <label for=\"firstName\">First Name:</label>\n        <input id=\"firstName\" type=\"text\" class=\"form-control\" placeholder=\"First Name...\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"lastName\">Last Name:</label>\n        <input id=\"lastName\" type=\"text\" class=\"form-control\" placeholder=\"Last Name...\" />\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\">Cancel</button>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <h2>Edit Your Profile </h2>\n  <div class=\"col-md-4\">\n    <form [formGroup]=\"profileForm\" autocomplete=\"off\" (ngSubmit)=\"saveProfile(profileForm.value)\" novalidate>\n      <div class=\"form-group\">\n        <label for=\"firstName\">First Name:</label>\n        <input id=\"firstName\" formControlName=\"firstName\" type=\"text\" class=\"form-control\" placeholder=\"First Name...\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"lastName\">Last Name:</label>\n        <input id=\"lastName\" formControlName=\"lastName\" type=\"text\" class=\"form-control\" placeholder=\"Last Name...\" />\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"cancel()\">Cancel</button>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6442,6 +6442,9 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth.service */ "./src/app/user/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6452,17 +6455,46 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent() {
+    function ProfileComponent(auth, router) {
+        this.auth = auth;
+        this.router = router;
     }
     ProfileComponent.prototype.ngOnInit = function () {
+        console.log();
+        if (this.auth.currentUser) {
+            var firstName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.auth.currentUser.firstName);
+            var lastName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.auth.currentUser.lastName);
+            this.profileForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+                firstName: firstName,
+                lastName: lastName,
+            });
+        }
+        else {
+            var firstName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]();
+            var lastName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]();
+            this.profileForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+                firstName: firstName,
+                lastName: lastName,
+            });
+        }
+    };
+    ProfileComponent.prototype.cancel = function () {
+        this.router.navigate(['events']);
+    };
+    ProfileComponent.prototype.saveProfile = function (formValues) {
+        this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
+        this.router.navigate(['events']);
     };
     ProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             template: __webpack_require__(/*! ./profile.component.html */ "./src/app/user/profile.component.html"),
             styles: [__webpack_require__(/*! ./profile.component.scss */ "./src/app/user/profile.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], ProfileComponent);
     return ProfileComponent;
 }());
@@ -6513,6 +6545,7 @@ var UserModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_user_routes__WEBPACK_IMPORTED_MODULE_4__["userRoutes"])
             ]
         })

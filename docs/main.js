@@ -1394,6 +1394,10 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.isAuthenticated = function () {
         return !!this.currentUser;
     };
+    AuthService.prototype.updateCurrentUser = function (firstName, lastName) {
+        this.currentUser.firstName = firstName;
+        this.currentUser.lastName = lastName;
+    };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(
         // {
