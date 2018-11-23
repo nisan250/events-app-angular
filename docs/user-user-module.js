@@ -6339,7 +6339,7 @@ var ReactiveFormsModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Login</h2>\n<div class=\"col-md-4\">\n  <form #loginForm=\"ngForm\"  (ngSubmit)=\"login(loginForm.value)\"  autocomplete=\"off\">\n    <div class=\"form-group\" >\n      <label for=\"userName\">User Name:</label>\n      <input id=\"userName\" (ngModel)=\"userName\" name=\"userName\"  type=\"text\" class=\"form-control\" placeholder=\"User Name...\" />\n    </div>\n    <div class=\"form-group\" >\n      <label for=\"password\">Password:</label>\n      <input id=\"password\" (ngModel)=\"password\" name=\"password\" type=\"password\" class=\"form-control\"placeholder=\"Password...\" />\n    </div>\n\n    <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n    <button [routerLink]=\"[ '/events' ]\" type=\"button\" class=\"btn btn-default\">Cancel</button>\n  </form>\n</div>\n"
+module.exports = "<h2>Login</h2>\n<div class=\"col-md-4\">\n  <form #loginForm=\"ngForm\"  (ngSubmit)=\"login(loginForm.value)\"  ngNativeValidate autocomplete=\"off\">\n    <div class=\"form-group\" >\n      <label for=\"userName\">User Name:</label>\n      <em *ngIf=\"loginForm.controls.userName?.invalid &&\n                (loginForm.controls.userName?.touched ||\n                 mouseoverLogin)\"\n          class=\"invalid-feedback\">Required</em>\n      <input id=\"userName\" (ngModel)=\"userName\" name=\"userName\" required type=\"text\" class=\"form-control\" placeholder=\"User Name...\" />\n    </div>\n    <div class=\"form-group\" >\n      <label for=\"password\">Password:</label>\n      <em *ngIf=\"loginForm.controls.password?.invalid &&\n                (loginForm.controls.password?.touched ||\n                 mouseoverLogin)\"\n          class=\"invalid-feedback\">Required</em>\n      <input id=\"password\" (ngModel)=\"password\" name=\"password\" required type=\"password\" class=\"form-control\"placeholder=\"Password...\" />\n    </div>\n    <span (mouseenter)=\"mouseoverLogin=true\"\n          (mouseleave)=\"mouseoverLogin=false\">\n        <button type=\"submit\" [disabled]=\"loginForm.invalid\" class=\"btn btn-primary\">Login</button>\n    </span>\n    <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-default\">Cancel</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -6350,7 +6350,7 @@ module.exports = "<h2>Login</h2>\n<div class=\"col-md-4\">\n  <form #loginForm=\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvbG9naW4uY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = ".invalid-feedback {\n  display: inline-block;\n  width: auto;\n  float: right; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci9EOlxcYXBwc1xcZXZlbnRzLWFwcC1hbmd1bGFyL3NyY1xcYXBwXFx1c2VyXFxsb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNCQUFxQjtFQUNyQixZQUFXO0VBQ1gsYUFBWSxFQUNiIiwiZmlsZSI6InNyYy9hcHAvdXNlci9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbnZhbGlkLWZlZWRiYWNrIHtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgd2lkdGg6IGF1dG87XHJcbiAgZmxvYXQ6IHJpZ2h0O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -6389,6 +6389,9 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.login = function (formValues) {
         this.authService.loginUser(formValues.userName, formValues.password);
+        this.router.navigate(['events']);
+    };
+    LoginComponent.prototype.cancel = function () {
         this.router.navigate(['events']);
     };
     LoginComponent = __decorate([

@@ -12,7 +12,6 @@ export class EventsListResolverService implements Resolve<any> {
   constructor(private eventService: EventService) { }
 
   resolve() {
-    console.log('start resolve');
     // this.eventService.getAllEvents().map(res => res.json()).subscribe(items => console.log(items));
     this.eventService.getAllEvents().pipe(map((events) => {
       return events;

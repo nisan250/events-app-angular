@@ -8,6 +8,6 @@ import { AuthService } from './../../user/auth.service';
 })
 export class NavigationComponent {
   constructor(private auth: AuthService) {
-    console.log(auth, 'auth');
+    // console.log(auth, 'auth');
   }
 }

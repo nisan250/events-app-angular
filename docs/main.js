@@ -691,7 +691,6 @@ var EventsListResolverService = /** @class */ (function () {
         this.eventService = eventService;
     }
     EventsListResolverService.prototype.resolve = function () {
-        console.log('start resolve');
         // this.eventService.getAllEvents().map(res => res.json()).subscribe(items => console.log(items));
         this.eventService.getAllEvents().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (events) {
             return events;
@@ -1342,7 +1341,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var NavigationComponent = /** @class */ (function () {
     function NavigationComponent(auth) {
         this.auth = auth;
-        console.log(auth, 'auth');
+        // console.log(auth, 'auth');
     }
     NavigationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
