@@ -7,6 +7,7 @@ import {
   EventRouteActivatorService,
   CreateEventComponent,
   EventsListResolverService,
+  CreateSessionComponent,
  } from './events/index';
 
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'events', component: EventsListComponent,
     resolve: { events: EventsListResolverService }},
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivatorService]},
+  { path: 'event/session/new', component: CreateSessionComponent},
   { path: 'demo', component: DemoComponent},
   { path: 'home', component: HomeComponent},
   { path: 'license', component: LicensesComponent},

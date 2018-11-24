@@ -70,6 +70,7 @@ var routes = [
     { path: 'events', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventsListComponent"],
         resolve: { events: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventsListResolverService"] } },
     { path: 'events/:id', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventDetailsComponent"], canActivate: [_events_index__WEBPACK_IMPORTED_MODULE_2__["EventRouteActivatorService"]] },
+    { path: 'event/session/new', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["CreateSessionComponent"] },
     { path: 'demo', component: _demo_demo_component__WEBPACK_IMPORTED_MODULE_4__["DemoComponent"] },
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
     { path: 'license', component: _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_5__["LicensesComponent"] },
@@ -188,12 +189,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
 /* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
 /* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
+/* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -230,6 +233,7 @@ var AppModule = /** @class */ (function () {
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventThumbnailComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventDetailsComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["CreateEventComponent"],
+                _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__["CreateSessionComponent"],
                 _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__["Error404Component"],
             ],
             imports: [
@@ -258,7 +262,6 @@ var AppModule = /** @class */ (function () {
 }());
 
 function checkDirtyState(component) {
-    console.log(component.isDirty);
     if (component.isDirty) {
         return window.confirm('you have not saved this event. prees ok to leave.');
     }
@@ -450,6 +453,95 @@ var CreateEventComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/events/event-details/create-session.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/events/event-details/create-session.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-12\">\n  <h3>Create Session</h3>\n</div>\n<div class=\"col-md-6\">\n  {{name.invalid}}: 'name.invalid'<br>\n  {{name.dirty}}: 'name.dirty'<br>\n  <form [formGroup]=\"newSessionForm\" (ngSubmit)=\"saveSession(newSessionForm.value)\" autocomplete=\"off\">\n    <div class=\"form-group\" [ngClass]=\"{error: name.invalid && name.dirty}\">\n      <label for=\"sessionName\">Session Name:</label>\n      <em *ngIf=\"name.invalid && name.dirty\">Required</em>\n      <input formControlName=\"name\" id=\"sessionName\" type=\"text\" class=\"form-control\" placeholder=\"session name...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: presenter.invalid && presenter.dirty}\">\n      <label for=\"eventDate\">Presenter:</label>\n      <em *ngIf=\"presenter.invalid && presenter.dirty\">Required</em>\n      <input formControlName=\"presenter\" id=\"presenter\" type=\"text\" class=\"form-control\" placeholder=\"presenter...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: duration.invalid && duration.dirty}\">\n      <label for=\"duration\">Duration:</label>\n      <em *ngIf=\"duration.invalid && duration.dirty\">Required</em>\n      <select formControlName=\"duration\" class=\"form-control\">\n        <option value=\"\">select duration...</option>\n        <option value=\"1\">Half Hour</option>\n        <option value=\"2\">1 Hour</option>\n        <option value=\"3\">Half Day</option>\n        <option value=\"4\">Full Day</option>\n      </select>\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: level.invalid && level.dirty}\">\n      <label for=\"level\">Level:</label>\n      <em *ngIf=\"level.invalid && level.dirty\">Required</em>\n      <select formControlName=\"level\" class=\"form-control\">\n        <option value=\"\">select level...</option>\n        <option value=\"Beginner\">Beginner</option>\n        <option value=\"Intermediate\">Intermediate</option>\n        <option value=\"Advanced\">Advanced</option>\n      </select>\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: abstract.invalid && abstract.dirty}\">\n      <label for=\"abstract\">Abstract:</label>\n      <em *ngIf=\"abstract.invalid && abstract.dirty && abstract?.errors.required\">Required</em>\n      <em *ngIf=\"abstract.invalid && abstract.dirty && abstract?.errors.maxLength\">Cannot exceed 400 characters</em>\n      <textarea formControlName=\"abstract\" id=\"abstract\" rows=3 class=\"form-control\" placeholder=\"abstract...\"></textarea>\n    </div>\n    <button type=\"submit\" [disabled]=\"newSessionForm.invalid\" class=\"btn btn-primary\">Save</button>\n    <button type=\"button\" class=\"btn btn-default\">Cancel</button>\n  </form>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/create-session.component.scss":
+/*!********************************************************************!*\
+  !*** ./src/app/events/event-details/create-session.component.scss ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "em {\n  float: right;\n  color: #E05c65;\n  padding-left: 10px; }\n\n.error input, .error input, .error textarea {\n  background-color: #E3c3c5; }\n\n.error ::-webkit-input-placeholder {\n  color: #999; }\n\n.error ::-moz-input-placeholder {\n  color: #999; }\n\n.error :-moz-input-placeholder {\n  color: #999; }\n\n.error :ms-input-placeholder {\n  color: #999; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxjcmVhdGUtc2Vzc2lvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQVk7RUFDWixlQUFjO0VBQ2QsbUJBQWtCLEVBQ2pCOztBQUNEO0VBQ0UsMEJBQ0YsRUFBQzs7QUFDRDtFQUNFLFlBQVcsRUFDWjs7QUFDRDtFQUNFLFlBQVcsRUFDWjs7QUFDRDtFQUNFLFlBQVcsRUFDWjs7QUFDRDtFQUNFLFlBQVcsRUFDWiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2NyZWF0ZS1zZXNzaW9uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZW0ge1xyXG4gIGZsb2F0OiByaWdodDtcclxuICBjb2xvcjogI0UwNWM2NTtcclxuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbiAgfVxyXG4gIC5lcnJvciBpbnB1dCwgLmVycm9yIGlucHV0LCAuZXJyb3IgdGV4dGFyZWEge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjojRTNjM2M1XHJcbiAgfVxyXG4gIC5lcnJvciA6Oi13ZWJraXQtaW5wdXQtcGxhY2Vob2xkZXIge1xyXG4gICAgY29sb3I6ICM5OTk7XHJcbiAgfVxyXG4gIC5lcnJvciA6Oi1tb3otaW5wdXQtcGxhY2Vob2xkZXIge1xyXG4gICAgY29sb3I6ICM5OTk7XHJcbiAgfVxyXG4gIC5lcnJvciA6LW1vei1pbnB1dC1wbGFjZWhvbGRlciB7XHJcbiAgICBjb2xvcjogIzk5OTtcclxuICB9XHJcbiAgLmVycm9yIDptcy1pbnB1dC1wbGFjZWhvbGRlciB7XHJcbiAgICBjb2xvcjogIzk5OTtcclxuICB9XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/create-session.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/events/event-details/create-session.component.ts ***!
+  \******************************************************************/
+/*! exports provided: CreateSessionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return CreateSessionComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CreateSessionComponent = /** @class */ (function () {
+    function CreateSessionComponent() {
+    }
+    CreateSessionComponent.prototype.ngOnInit = function () {
+        this.name = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
+        this.presenter = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
+        this.duration = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
+        this.level = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
+        this.abstract = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].maxLength(400)]);
+        this.newSessionForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+            name: this.name,
+            presenter: this.presenter,
+            duration: this.duration,
+            level: this.level,
+            abstract: this.abstract,
+        });
+    };
+    CreateSessionComponent.prototype.saveSession = function (formVAlues) {
+        var session = {
+            id: undefined,
+            name: formVAlues.name,
+            duration: +formVAlues.duration,
+            level: formVAlues.level,
+            presenter: formVAlues.presenter,
+            abstract: formVAlues.abstract,
+            voters: [],
+        };
+        console.log(session, 'session');
+    };
+    CreateSessionComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'aa-create-session',
+            template: __webpack_require__(/*! ./create-session.component.html */ "./src/app/events/event-details/create-session.component.html"),
+            styles: [__webpack_require__(/*! ./create-session.component.scss */ "./src/app/events/event-details/create-session.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], CreateSessionComponent);
+    return CreateSessionComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/events/event-details/event-details.component.html":
 /*!*******************************************************************!*\
   !*** ./src/app/events/event-details/event-details.component.html ***!
@@ -578,7 +670,7 @@ var EventRouteActivatorService = /** @class */ (function () {
 /*!***********************************************!*\
   !*** ./src/app/events/event-details/index.ts ***!
   \***********************************************/
-/*! exports provided: EventDetailsComponent, EventRouteActivatorService */
+/*! exports provided: CreateSessionComponent, EventDetailsComponent, EventRouteActivatorService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -588,6 +680,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _event_route_activator_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event-route-activator.service */ "./src/app/events/event-details/event-route-activator.service.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return _event_route_activator_service__WEBPACK_IMPORTED_MODULE_1__["EventRouteActivatorService"]; });
+
+/* harmony import */ var _create_session_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create-session.component */ "./src/app/events/event-details/create-session.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return _create_session_component__WEBPACK_IMPORTED_MODULE_2__["CreateSessionComponent"]; });
+
 
 
 
@@ -804,7 +900,7 @@ var EventsListComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/events/index.ts ***!
   \*********************************/
-/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, EventService, EventDetailsComponent, EventRouteActivatorService */
+/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, EventDetailsComponent, EventRouteActivatorService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -825,6 +921,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventService", function() { return _shared_index__WEBPACK_IMPORTED_MODULE_4__["EventService"]; });
 
 /* harmony import */ var _event_details___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./event-details/ */ "./src/app/events/event-details/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["CreateSessionComponent"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventDetailsComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventDetailsComponent"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventRouteActivatorService"]; });

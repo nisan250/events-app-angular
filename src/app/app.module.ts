@@ -27,6 +27,7 @@ import { HeaderComponent } from './main/header/header.component';
 import { MainComponent } from './main/main.component';
 import { Error404Component } from './errors/error-404.component';
 import { AuthService } from './user/auth.service';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthService } from './user/auth.service';
     EventThumbnailComponent,
     EventDetailsComponent,
     CreateEventComponent,
+    CreateSessionComponent,
     Error404Component,
   ],
   imports: [
@@ -70,8 +72,6 @@ export class AppModule {
 }
 
 export function checkDirtyState (component: CreateEventComponent) {
-  console.log(component.isDirty);
-
   if (component.isDirty) {
     return window.confirm('you have not saved this event. prees ok to leave.');
   }
