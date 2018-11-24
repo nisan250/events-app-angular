@@ -6416,7 +6416,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h2>Edit Your Profile </h2>\n  <div class=\"col-md-4\">\n    <form [formGroup]=\"profileForm\" autocomplete=\"off\" (ngSubmit)=\"saveProfile(profileForm.value)\" novalidate>\n      <div class=\"form-group\">\n        <label for=\"firstName\">First Name:</label>\n        <input id=\"firstName\" formControlName=\"firstName\" type=\"text\" class=\"form-control\" placeholder=\"First Name...\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"lastName\">Last Name:</label>\n        <input id=\"lastName\" formControlName=\"lastName\" type=\"text\" class=\"form-control\" placeholder=\"Last Name...\" />\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"cancel()\">Cancel</button>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <h2>Edit Your Profile </h2>\n  <div class=\"col-md-4\">\n    <form [formGroup]=\"profileForm\" autocomplete=\"off\" (ngSubmit)=\"saveProfile(profileForm.value)\" novalidate>\n      <div class=\"form-group\"\n            [ngClass]=\"{'error': !validateFirstName()}\">\n        <label for=\"firstName\">First Name:</label>\n        <em *ngIf=\"!validateFirstName()\">Required</em>\n        <input id=\"firstName\" formControlName=\"firstName\" type=\"text\" class=\"form-control\" placeholder=\"First Name...\" />\n      </div>\n      <div class=\"form-group\"\n            [ngClass]=\"{'error': !validateLastName()}\">\n        <label for=\"lastName\">Last Name:</label>\n        <em *ngIf=\"!validateLastName()\">Required</em>\n        <input id=\"lastName\" formControlName=\"lastName\"   type=\"text\" class=\"form-control\" placeholder=\"Last Name...\" />\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"cancel()\">Cancel</button>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6427,7 +6427,7 @@ module.exports = "<div>\n  <h2>Edit Your Profile </h2>\n  <div class=\"col-md-4\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvcHJvZmlsZS5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = "em {\n  float: right;\n  color: #E05c65;\n  padding-left: 10px; }\n\n.error input {\n  background-color: #E3c3c5; }\n\n.error ::-webkit-input-placeholder {\n  color: #999; }\n\n.error ::-moz-input-placeholder {\n  color: #999; }\n\n.error :-moz-input-placeholder {\n  color: #999; }\n\n.error :ms-input-placeholder {\n  color: #999; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci9EOlxcYXBwc1xcZXZlbnRzLWFwcC1hbmd1bGFyL3NyY1xcYXBwXFx1c2VyXFxwcm9maWxlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0EsYUFBWTtFQUNaLGVBQWM7RUFDZCxtQkFBa0IsRUFDakI7O0FBQ0Q7RUFDRSwwQkFDRixFQUFDOztBQUNEO0VBQ0UsWUFBVyxFQUNaOztBQUNEO0VBQ0UsWUFBVyxFQUNaOztBQUNEO0VBQ0UsWUFBVyxFQUNaOztBQUNEO0VBQ0UsWUFBVyxFQUNaIiwiZmlsZSI6InNyYy9hcHAvdXNlci9wcm9maWxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZW0ge1xyXG5mbG9hdDogcmlnaHQ7XHJcbmNvbG9yOiAjRTA1YzY1O1xyXG5wYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbn1cclxuLmVycm9yIGlucHV0IHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNFM2MzYzVcclxufVxyXG4uZXJyb3IgOjotd2Via2l0LWlucHV0LXBsYWNlaG9sZGVyIHtcclxuICBjb2xvcjogIzk5OTtcclxufVxyXG4uZXJyb3IgOjotbW96LWlucHV0LXBsYWNlaG9sZGVyIHtcclxuICBjb2xvcjogIzk5OTtcclxufVxyXG4uZXJyb3IgOi1tb3otaW5wdXQtcGxhY2Vob2xkZXIge1xyXG4gIGNvbG9yOiAjOTk5O1xyXG59XHJcbi5lcnJvciA6bXMtaW5wdXQtcGxhY2Vob2xkZXIge1xyXG4gIGNvbG9yOiAjOTk5O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -6464,21 +6464,20 @@ var ProfileComponent = /** @class */ (function () {
         this.router = router;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        console.log();
         if (this.auth.currentUser) {
-            var firstName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.auth.currentUser.firstName);
-            var lastName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.auth.currentUser.lastName);
+            this.firstName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.auth.currentUser.firstName, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
+            this.lastName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](this.auth.currentUser.lastName, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
             this.profileForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
-                firstName: firstName,
-                lastName: lastName,
+                firstName: this.firstName,
+                lastName: this.lastName,
             });
         }
         else {
-            var firstName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]();
-            var lastName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]();
+            this.firstName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](' ', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
+            this.lastName = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](' ', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
             this.profileForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
-                firstName: firstName,
-                lastName: lastName,
+                firstName: this.firstName,
+                lastName: this.lastName,
             });
         }
     };
@@ -6486,8 +6485,16 @@ var ProfileComponent = /** @class */ (function () {
         this.router.navigate(['events']);
     };
     ProfileComponent.prototype.saveProfile = function (formValues) {
-        this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
-        this.router.navigate(['events']);
+        if (this.profileForm.valid) {
+            this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
+            this.router.navigate(['events']);
+        }
+    };
+    ProfileComponent.prototype.validateFirstName = function () {
+        return this.firstName.valid || this.firstName.untouched;
+    };
+    ProfileComponent.prototype.validateLastName = function () {
+        return this.lastName.valid || this.lastName.untouched;
     };
     ProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
