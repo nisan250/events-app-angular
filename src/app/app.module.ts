@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +48,8 @@ import { AuthService } from './user/auth.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     CarouselModule.forRoot(),
     TooltipModule.forRoot(),
   ],
@@ -67,8 +70,10 @@ export class AppModule {
 }
 
 export function checkDirtyState (component: CreateEventComponent) {
+  console.log(component.isDirty);
+
   if (component.isDirty) {
     return window.confirm('you have not saved this event. prees ok to leave.');
   }
-  return false;
+  return true;
 }

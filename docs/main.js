@@ -172,21 +172,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkDirtyState", function() { return checkDirtyState; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "./node_modules/ngx-bootstrap/tooltip/fesm5/ngx-bootstrap-tooltip.js");
-/* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap/carousel */ "./node_modules/ngx-bootstrap/carousel/fesm5/ngx-bootstrap-carousel.js");
-/* harmony import */ var _events_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./events/index */ "./src/app/events/index.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _demo_demo_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./demo/demo.component */ "./src/app/demo/demo.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/navigation/navigation.component */ "./src/app/main/navigation/navigation.component.ts");
-/* harmony import */ var _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./licenses/licenses.component */ "./src/app/licenses/licenses.component.ts");
-/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
-/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
-/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
-/* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
-/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "./node_modules/ngx-bootstrap/tooltip/fesm5/ngx-bootstrap-tooltip.js");
+/* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/carousel */ "./node_modules/ngx-bootstrap/carousel/fesm5/ngx-bootstrap-carousel.js");
+/* harmony import */ var _events_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./events/index */ "./src/app/events/index.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _demo_demo_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./demo/demo.component */ "./src/app/demo/demo.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/navigation/navigation.component */ "./src/app/main/navigation/navigation.component.ts");
+/* harmony import */ var _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./licenses/licenses.component */ "./src/app/licenses/licenses.component.ts");
+/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
+/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
+/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
+/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -210,43 +211,46 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _demo_demo_component__WEBPACK_IMPORTED_MODULE_8__["DemoComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
-                _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__["NavigationComponent"],
-                _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_11__["LicensesComponent"],
-                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__["FooterComponent"],
-                _main_header_header_component__WEBPACK_IMPORTED_MODULE_13__["HeaderComponent"],
-                _main_main_component__WEBPACK_IMPORTED_MODULE_14__["MainComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["EventsListComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["EventThumbnailComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["EventDetailsComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["CreateEventComponent"],
-                _errors_error_404_component__WEBPACK_IMPORTED_MODULE_15__["Error404Component"],
+                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+                _demo_demo_component__WEBPACK_IMPORTED_MODULE_9__["DemoComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+                _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_11__["NavigationComponent"],
+                _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_12__["LicensesComponent"],
+                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_13__["FooterComponent"],
+                _main_header_header_component__WEBPACK_IMPORTED_MODULE_14__["HeaderComponent"],
+                _main_main_component__WEBPACK_IMPORTED_MODULE_15__["MainComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventThumbnailComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventDetailsComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["CreateEventComponent"],
+                _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__["Error404Component"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
-                ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_5__["CarouselModule"].forRoot(),
-                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_4__["TooltipModule"].forRoot(),
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
+                ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_6__["CarouselModule"].forRoot(),
+                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_5__["TooltipModule"].forRoot(),
             ],
             providers: [
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["EventService"],
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["EventRouteActivatorService"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventService"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventRouteActivatorService"],
                 // we suppling the string canDeactivateCreateEvent and attaching a function
                 { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-                _events_index__WEBPACK_IMPORTED_MODULE_6__["EventsListResolverService"],
-                _user_auth_service__WEBPACK_IMPORTED_MODULE_16__["AuthService"]
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListResolverService"],
+                _user_auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"]
             ],
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]
             ]
         })
     ], AppModule);
@@ -254,10 +258,11 @@ var AppModule = /** @class */ (function () {
 }());
 
 function checkDirtyState(component) {
+    console.log(component.isDirty);
     if (component.isDirty) {
         return window.confirm('you have not saved this event. prees ok to leave.');
     }
-    return false;
+    return true;
 }
 
 
@@ -375,7 +380,7 @@ var Error404Component = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>{{pageTitle}}</h2>\n<div>\n  <div>\n      create-event\n  </div>\n  <div>\n      <button class=\"btn btn-primary\">Save</button>\n      <button class=\"btn btn-warning\" (click)=\"goBack()\">Cancel</button>\n  </div>\n</div>\n"
+module.exports = "<h2>{{pageTitle}}</h2>\n\n<div class=\"col-md-6\">\n  <form #newEventForm=\"ngForm\" (ngSubmit)=\"saveEvent(newEventForm.value)\" autocomplete=\"off\" novalidate>\n    <div class=\"form-group\" [ngClass]=\"{'error': newEventForm.controls.name?.invalid && newEventForm.controls.name?.touched}\">\n      <label for=\"eventName\">Event Name:</label>\n      <em *ngIf=\"newEventForm.controls.name?.invalid && (newEventForm.controls.name?.touched)\">Required</em>\n      <input (ngModel)=\"name\" name=\"name\" required id=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Name of your event...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{'error': newEventForm.controls.date?.invalid && newEventForm.controls.date?.touched}\">\n      <label for=\"eventDate\">Event Date:</label>\n      <em *ngIf=\"newEventForm.controls.date?.invalid && (newEventForm.controls.date?.touched)\">Required</em>\n      <input (ngModel)=\"date\" name=\"date\" required id=\"eventDate\" type=\"text\" class=\"form-control\" placeholder=\"format (mm/dd/yyyy)...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{'error': newEventForm.controls.time?.invalid && newEventForm.controls.time?.touched}\">\n      <label for=\"eventTime\">Event Time:</label>\n      <em *ngIf=\"newEventForm.controls.time?.invalid && (newEventForm.controls.time?.touched)\">Required</em>\n      <input (ngModel)=\"time\" name=\"time\" required id=\"eventTime\" type=\"text\" class=\"form-control\" placeholder=\"start and end time...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{'error': newEventForm.controls.price?.invalid && newEventForm.controls.price?.touched}\">\n      <label for=\"eventPrice\">Event Price:</label>\n      <em *ngIf=\"newEventForm.controls.price?.invalid && (newEventForm.controls.price?.touched)\">Required</em>\n      <input (ngModel)=\"price\" name=\"price\" required id=\"eventPrice\" type=\"text\" type=\"number\" class=\"form-control\" placeholder=\"event price...\" />\n    </div>\n\n    <div ngModelGroup=\"location\">\n        <div class=\"form-group\">\n        <label for=\"address\">Event Location:</label>\n        <input (ngModel)=\"address\" name=\"address\" id=\"address\" type=\"text\" class=\"form-control\" placeholder=\"Address of event...\" />\n        </div>\n        <div class=\"row\">\n        <div class=\"col-md-6\">\n            <input (ngModel)=\"city\" name=\"city\" id=\"city\" type=\"text\" class=\"form-control\" placeholder=\"City...\" />\n        </div>\n        <div class=\"col-md-6\" >\n            <input (ngModel)=\"country\" name=\"country\" id=\"country\" type=\"text\" class=\"form-control\" placeholder=\"Country...\" />\n        </div>\n        </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"onlineUrl\">Online Url:</label>\n      <input (ngModel)=\"onlineUrl\" name=\"onlineUrl\" id=\"onlineUrl\" type=\"text\" class=\"form-control\" placeholder=\"Online Url...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{'error': newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched}\">\n      <label for=\"imageUrl\">Image:</label>\n      <em *ngIf=\"newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched && newEventForm.controls.imageUrl?.errors.required\">Required</em>\n      <em *ngIf=\"newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched  && newEventForm.controls.imageUrl?.errors.pattern\">Must be a png or jpg url</em>\n      <input (ngModel)=\"imageUrl\" name=\"imageUrl\" required pattern=\".*\\/.*.(png|jpg)\" id=\"imageUrl\" type=\"text\" class=\"form-control\" placeholder=\"url of image...\" />\n      <img [src]=\"newEventForm.controls.imageUrl.value\" *ngIf=\"newEventForm.controls.imageUrl?.value\"/>\n    </div>\n\n    <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n    <button type=\"button\" [disabled]=\"newEventForm.invalid\" class=\"btn btn-default\" (click)=\"cancel()\">Cancel</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -386,7 +391,7 @@ module.exports = "<h2>{{pageTitle}}</h2>\n<div>\n  <div>\n      create-event\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9jcmVhdGUtZXZlbnQuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = "em {\n  float: right;\n  color: #E05c65;\n  padding-left: 10px; }\n\n.error input {\n  background-color: #E3c3c5; }\n\n.error ::-webkit-input-placeholder {\n  color: #999; }\n\n.error ::-moz-input-placeholder {\n  color: #999; }\n\n.error :-moz-input-placeholder {\n  color: #999; }\n\n.error :ms-input-placeholder {\n  color: #999; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL0Q6XFxhcHBzXFxldmVudHMtYXBwLWFuZ3VsYXIvc3JjXFxhcHBcXGV2ZW50c1xcY3JlYXRlLWV2ZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBWTtFQUNaLGVBQWM7RUFDZCxtQkFBa0IsRUFDakI7O0FBQ0Q7RUFDRSwwQkFDRixFQUFDOztBQUNEO0VBQ0UsWUFBVyxFQUNaOztBQUNEO0VBQ0UsWUFBVyxFQUNaOztBQUNEO0VBQ0UsWUFBVyxFQUNaOztBQUNEO0VBQ0UsWUFBVyxFQUNaIiwiZmlsZSI6InNyYy9hcHAvZXZlbnRzL2NyZWF0ZS1ldmVudC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImVtIHtcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIGNvbG9yOiAjRTA1YzY1O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xyXG4gICAgfVxyXG4gICAgLmVycm9yIGlucHV0IHtcclxuICAgICAgYmFja2dyb3VuZC1jb2xvcjojRTNjM2M1XHJcbiAgICB9XHJcbiAgICAuZXJyb3IgOjotd2Via2l0LWlucHV0LXBsYWNlaG9sZGVyIHtcclxuICAgICAgY29sb3I6ICM5OTk7XHJcbiAgICB9XHJcbiAgICAuZXJyb3IgOjotbW96LWlucHV0LXBsYWNlaG9sZGVyIHtcclxuICAgICAgY29sb3I6ICM5OTk7XHJcbiAgICB9XHJcbiAgICAuZXJyb3IgOi1tb3otaW5wdXQtcGxhY2Vob2xkZXIge1xyXG4gICAgICBjb2xvcjogIzk5OTtcclxuICAgIH1cclxuICAgIC5lcnJvciA6bXMtaW5wdXQtcGxhY2Vob2xkZXIge1xyXG4gICAgICBjb2xvcjogIzk5OTtcclxuICAgIH1cclxuICAgICJdfQ== */"
 
 /***/ }),
 
@@ -402,6 +407,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateEventComponent", function() { return CreateEventComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_event_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shared/event.service */ "./src/app/events/shared/event.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -413,15 +419,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var CreateEventComponent = /** @class */ (function () {
-    function CreateEventComponent(router) {
+    function CreateEventComponent(router, eventService) {
         this.router = router;
+        this.eventService = eventService;
         this.pageTitle = 'Create an Event';
         this.isDirty = true;
     }
-    CreateEventComponent.prototype.ngOnInit = function () {
+    CreateEventComponent.prototype.saveEvent = function (formValues) {
+        this.eventService.saveEvent(formValues);
+        this.isDirty = false;
+        this.router.navigate(['/events']);
     };
-    CreateEventComponent.prototype.goBack = function () {
+    CreateEventComponent.prototype.cancel = function () {
         this.router.navigate(['/events']);
     };
     CreateEventComponent = __decorate([
@@ -430,7 +441,7 @@ var CreateEventComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./create-event.component.html */ "./src/app/events/create-event.component.html"),
             styles: [__webpack_require__(/*! ./create-event.component.scss */ "./src/app/events/create-event.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _shared_event_service__WEBPACK_IMPORTED_MODULE_2__["EventService"]])
     ], CreateEventComponent);
     return CreateEventComponent;
 }());
@@ -869,6 +880,11 @@ var EventService = /** @class */ (function () {
     };
     EventService.prototype.getEvent = function (eventId) {
         return EVENTS.find(function (event) { return eventId === event.id; });
+    };
+    EventService.prototype.saveEvent = function (event) {
+        event.id = 999;
+        event.sessions = [];
+        EVENTS.push(event);
     };
     EventService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
