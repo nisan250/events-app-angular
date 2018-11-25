@@ -1,7 +1,7 @@
-import { map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession, restrictedWords } from '../shared/index';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'aa-create-session',
@@ -9,6 +9,10 @@ import { ISession, restrictedWords } from '../shared/index';
   styleUrls: ['./create-session.component.scss']
 })
 export class CreateSessionComponent implements OnInit {
+ @Output() saveNewSession = new EventEmitter();
+ @Output() cancelAddSession = new EventEmitter();
+
+
   name: FormControl;
   presenter: FormControl;
   duration: FormControl;
@@ -46,7 +50,11 @@ export class CreateSessionComponent implements OnInit {
       abstract: formVAlues.abstract,
       voters: [],
     };
-    console.log(session, 'session');
+    this.saveNewSession.emit(session);
+  }
+
+  cancel() {
+    this.cancelAddSession.emit();
   }
 
 }

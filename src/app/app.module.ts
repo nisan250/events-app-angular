@@ -13,6 +13,7 @@ import {
   EventService,
   EventDetailsComponent,
   EventRouteActivatorService,
+  SessionListComponent,
   CreateEventComponent,
   EventsListResolverService,
  } from './events/index';
@@ -45,6 +46,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     CreateEventComponent,
     CreateSessionComponent,
     Error404Component,
+    SessionListComponent,
   ],
   imports: [
     BrowserModule,

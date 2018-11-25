@@ -31,6 +31,12 @@ export class EventService {
     EVENTS.push(event);
   }
 
+  upadteEvent(event: IEvent): any {
+    const index = EVENTS.findIndex(x => x.id === event.id);
+    EVENTS[index] = event;
+    // throw new Error('Method not implemented.');
+  }
+
 }
 const EVENTS: IEvent[] = [
 {

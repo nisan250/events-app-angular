@@ -1,9 +1,9 @@
 <h2>{{pageTitle}}</h2>
-<div class="card">
-    <div class="card-header">
+<div class="">
+    <div class="">
       <h4> {{event?.name}}</h4>
     </div>
-    <div class="card-body">
+    <div class="">
       <img [src]="event.imageUrl" width=200>
       <div>Date: {{event?.date}}</div>
       <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">Time: {{event?.time}} -
@@ -28,5 +28,19 @@
       <div *ngIf="event?.onlineUrl">
         Online URL: <a href="event?.onlineUrl">{{event?.onlineUrl}}</a>
       </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-2">
+          <h3 style="margin:0">Sessions</h3>
+        </div>
+        <div class="col-md-2">
+          <a (click)="addSession()">Add Session</a>
+        </div>
+      </div>
+
+      <aa-session-list *ngIf="!addMode" [sessions]="event?.sessions"></aa-session-list>
+      <aa-create-session (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()" *ngIf="addMode"></aa-create-session>
     </div>
 </div>

@@ -1,0 +1,9 @@
+a:not([href]):not([tabindex]) {
+  text-decoration: underline;
+  color: #a52a2a;
+  cursor: pointer;
+}
+
+a:not([href]):not([tabindex]):hover {
+  text-decoration: none;
+}

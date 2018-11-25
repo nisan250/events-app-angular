@@ -235,6 +235,7 @@ var AppModule = /** @class */ (function () {
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["CreateEventComponent"],
                 _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__["CreateSessionComponent"],
                 _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__["Error404Component"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["SessionListComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -460,7 +461,7 @@ var CreateEventComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\">\n  <h3>Create Session</h3>\n</div>\n<div class=\"col-md-6\">\n  <form [formGroup]=\"newSessionForm\" (ngSubmit)=\"saveSession(newSessionForm.value)\" autocomplete=\"off\">\n    <div class=\"form-group\" [ngClass]=\"{error: name.invalid && name.dirty}\">\n      <label for=\"sessionName\">Session Name:</label>\n      <em *ngIf=\"name.invalid && name.dirty\">Required</em>\n      <input formControlName=\"name\" id=\"sessionName\" type=\"text\" class=\"form-control\" placeholder=\"session name...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: presenter.invalid && presenter.dirty}\">\n      <label for=\"eventDate\">Presenter:</label>\n      <em *ngIf=\"presenter.invalid && presenter.dirty\">Required</em>\n      <input formControlName=\"presenter\" id=\"presenter\" type=\"text\" class=\"form-control\" placeholder=\"presenter...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: duration.invalid && duration.dirty}\">\n      <label for=\"duration\">Duration:</label>\n      <em *ngIf=\"duration.invalid && duration.dirty\">Required</em>\n      <select formControlName=\"duration\" class=\"form-control\">\n        <option value=\"\">select duration...</option>\n        <option value=\"1\">Half Hour</option>\n        <option value=\"2\">1 Hour</option>\n        <option value=\"3\">Half Day</option>\n        <option value=\"4\">Full Day</option>\n      </select>\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: level.invalid && level.dirty}\">\n      <label for=\"level\">Level:</label>\n      <em *ngIf=\"level.invalid && level.dirty\">Required</em>\n      <select formControlName=\"level\" class=\"form-control\">\n        <option value=\"\">select level...</option>\n        <option value=\"Beginner\">Beginner</option>\n        <option value=\"Intermediate\">Intermediate</option>\n        <option value=\"Advanced\">Advanced</option>\n      </select>\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: abstract.invalid && abstract.dirty}\">\n      <label for=\"abstract\">Abstract:</label>\n      <em *ngIf=\"(abstract.invalid && abstract.dirty && abstract.errors.required)\">Required</em>\n      <em *ngIf=\"(abstract.invalid && abstract.dirty && abstract.errors.maxLength)\">Cannot exceed 400 characters</em>\n      <em *ngIf=\"(abstract.invalid && abstract.dirty && abstract.errors.restrictedWords)\">Restricted words found:  {{abstract.errors.restrictedWords}}</em>\n      <textarea formControlName=\"abstract\" id=\"abstract\" rows=3 class=\"form-control\" placeholder=\"abstract...\"></textarea>\n      <em>dont type here the words \"foo\" or \"bar\"</em>\n    </div>\n    <button type=\"submit\" [disabled]=\"newSessionForm.invalid\" class=\"btn btn-primary\">Save</button>\n    <button type=\"button\" class=\"btn btn-default\">Cancel</button>\n  </form>\n</div>\n"
+module.exports = "<div class=\"col-md-12\">\n  <h3>Create Session</h3>\n</div>\n<div class=\"col-md-6\">\n  <form [formGroup]=\"newSessionForm\" (ngSubmit)=\"saveSession(newSessionForm.value)\" autocomplete=\"off\">\n    <div class=\"form-group\" [ngClass]=\"{error: name.invalid && name.dirty}\">\n      <label for=\"sessionName\">Session Name:</label>\n      <em *ngIf=\"name.invalid && name.dirty\">Required</em>\n      <input formControlName=\"name\" id=\"sessionName\" type=\"text\" class=\"form-control\" placeholder=\"session name...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: presenter.invalid && presenter.dirty}\">\n      <label for=\"eventDate\">Presenter:</label>\n      <em *ngIf=\"presenter.invalid && presenter.dirty\">Required</em>\n      <input formControlName=\"presenter\" id=\"presenter\" type=\"text\" class=\"form-control\" placeholder=\"presenter...\" />\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: duration.invalid && duration.dirty}\">\n      <label for=\"duration\">Duration:</label>\n      <em *ngIf=\"duration.invalid && duration.dirty\">Required</em>\n      <select formControlName=\"duration\" class=\"form-control\">\n        <option value=\"\">select duration...</option>\n        <option value=\"1\">Half Hour</option>\n        <option value=\"2\">1 Hour</option>\n        <option value=\"3\">Half Day</option>\n        <option value=\"4\">Full Day</option>\n      </select>\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: level.invalid && level.dirty}\">\n      <label for=\"level\">Level:</label>\n      <em *ngIf=\"level.invalid && level.dirty\">Required</em>\n      <select formControlName=\"level\" class=\"form-control\">\n        <option value=\"\">select level...</option>\n        <option value=\"Beginner\">Beginner</option>\n        <option value=\"Intermediate\">Intermediate</option>\n        <option value=\"Advanced\">Advanced</option>\n      </select>\n    </div>\n    <div class=\"form-group\" [ngClass]=\"{error: abstract.invalid && abstract.dirty}\">\n      <label for=\"abstract\">Abstract:</label>\n      <em *ngIf=\"(abstract.invalid && abstract.dirty && abstract.errors.required)\">Required</em>\n      <em *ngIf=\"(abstract.invalid && abstract.dirty && abstract.errors.maxLength)\">Cannot exceed 400 characters</em>\n      <em *ngIf=\"(abstract.invalid && abstract.dirty && abstract.errors.restrictedWords)\">Restricted words found:  {{abstract.errors.restrictedWords}}</em>\n      <textarea formControlName=\"abstract\" id=\"abstract\" rows=3 class=\"form-control\" placeholder=\"abstract...\"></textarea>\n      <em>dont type here the words \"foo\" or \"bar\"</em>\n    </div>\n    <button type=\"submit\" [disabled]=\"newSessionForm.invalid\" class=\"btn btn-primary\">Save</button>\n    <button type=\"button\" (click)=\"cancel()\" class=\"btn btn-default\">Cancel</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -502,6 +503,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var CreateSessionComponent = /** @class */ (function () {
     function CreateSessionComponent() {
+        this.saveNewSession = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.cancelAddSession = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     CreateSessionComponent.prototype.ngOnInit = function () {
         this.name = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required);
@@ -527,8 +530,19 @@ var CreateSessionComponent = /** @class */ (function () {
             abstract: formVAlues.abstract,
             voters: [],
         };
-        console.log(session, 'session');
+        this.saveNewSession.emit(session);
     };
+    CreateSessionComponent.prototype.cancel = function () {
+        this.cancelAddSession.emit();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], CreateSessionComponent.prototype, "saveNewSession", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], CreateSessionComponent.prototype, "cancelAddSession", void 0);
     CreateSessionComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'aa-create-session',
@@ -551,7 +565,7 @@ var CreateSessionComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"card\">\n    <div class=\"card-header\">\n      <h4> {{event?.name}}</h4>\n    </div>\n    <div class=\"card-body\">\n      <img [src]=\"event.imageUrl\" width=200>\n      <div>Date: {{event?.date}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n    </div>\n</div>\n"
+module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n    <div class=\"\">\n      <h4> {{event?.name}}</h4>\n    </div>\n    <div class=\"\">\n      <img [src]=\"event.imageUrl\" width=200>\n      <div>Date: {{event?.date}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n\n      <hr>\n\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n          <h3 style=\"margin:0\">Sessions</h3>\n        </div>\n        <div class=\"col-md-2\">\n          <a (click)=\"addSession()\">Add Session</a>\n        </div>\n      </div>\n\n      <aa-session-list *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n      <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -562,7 +576,7 @@ module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"card\">\n    <div class=\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2V2ZW50LWRldGFpbHMuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = "a:not([href]):not([tabindex]) {\n  text-decoration: underline;\n  color: #a52a2a;\n  cursor: pointer; }\n\na:not([href]):not([tabindex]):hover {\n  text-decoration: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxldmVudC1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkJBQTBCO0VBQzFCLGVBQWM7RUFDZCxnQkFBZSxFQUNoQjs7QUFFRDtFQUNFLHNCQUFxQixFQUN0QiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2V2ZW50LWRldGFpbHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKSB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6ICNhNTJhMmE7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG5hOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKTpob3ZlciB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -600,6 +614,21 @@ var EventDetailsComponent = /** @class */ (function () {
     EventDetailsComponent.prototype.ngOnInit = function () {
         // console.log(this.route.snapshot.params['id']);
         this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    };
+    // put us in "add" MODE
+    EventDetailsComponent.prototype.addSession = function () {
+        this.addMode = true;
+    };
+    EventDetailsComponent.prototype.saveNewSession = function (session) {
+        // return us the maximum session id;
+        var nextId = Math.max.apply(null, this.event.sessions.map(function (s) { return s.id; }));
+        session.id = nextId + 1;
+        this.event.sessions.push(session);
+        this.eventService.upadteEvent(this.event);
+        this.addMode = false;
+    };
+    EventDetailsComponent.prototype.cancelAddSession = function () {
+        this.addMode = false;
     };
     EventDetailsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -672,7 +701,7 @@ var EventRouteActivatorService = /** @class */ (function () {
 /*!***********************************************!*\
   !*** ./src/app/events/event-details/index.ts ***!
   \***********************************************/
-/*! exports provided: CreateSessionComponent, EventDetailsComponent, EventRouteActivatorService */
+/*! exports provided: CreateSessionComponent, EventDetailsComponent, EventRouteActivatorService, SessionListComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -686,8 +715,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _create_session_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create-session.component */ "./src/app/events/event-details/create-session.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return _create_session_component__WEBPACK_IMPORTED_MODULE_2__["CreateSessionComponent"]; });
 
+/* harmony import */ var _session_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session-list.component */ "./src/app/events/event-details/session-list.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _session_list_component__WEBPACK_IMPORTED_MODULE_3__["SessionListComponent"]; });
 
 
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/session-list.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/events/event-details/session-list.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div class=\"col-md-10\">\n    <div class=\"well\">\n        <h5>{{session.name}}</h5>\n        <h6>{{session.presenter}}</h6>\n        <span>Duration: {{session.duration}}</span><br />\n        <span>Level: {{session.level}}</span>\n        <p>{{session.abstract}}</p>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/session-list.component.scss":
+/*!******************************************************************!*\
+  !*** ./src/app/events/event-details/session-list.component.scss ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL3Nlc3Npb24tbGlzdC5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/session-list.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/events/event-details/session-list.component.ts ***!
+  \****************************************************************/
+/*! exports provided: SessionListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return SessionListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SessionListComponent = /** @class */ (function () {
+    function SessionListComponent() {
+    }
+    SessionListComponent.prototype.ngOnInit = function () {
+        console.log(this.sessions);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], SessionListComponent.prototype, "sessions", void 0);
+    SessionListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'aa-session-list',
+            template: __webpack_require__(/*! ./session-list.component.html */ "./src/app/events/event-details/session-list.component.html"),
+            styles: [__webpack_require__(/*! ./session-list.component.scss */ "./src/app/events/event-details/session-list.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], SessionListComponent);
+    return SessionListComponent;
+}());
 
 
 
@@ -902,7 +1003,7 @@ var EventsListComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/events/index.ts ***!
   \*********************************/
-/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, restrictedWords, EventDetailsComponent, EventRouteActivatorService */
+/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, restrictedWords, EventDetailsComponent, EventRouteActivatorService, SessionListComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -930,6 +1031,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventDetailsComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventDetailsComponent"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventRouteActivatorService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["SessionListComponent"]; });
 
 
 
@@ -987,6 +1090,11 @@ var EventService = /** @class */ (function () {
         event.id = 999;
         event.sessions = [];
         EVENTS.push(event);
+    };
+    EventService.prototype.upadteEvent = function (event) {
+        var index = EVENTS.findIndex(function (x) { return x.id === event.id; });
+        EVENTS[index] = event;
+        // throw new Error('Method not implemented.');
     };
     EventService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
