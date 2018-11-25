@@ -1,11 +1,11 @@
 <h2>{{pageTitle}}</h2>
 <div class="">
     <div class="">
-      <h4> {{event?.name}}</h4>
+      <h4> {{event?.name | uppercase}}</h4>
     </div>
     <div class="">
       <img [src]="event.imageUrl" width=200>
-      <div>Date: {{event?.date}}</div>
+      <div>Date: {{event?.date | date: 'shortDate'}}</div>
       <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">Time: {{event?.time}} -
         <span [ngSwitch]="event?.time">
           <span *ngSwitchCase="'8:00 am'">
@@ -19,7 +19,7 @@
           </span>
         </span>
       </div>
-      <div>Price: {{event?.price}}</div>
+      <div>Price: {{event?.price | currency:'USD':true}}</div>
       <div *ngIf="event?.location">
         <span>Location: {{event?.location?.address}}</span>
         <span>&nbsp;</span>

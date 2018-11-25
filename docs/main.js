@@ -239,6 +239,7 @@ var AppModule = /** @class */ (function () {
                 _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__["Error404Component"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["SessionListComponent"],
                 _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_19__["CollapsibleWellComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["DurationPipe"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -630,7 +631,7 @@ var CreateSessionComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n    <div class=\"\">\n      <h4> {{event?.name}}</h4>\n    </div>\n    <div class=\"\">\n      <img [src]=\"event.imageUrl\" width=200>\n      <div>Date: {{event?.date}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n\n      <hr>\n\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n          <h3 style=\"margin:0\">Sessions</h3>\n        </div>\n        <div class=\"col-md-2\">\n          <a (click)=\"addSession()\">Add Session</a>\n        </div>\n      </div>\n\n      <aa-session-list *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n      <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n    </div>\n</div>\n"
+module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n    <div class=\"\">\n      <h4> {{event?.name | uppercase}}</h4>\n    </div>\n    <div class=\"\">\n      <img [src]=\"event.imageUrl\" width=200>\n      <div>Date: {{event?.date | date: 'shortDate'}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price | currency:'USD':true}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n\n      <hr>\n\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n          <h3 style=\"margin:0\">Sessions</h3>\n        </div>\n        <div class=\"col-md-2\">\n          <a (click)=\"addSession()\">Add Session</a>\n        </div>\n      </div>\n\n      <aa-session-list *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n      <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -798,7 +799,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div class=\"col-md-12\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div class=\"col-md-12\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -866,7 +867,7 @@ var SessionListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n    <div class=\"card-header\">\n      <h4> {{event?.name}}</h4>\n    </div>\n    <div class=\"card-body\">\n      <img [src]=\"event.imageUrl\" width=100>\n      <div>Date: {{event?.date}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n      <!-- <button class=\"btn btn-primary\" (click)=\"handleClick()\">click</button> -->\n    </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n    <div class=\"card-header\">\n      <h4> {{event?.name | uppercase}}</h4>\n    </div>\n    <div class=\"card-body\">\n      <img [src]=\"event.imageUrl\" width=100>\n      <div>Date: {{event?.date | date: 'shortDate'}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price | currency:'USD':true}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n      <!-- <button class=\"btn btn-primary\" (click)=\"handleClick()\">click</button> -->\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1068,7 +1069,7 @@ var EventsListComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/events/index.ts ***!
   \*********************************/
-/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, restrictedWords, EventDetailsComponent, EventRouteActivatorService, SessionListComponent */
+/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, restrictedWords, DurationPipe, EventDetailsComponent, EventRouteActivatorService, SessionListComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1090,6 +1091,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "restrictedWords", function() { return _shared_index__WEBPACK_IMPORTED_MODULE_4__["restrictedWords"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DurationPipe", function() { return _shared_index__WEBPACK_IMPORTED_MODULE_4__["DurationPipe"]; });
+
 /* harmony import */ var _event_details___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./event-details/ */ "./src/app/events/event-details/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["CreateSessionComponent"]; });
 
@@ -1104,6 +1107,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+/***/ }),
+
+/***/ "./src/app/events/shared/duration.pipe.ts":
+/*!************************************************!*\
+  !*** ./src/app/events/shared/duration.pipe.ts ***!
+  \************************************************/
+/*! exports provided: DurationPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DurationPipe", function() { return DurationPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var DurationPipe = /** @class */ (function () {
+    function DurationPipe() {
+    }
+    DurationPipe.prototype.transform = function (value, args) {
+        switch (value) {
+            case 1:
+                return 'Half Hour';
+            case 2:
+                return 'One Hour';
+            case 3:
+                return 'Half Day';
+            case 4:
+                return 'Full Day';
+            default:
+                return value.toString();
+        }
+    };
+    DurationPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'duration'
+        })
+    ], DurationPipe);
+    return DurationPipe;
+}());
 
 
 
@@ -1242,7 +1292,7 @@ var EVENTS = [
 /*!****************************************!*\
   !*** ./src/app/events/shared/index.ts ***!
   \****************************************/
-/*! exports provided: EventService, restrictedWords */
+/*! exports provided: EventService, restrictedWords, DurationPipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1252,6 +1302,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _restricted_words_validator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restricted-words-validator */ "./src/app/events/shared/restricted-words-validator.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "restrictedWords", function() { return _restricted_words_validator__WEBPACK_IMPORTED_MODULE_1__["restrictedWords"]; });
+
+/* harmony import */ var _duration_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./duration.pipe */ "./src/app/events/shared/duration.pipe.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DurationPipe", function() { return _duration_pipe__WEBPACK_IMPORTED_MODULE_2__["DurationPipe"]; });
+
 
 
 
