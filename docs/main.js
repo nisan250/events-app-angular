@@ -190,12 +190,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
 /* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
 /* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
+/* harmony import */ var _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./common/collapsible-well.component */ "./src/app/common/collapsible-well.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -236,6 +238,7 @@ var AppModule = /** @class */ (function () {
                 _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__["CreateSessionComponent"],
                 _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__["Error404Component"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["SessionListComponent"],
+                _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_19__["CollapsibleWellComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -268,6 +271,68 @@ function checkDirtyState(component) {
     }
     return true;
 }
+
+
+/***/ }),
+
+/***/ "./src/app/common/collapsible-well.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/common/collapsible-well.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <div (click)=\"toggleContent()\" class=\"well pointable\">\n  <h4 class=\"well-title\">{{title}}</h4>\n  <div class=\"well-body\">\n      <ng-content *ngIf=\"visible\"></ng-content>\n  </div>\n</div> -->\n<div (click)=\"toggleContent()\" class=\"well pointable\">\n    <h4 class=\"well-title\">\n     <ng-content select=\"[well-title]\"></ng-content>\n    </h4>\n    <ng-content select=\"[well-body]\" *ngIf=\"visible\" select=\".body\"></ng-content>\n  </div>\n"
+
+/***/ }),
+
+/***/ "./src/app/common/collapsible-well.component.scss":
+/*!********************************************************!*\
+  !*** ./src/app/common/collapsible-well.component.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".well {\n  background: #6c757db5;\n  border: 1px solid  #6c757d;\n  margin: 22px 0 0 0;\n  cursor: pointer; }\n\n.well-title {\n  background: #6c757d;\n  color: #fafafa;\n  margin: 0; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL0Q6XFxhcHBzXFxldmVudHMtYXBwLWFuZ3VsYXIvc3JjXFxhcHBcXGNvbW1vblxcY29sbGFwc2libGUtd2VsbC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNCQUFxQjtFQUNyQiwyQkFBMEI7RUFDMUIsbUJBQWtCO0VBQ2xCLGdCQUFlLEVBQ2hCOztBQUNEO0VBQ0Usb0JBQW1CO0VBQ25CLGVBQWM7RUFDZCxVQUFTLEVBQ1YiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY29sbGFwc2libGUtd2VsbC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi53ZWxsIHtcclxuICBiYWNrZ3JvdW5kOiAjNmM3NTdkYjU7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgICM2Yzc1N2Q7XHJcbiAgbWFyZ2luOiAyMnB4IDAgMCAwO1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4ud2VsbC10aXRsZSB7XHJcbiAgYmFja2dyb3VuZDogIzZjNzU3ZDtcclxuICBjb2xvcjogI2ZhZmFmYTtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuXHJcblxyXG5cclxuXHJcblxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/common/collapsible-well.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/common/collapsible-well.component.ts ***!
+  \******************************************************/
+/*! exports provided: CollapsibleWellComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CollapsibleWellComponent", function() { return CollapsibleWellComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var CollapsibleWellComponent = /** @class */ (function () {
+    function CollapsibleWellComponent() {
+        // @Input() title: string;
+        this.visible = true;
+    }
+    CollapsibleWellComponent.prototype.toggleContent = function () {
+        this.visible = !this.visible;
+    };
+    CollapsibleWellComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'aa-collapsible-well',
+            template: __webpack_require__(/*! ./collapsible-well.component.html */ "./src/app/common/collapsible-well.component.html"),
+            styles: [__webpack_require__(/*! ./collapsible-well.component.scss */ "./src/app/common/collapsible-well.component.scss")]
+        })
+    ], CollapsibleWellComponent);
+    return CollapsibleWellComponent;
+}());
+
 
 
 /***/ }),
@@ -733,7 +798,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div class=\"col-md-10\">\n    <div class=\"well\">\n        <h5>{{session.name}}</h5>\n        <h6>{{session.presenter}}</h6>\n        <span>Duration: {{session.duration}}</span><br />\n        <span>Level: {{session.level}}</span>\n        <p>{{session.abstract}}</p>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div class=\"col-md-12\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -744,7 +809,7 @@ module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL3Nlc3Npb24tbGlzdC5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = ".title {\n  padding: 10px; }\n\n.body {\n  padding: 10px;\n  color: #fafafa; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxzZXNzaW9uLWxpc3QuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFhLEVBQ2Q7O0FBRUQ7RUFDRSxjQUFhO0VBQ2IsZUFBYyxFQUNmIiwiZmlsZSI6InNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvc2Vzc2lvbi1saXN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRpdGxlIHtcclxuICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcblxyXG4uYm9keSB7XHJcbiAgcGFkZGluZzogMTBweDtcclxuICBjb2xvcjogI2ZhZmFmYTtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
