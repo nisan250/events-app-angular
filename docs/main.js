@@ -631,7 +631,7 @@ var CreateSessionComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n  <div class=\"\">\n    <h4> {{event?.name | uppercase}}</h4>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <img [src]=\"event.imageUrl\" width=200>\n    </div>\n    <div class=\"col-md-6\">\n      <div><strong>Date:</strong>{{event?.date | date: 'shortDate'}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">\n        <strong>Time:</strong> {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div><strong>Price:</strong> {{event?.price | currency:'USD':true}}</div>\n    </div>\n    <div class=\"col-md-6\">\n      <address *ngIf=\"event?.location\">\n        <strong>Address:</strong><br />\n        {{event?.location?.address}}<br />\n        {{event?.location?.city}}, {{event?.location?.country}}\n      </address>\n      <div *ngIf=\"event?.onlineUrl\">\n          Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n    </div>\n  </div>\n\n  <hr>\n\n  <div class=\"row\">\n    <div class=\"col-md-2\">\n      <h3 style=\"margin:0\">Sessions</h3>\n    </div>\n    <div class=\"col-md-7\">\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='all'\" (click)=\"filterBy='all'\">All</button>\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='beginner'\" (click)=\"filterBy='beginner'\">Beginner</button>\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='intermediate'\" (click)=\"filterBy='intermediate'\">Intermediate</button>\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='advanced'\" (click)=\"filterBy='advanced'\">Advanced</button>\n    </div>\n    <div class=\"col-md-2\">\n      <a (click)=\"addSession()\">Add Session</a>\n    </div>\n  </div>\n\n  <aa-session-list [filterBy]=\"filterBy\" *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n  <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n</div>\n"
+module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n  <div class=\"\">\n    <h4> {{event?.name | uppercase}}</h4>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <img [src]=\"event.imageUrl\" width=200>\n    </div>\n    <div class=\"col-md-6\">\n      <div><strong>Date:</strong>{{event?.date | date: 'shortDate'}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">\n        <strong>Time:</strong> {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div><strong>Price:</strong> {{event?.price | currency:'USD':true}}</div>\n    </div>\n    <div class=\"col-md-6\">\n      <address *ngIf=\"event?.location\">\n        <strong>Address:</strong><br />\n        {{event?.location?.address}}<br />\n        {{event?.location?.city}}, {{event?.location?.country}}\n      </address>\n      <div *ngIf=\"event?.onlineUrl\">\n          Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n    </div>\n  </div>\n\n  <hr>\n\n  <div class=\"row\">\n    <div class=\"col-md-2\">\n      <h3 style=\"margin:0\">Sessions</h3>\n    </div>\n\n    <div class=\"col-md-7\">\n      <div class=\"btn-group btn-group-sm\" style=\"margin:0 10px\">\n        <button class=\"btn btn-default\" [class.active]=\"sortBy==='name'\" (click)=\"sortBy='name'\">By Name</button>\n        <button class=\"btn btn-default\" [class.active]=\"sortBy==='votes'\" (click)=\"sortBy='votes'\">By Votes</button>\n      </div>\n\n      <div class=\"btn-group btn-group-sm\">\n          <button class=\"btn btn-default\" [class.active]=\"filterBy==='all'\" (click)=\"filterBy='all'\">All</button>\n          <button class=\"btn btn-default\" [class.active]=\"filterBy==='beginner'\" (click)=\"filterBy='beginner'\">Beginner</button>\n          <button class=\"btn btn-default\" [class.active]=\"filterBy==='intermediate'\" (click)=\"filterBy='intermediate'\">Intermediate</button>\n          <button class=\"btn btn-default\" [class.active]=\"filterBy==='advanced'\" (click)=\"filterBy='advanced'\">Advanced</button>\n      </div>\n    </div>\n    <div class=\"col-md-2\">\n      <a (click)=\"addSession()\">Add Session</a>\n    </div>\n  </div>\n\n  <aa-session-list [sortBy]=\"sortBy\" [filterBy]=\"filterBy\" *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n  <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n</div>\n"
 
 /***/ }),
 
@@ -642,7 +642,7 @@ module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n  <div class=\"\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "a:not([href]):not([tabindex]) {\n  text-decoration: underline;\n  color: #a52a2a;\n  cursor: pointer; }\n\na:not([href]):not([tabindex]):hover {\n  text-decoration: none; }\n\n.btn-default {\n  margin: 0 10px; }\n\n.active {\n  box-shadow: 0 0 0 0.2rem #b4b4b4; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxldmVudC1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkJBQTBCO0VBQzFCLGVBQWM7RUFDZCxnQkFBZSxFQUNoQjs7QUFFRDtFQUNFLHNCQUFxQixFQUN0Qjs7QUFFRDtFQUNFLGVBQWMsRUFDZjs7QUFDRDtFQUNFLGlDQUErQyxFQUNoRCIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2V2ZW50LWRldGFpbHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKSB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6ICNhNTJhMmE7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG5hOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKTpob3ZlciB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG4uYnRuLWRlZmF1bHQge1xyXG4gIG1hcmdpbjogMCAxMHB4O1xyXG59XHJcbi5hY3RpdmUge1xyXG4gIGJveC1zaGFkb3c6IDAgMCAwIDAuMnJlbSByZ2JhKDE4MCwgMTgwLCAxODAsIDEpO1xyXG59XHJcbiJdfQ== */"
+module.exports = "a:not([href]):not([tabindex]) {\n  text-decoration: underline;\n  color: #a52a2a;\n  cursor: pointer; }\n\na:not([href]):not([tabindex]):hover {\n  text-decoration: none; }\n\n.btn-default {\n  margin: 0 10px;\n  box-shadow: 0 0 0 transparent;\n  background: #fafafa;\n  border: 2px solid #a9a9a9; }\n\n.active {\n  background: #ab9768; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxldmVudC1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkJBQTBCO0VBQzFCLGVBQWM7RUFDZCxnQkFBZSxFQUNoQjs7QUFFRDtFQUNFLHNCQUFxQixFQUN0Qjs7QUFFRDtFQUNFLGVBQWM7RUFDZCw4QkFBNkI7RUFDN0Isb0JBQW1CO0VBQ25CLDBCQUF5QixFQUMxQjs7QUFDRDtFQUNFLG9CQUFtQixFQUNwQiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2V2ZW50LWRldGFpbHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKSB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6ICNhNTJhMmE7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG5hOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKTpob3ZlciB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG4uYnRuLWRlZmF1bHQge1xyXG4gIG1hcmdpbjogMCAxMHB4O1xyXG4gIGJveC1zaGFkb3c6IDAgMCAwIHRyYW5zcGFyZW50O1xyXG4gIGJhY2tncm91bmQ6ICNmYWZhZmE7XHJcbiAgYm9yZGVyOiAycHggc29saWQgI2E5YTlhOTtcclxufVxyXG4uYWN0aXZlIHtcclxuICBiYWNrZ3JvdW5kOiAjYWI5NzY4O1xyXG59XHJcblxyXG5cclxuIl19 */"
 
 /***/ }),
 
@@ -677,6 +677,8 @@ var EventDetailsComponent = /** @class */ (function () {
         this.route = route;
         // tslint:disable-next-line:no-inferrable-types
         this.filterBy = 'all';
+        // tslint:disable-next-line:no-inferrable-types
+        this.sortBy = 'votes';
         this.pageTitle = 'Event Deatail';
     }
     EventDetailsComponent.prototype.ngOnInit = function () {
@@ -845,6 +847,7 @@ var SessionListComponent = /** @class */ (function () {
         // console.log(this.sessions);
         if (this.sessions) {
             this.filterSessions(this.filterBy);
+            this.sortBy === 'name' ? this.visibleSessions.sort(sortByNameAsc) : this.visibleSessions.sort(sortByVotesDesc);
         }
     };
     SessionListComponent.prototype.filterSessions = function (filter) {
@@ -864,8 +867,12 @@ var SessionListComponent = /** @class */ (function () {
     ], SessionListComponent.prototype, "sessions", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
+        __metadata("design:type", String)
     ], SessionListComponent.prototype, "filterBy", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], SessionListComponent.prototype, "sortBy", void 0);
     SessionListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'aa-session-list',
@@ -877,6 +884,21 @@ var SessionListComponent = /** @class */ (function () {
     return SessionListComponent;
 }());
 
+// stateless functions
+function sortByNameAsc(s1, s2) {
+    if (s1.name > s2.name) {
+        return 1;
+    }
+    else if (s1.name === s2.name) {
+        return 0;
+    }
+    else {
+        return -1;
+    }
+}
+function sortByVotesDesc(s1, s2) {
+    return s2.voters.length - s1.voters.length;
+}
 
 
 /***/ }),

@@ -10,7 +10,12 @@ a:not([href]):not([tabindex]):hover {
 
 .btn-default {
   margin: 0 10px;
+  box-shadow: 0 0 0 transparent;
+  background: #fafafa;
+  border: 2px solid #a9a9a9;
 }
 .active {
-  box-shadow: 0 0 0 0.2rem rgba(180, 180, 180, 1);
+  background: #ab9768;
 }
+
+
