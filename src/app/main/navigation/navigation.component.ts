@@ -7,7 +7,7 @@ import { AuthService } from './../../user/auth.service';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
-  constructor(private auth: AuthService) {
+  constructor(public auth: AuthService) {
     // console.log(auth, 'auth');
   }
 }

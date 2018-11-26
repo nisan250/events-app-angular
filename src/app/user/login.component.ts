@@ -13,6 +13,10 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) { } // , private toastrService: ToastrService
 
+  userName;
+  password;
+  mouseoverLogin;
+
   ngOnInit() {
     console.log();
   }

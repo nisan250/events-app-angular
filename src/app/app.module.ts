@@ -33,7 +33,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 // import { ToastrService } from './common/toastr.service';
 
-declare let toastr: Toastr;
+export declare let toastr: Toastr;
 @NgModule({
   declarations: [
     AppComponent,
