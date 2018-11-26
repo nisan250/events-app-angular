@@ -28,9 +28,15 @@
               "src/api"
             ],
             "styles": [
+              "./node_modules/bootstrap/scss/bootstrap.scss",
+              "./node_modules/toastr/build/toastr.min.css",
               "src/styles.scss"
+
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/toastr/build/toastr.min.js"
+            ],
             "baseHref": "/events-app-angular/",
             "deployUrl": "/events-app-angular/"
           },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+declare var toastr: any;
 @Component({
   selector: 'aa-demo',
   templateUrl: './demo.component.html',
@@ -12,7 +12,8 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
   }
 
-  useToasterService(eventName) {
-    console.log(eventName);
+  handleClick(text) {
+    toastr.success('YOOHOOOO');
   }
 }
+
