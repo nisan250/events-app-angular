@@ -7,3 +7,10 @@ a:not([href]):not([tabindex]) {
 a:not([href]):not([tabindex]):hover {
   text-decoration: none;
 }
+
+.btn-default {
+  margin: 0 10px;
+}
+.active {
+  box-shadow: 0 0 0 0.2rem rgba(180, 180, 180, 1);
+}

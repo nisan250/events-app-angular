@@ -1,12 +1,16 @@
 <h2>{{pageTitle}}</h2>
 <div class="">
-    <div class="">
-      <h4> {{event?.name | uppercase}}</h4>
-    </div>
-    <div class="">
+  <div class="">
+    <h4> {{event?.name | uppercase}}</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <img [src]="event.imageUrl" width=200>
-      <div>Date: {{event?.date | date: 'shortDate'}}</div>
-      <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">Time: {{event?.time}} -
+    </div>
+    <div class="col-md-6">
+      <div><strong>Date:</strong>{{event?.date | date: 'shortDate'}}</div>
+      <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">
+        <strong>Time:</strong> {{event?.time}} -
         <span [ngSwitch]="event?.time">
           <span *ngSwitchCase="'8:00 am'">
             Early Start
@@ -19,28 +23,37 @@
           </span>
         </span>
       </div>
-      <div>Price: {{event?.price | currency:'USD':true}}</div>
-      <div *ngIf="event?.location">
-        <span>Location: {{event?.location?.address}}</span>
-        <span>&nbsp;</span>
-        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>
-      </div>
-      <div *ngIf="event?.onlineUrl">
-        Online URL: <a href="event?.onlineUrl">{{event?.onlineUrl}}</a>
-      </div>
-
-      <hr>
-
-      <div class="row">
-        <div class="col-md-2">
-          <h3 style="margin:0">Sessions</h3>
-        </div>
-        <div class="col-md-2">
-          <a (click)="addSession()">Add Session</a>
-        </div>
-      </div>
-
-      <aa-session-list *ngIf="!addMode" [sessions]="event?.sessions"></aa-session-list>
-      <aa-create-session (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()" *ngIf="addMode"></aa-create-session>
+      <div><strong>Price:</strong> {{event?.price | currency:'USD':true}}</div>
     </div>
+    <div class="col-md-6">
+      <address *ngIf="event?.location">
+        <strong>Address:</strong><br />
+        {{event?.location?.address}}<br />
+        {{event?.location?.city}}, {{event?.location?.country}}
+      </address>
+      <div *ngIf="event?.onlineUrl">
+          Online URL: <a href="event?.onlineUrl">{{event?.onlineUrl}}</a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-2">
+      <h3 style="margin:0">Sessions</h3>
+    </div>
+    <div class="col-md-7">
+      <button class="btn btn-default" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button>
+      <button class="btn btn-default" [class.active]="filterBy==='beginner'" (click)="filterBy='beginner'">Beginner</button>
+      <button class="btn btn-default" [class.active]="filterBy==='intermediate'" (click)="filterBy='intermediate'">Intermediate</button>
+      <button class="btn btn-default" [class.active]="filterBy==='advanced'" (click)="filterBy='advanced'">Advanced</button>
+    </div>
+    <div class="col-md-2">
+      <a (click)="addSession()">Add Session</a>
+    </div>
+  </div>
+
+  <aa-session-list [filterBy]="filterBy" *ngIf="!addMode" [sessions]="event?.sessions"></aa-session-list>
+  <aa-create-session (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()" *ngIf="addMode"></aa-create-session>
 </div>

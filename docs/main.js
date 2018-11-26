@@ -631,7 +631,7 @@ var CreateSessionComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n    <div class=\"\">\n      <h4> {{event?.name | uppercase}}</h4>\n    </div>\n    <div class=\"\">\n      <img [src]=\"event.imageUrl\" width=200>\n      <div>Date: {{event?.date | date: 'shortDate'}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">Time: {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div>Price: {{event?.price | currency:'USD':true}}</div>\n      <div *ngIf=\"event?.location\">\n        <span>Location: {{event?.location?.address}}</span>\n        <span>&nbsp;</span>\n        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>\n      </div>\n      <div *ngIf=\"event?.onlineUrl\">\n        Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n\n      <hr>\n\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n          <h3 style=\"margin:0\">Sessions</h3>\n        </div>\n        <div class=\"col-md-2\">\n          <a (click)=\"addSession()\">Add Session</a>\n        </div>\n      </div>\n\n      <aa-session-list *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n      <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n    </div>\n</div>\n"
+module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n  <div class=\"\">\n    <h4> {{event?.name | uppercase}}</h4>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <img [src]=\"event.imageUrl\" width=200>\n    </div>\n    <div class=\"col-md-6\">\n      <div><strong>Date:</strong>{{event?.date | date: 'shortDate'}}</div>\n      <div [ngClass]=\"{'font-weight-bold': event?.time === '8:00 am'}\">\n        <strong>Time:</strong> {{event?.time}} -\n        <span [ngSwitch]=\"event?.time\">\n          <span *ngSwitchCase=\"'8:00 am'\">\n            Early Start\n          </span>\n          <span *ngSwitchCase=\"'10:00 am'\">\n            Late Start\n          </span>\n          <span *ngSwitchDefault>\n            Normal Start\n          </span>\n        </span>\n      </div>\n      <div><strong>Price:</strong> {{event?.price | currency:'USD':true}}</div>\n    </div>\n    <div class=\"col-md-6\">\n      <address *ngIf=\"event?.location\">\n        <strong>Address:</strong><br />\n        {{event?.location?.address}}<br />\n        {{event?.location?.city}}, {{event?.location?.country}}\n      </address>\n      <div *ngIf=\"event?.onlineUrl\">\n          Online URL: <a href=\"event?.onlineUrl\">{{event?.onlineUrl}}</a>\n      </div>\n    </div>\n  </div>\n\n  <hr>\n\n  <div class=\"row\">\n    <div class=\"col-md-2\">\n      <h3 style=\"margin:0\">Sessions</h3>\n    </div>\n    <div class=\"col-md-7\">\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='all'\" (click)=\"filterBy='all'\">All</button>\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='beginner'\" (click)=\"filterBy='beginner'\">Beginner</button>\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='intermediate'\" (click)=\"filterBy='intermediate'\">Intermediate</button>\n      <button class=\"btn btn-default\" [class.active]=\"filterBy==='advanced'\" (click)=\"filterBy='advanced'\">Advanced</button>\n    </div>\n    <div class=\"col-md-2\">\n      <a (click)=\"addSession()\">Add Session</a>\n    </div>\n  </div>\n\n  <aa-session-list [filterBy]=\"filterBy\" *ngIf=\"!addMode\" [sessions]=\"event?.sessions\"></aa-session-list>\n  <aa-create-session (saveNewSession)=\"saveNewSession($event)\" (cancelAddSession)=\"cancelAddSession()\" *ngIf=\"addMode\"></aa-create-session>\n</div>\n"
 
 /***/ }),
 
@@ -642,7 +642,7 @@ module.exports = "<h2>{{pageTitle}}</h2>\n<div class=\"\">\n    <div class=\"\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "a:not([href]):not([tabindex]) {\n  text-decoration: underline;\n  color: #a52a2a;\n  cursor: pointer; }\n\na:not([href]):not([tabindex]):hover {\n  text-decoration: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxldmVudC1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkJBQTBCO0VBQzFCLGVBQWM7RUFDZCxnQkFBZSxFQUNoQjs7QUFFRDtFQUNFLHNCQUFxQixFQUN0QiIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2V2ZW50LWRldGFpbHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKSB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6ICNhNTJhMmE7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG5hOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKTpob3ZlciB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcbiJdfQ== */"
+module.exports = "a:not([href]):not([tabindex]) {\n  text-decoration: underline;\n  color: #a52a2a;\n  cursor: pointer; }\n\na:not([href]):not([tabindex]):hover {\n  text-decoration: none; }\n\n.btn-default {\n  margin: 0 10px; }\n\n.active {\n  box-shadow: 0 0 0 0.2rem #b4b4b4; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFxldmVudC1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkJBQTBCO0VBQzFCLGVBQWM7RUFDZCxnQkFBZSxFQUNoQjs7QUFFRDtFQUNFLHNCQUFxQixFQUN0Qjs7QUFFRDtFQUNFLGVBQWMsRUFDZjs7QUFDRDtFQUNFLGlDQUErQyxFQUNoRCIsImZpbGUiOiJzcmMvYXBwL2V2ZW50cy9ldmVudC1kZXRhaWxzL2V2ZW50LWRldGFpbHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKSB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6ICNhNTJhMmE7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG5hOm5vdChbaHJlZl0pOm5vdChbdGFiaW5kZXhdKTpob3ZlciB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG4uYnRuLWRlZmF1bHQge1xyXG4gIG1hcmdpbjogMCAxMHB4O1xyXG59XHJcbi5hY3RpdmUge1xyXG4gIGJveC1zaGFkb3c6IDAgMCAwIDAuMnJlbSByZ2JhKDE4MCwgMTgwLCAxODAsIDEpO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -675,6 +675,8 @@ var EventDetailsComponent = /** @class */ (function () {
     function EventDetailsComponent(eventService, route) {
         this.eventService = eventService;
         this.route = route;
+        // tslint:disable-next-line:no-inferrable-types
+        this.filterBy = 'all';
         this.pageTitle = 'Event Deatail';
     }
     EventDetailsComponent.prototype.ngOnInit = function () {
@@ -799,7 +801,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngFor=\"let session of sessions\">\n  <div class=\"col-md-12\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\" *ngFor=\"let session of visibleSessions\">\n  <div class=\"col-md-12\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -837,14 +839,33 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var SessionListComponent = /** @class */ (function () {
     function SessionListComponent() {
+        this.visibleSessions = [];
     }
-    SessionListComponent.prototype.ngOnInit = function () {
-        console.log(this.sessions);
+    SessionListComponent.prototype.ngOnChanges = function () {
+        // console.log(this.sessions);
+        if (this.sessions) {
+            this.filterSessions(this.filterBy);
+        }
+    };
+    SessionListComponent.prototype.filterSessions = function (filter) {
+        console.log(filter);
+        if (filter === 'all') {
+            this.visibleSessions = this.sessions.slice(0);
+        }
+        else {
+            this.visibleSessions = this.sessions.filter(function (session) {
+                return session.level.toLowerCase() === filter;
+            });
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], SessionListComponent.prototype, "sessions", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], SessionListComponent.prototype, "filterBy", void 0);
     SessionListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'aa-session-list',
@@ -1223,63 +1244,256 @@ var EventService = /** @class */ (function () {
 var EVENTS = [
     {
         id: 1,
-        name: 'Angular Connect',
-        date: new Date('2/10/2019'),
-        time: '8:00 am',
-        price: 599.99,
-        imageUrl: 'https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg',
+        name: 'Angular Engage',
+        date: new Date('9/26/2026'),
+        time: '10:00 am',
+        price: 299.99,
+        imageUrl: '/assets/images/angularb.png',
         location: {
-            address: '1057 DT',
-            city: 'London',
-            country: 'England'
+            address: 'Igal Alon 30',
+            city: 'TLV',
+            country: 'Israel'
         },
         sessions: [
             {
                 id: 1,
-                name: 'Using Angular 4 pipes',
-                presenter: 'Jermy White',
-                duration: 2,
-                level: 'begginer',
-                abstract: 'blab bla bla blab bla bla blab bla bla ',
-                voters: ['bradgreen', 'igorma', 'john']
+                name: 'Angular Best Practices',
+                presenter: 'Kyle Simpson',
+                duration: 1,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges', 'vardaraz']
             },
             {
-                id: 1,
-                name: 'Using Angular 5 components',
-                presenter: 'Julia Shapira',
-                duration: 3,
-                level: 'expert',
-                abstract: 'blab 2bla2 bla 2blab2 b2la bla blab bla bla ',
-                voters: [, 'igorma', 'john']
+                id: 2,
+                name: 'Angular Deployment',
+                presenter: 'Tracy Lee',
+                duration: 1,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['jackdaniel', 'nisansabag', 'jeffbridges', 'vardaraz']
+            },
+            {
+                id: 3,
+                name: 'Angular Performance',
+                presenter: 'Kyle Simpson',
+                duration: 2,
+                level: 'Advanced',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: []
+            },
+            {
+                id: 4,
+                name: 'Angular On Steroids',
+                presenter: 'David Walsh',
+                duration: 2,
+                level: 'Advanced',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: []
+            },
+            {
+                id: 5,
+                name: 'Angular On Steroids',
+                presenter: 'Douglas Crockford',
+                duration: 2,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges']
             }
         ]
     },
     {
         id: 2,
-        name: 'Angular meetup',
-        date: new Date('3/11/2019'),
-        time: '10:00 am',
-        price: 399.99,
-        imageUrl: 'https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg',
-        onlineUrl: 'http://demo-url',
+        name: 'ng-conf 2020',
+        date: new Date('3/3/2020'),
+        time: '9:00 am',
+        price: 199.00,
+        imageUrl: '/assets/images/ng-conf.png',
+        location: {
+            address: 'Igal Alon 100',
+            city: 'TLV',
+            country: 'Isreal'
+        },
         sessions: [
             {
                 id: 1,
-                name: 'Using Angular 6 pipes',
-                presenter: 'Roberta White',
-                duration: 2,
-                level: 'begginer',
-                abstract: 'blab bla bla blab bla bla blab bla bla ',
-                voters: ['bradgreen', 'igorma', 'john']
+                name: 'Angular Tests',
+                presenter: 'David Walsh',
+                duration: 4,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges']
             },
             {
-                id: 1,
-                name: 'Using Angular 7 components',
-                presenter: 'Simon Shultz',
+                id: 2,
+                name: 'Angular Firebase',
+                presenter: 'David Walsh',
                 duration: 3,
-                level: 'expert',
-                abstract: 'blab 2bla2 bla 2blab2 b2la bla blab bla bla ',
-                voters: [, 'igorma', 'john']
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges', 'jackdaniel']
+            },
+            {
+                id: 3,
+                name: 'Angular 7 Updates',
+                presenter: 'Wes Bos',
+                duration: 2,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['vardaraz']
+            },
+            {
+                id: 4,
+                name: 'Content Projection',
+                presenter: 'Kyle Simpson',
+                duration: 1,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag']
+            },
+        ]
+    },
+    {
+        id: 3,
+        name: 'React Fire',
+        date: new Date('5/4/2037'),
+        time: '9:00 am',
+        price: 359.00,
+        imageUrl: '/assets/images/angularb.png',
+        location: {
+            address: 'Sokolov 50',
+            city: 'TLV',
+            country: 'Isreal'
+        },
+        sessions: [
+            {
+                id: 1,
+                name: 'React Get Started',
+                presenter: 'Kyle Simpson',
+                duration: 2,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'vardaraz', 'jeffbridges']
+            },
+            {
+                id: 2,
+                name: 'Angular and React',
+                presenter: 'Kyle Simpson',
+                duration: 2,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'vardaraz']
+            },
+            {
+                id: 3,
+                name: 'React and Redux',
+                presenter: 'Kyle Simpson',
+                duration: 1,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'vardaraz', 'jackdaniel']
+            },
+            {
+                id: 4,
+                name: 'React on steroids',
+                presenter: 'David Walsh',
+                duration: 1,
+                level: 'Advanced',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'vardaraz', 'jeffbridges', 'jackdaniel']
+            },
+            {
+                id: 5,
+                name: 'React Bits',
+                presenter: 'David Walsh',
+                duration: 2,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'vardaraz']
+            },
+            {
+                id: 6,
+                name: 'React Deep Dive',
+                presenter: 'Douglas Crockford',
+                duration: 2,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'vardaraz']
+            },
+        ]
+    },
+    {
+        id: 4,
+        name: 'All About Angular',
+        date: new Date('6/10/2037'),
+        time: '8:00 am',
+        price: 1000.00,
+        imageUrl: '/assets/images/angularb.png',
+        location: {
+            address: 'Hertsel 17',
+            city: 'TLV',
+            country: 'Isreal'
+        },
+        sessions: [
+            {
+                id: 1,
+                name: 'Angula Get Strated',
+                presenter: 'David Walsh',
+                duration: 2,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges']
+            },
+            {
+                id: 2,
+                name: 'Great Angular',
+                presenter: 'Kyle Simpson',
+                duration: 2,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges', 'jackdaniel']
+            },
+            {
+                id: 3,
+                name: 'Angular on steroids',
+                presenter: 'Paul Irish',
+                duration: 3,
+                level: 'Advanced',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['jeffbridges', 'jackdaniel']
+            },
+        ]
+    },
+    {
+        id: 5,
+        name: 'ng-tlv',
+        date: new Date('2/10/2037'),
+        time: '9:00 am',
+        price: 550.00,
+        imageUrl: '/assets/images/angularb.png',
+        location: {
+            address: 'Sokolov 222',
+            city: 'TLV',
+            country: 'Isreal'
+        },
+        sessions: [
+            {
+                id: 1,
+                name: 'ng-bootstrap',
+                presenter: 'Douglas Crockford',
+                duration: 1,
+                level: 'Intermediate',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges']
+            },
+            {
+                id: 2,
+                name: 'Angular 4',
+                presenter: 'Paul Irish',
+                duration: 2,
+                level: 'Beginner',
+                abstract: "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,\n        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla\n        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit\n        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra\n        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,\n        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper\n        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida\n        convallis ullamcorper, in senectus.",
+                voters: ['nisansabag', 'jeffbridges', 'jackdaniel']
             }
         ]
     }
