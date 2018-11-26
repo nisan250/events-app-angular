@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+// import { ToastrService } from '../common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';
+
 @Component({
   // selector: 'aa-profile',
   templateUrl: './profile.component.html',
@@ -12,7 +15,8 @@ export class ProfileComponent implements OnInit {
   private firstName: FormControl;
   private lastName: FormControl;
 
-  constructor( private auth: AuthService, private router: Router) { }
+  constructor( private auth: AuthService, private router: Router,
+     @Inject(TOASTR_TOKEN) private toastr: Toastr) { } // , private toastrService: ToastrService
 
   ngOnInit() {
     if (this.auth.currentUser) {
@@ -40,13 +44,16 @@ export class ProfileComponent implements OnInit {
   saveProfile (formValues) {
     if (this.profileForm.valid) {
       this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
+      // this.toastrService.success('Success');
+      this.toastr.success('Success');
       this.router.navigate(['events']);
+
     }
   }
   validateFirstName() {
     return this.firstName.valid || this.firstName.untouched;
   }
   validateLastName() {
-    return this.lastName.valid || this.lastName.untouched;   
+    return this.lastName.valid || this.lastName.untouched;
   }
 }

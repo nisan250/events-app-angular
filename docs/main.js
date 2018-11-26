@@ -5,33 +5,21 @@
   !*** ./src/$$_lazy_route_resource lazy namespace object ***!
   \**********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var map = {
-	"./user/user.module": [
-		"./src/app/user/user.module.ts",
-		"user-user-module"
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids) {
-		return Promise.resolve().then(function() {
-			var e = new Error("Cannot find module '" + req + "'");
-			e.code = 'MODULE_NOT_FOUND';
-			throw e;
-		});
-	}
-	return __webpack_require__.e(ids[1]).then(function() {
-		var id = ids[0];
-		return __webpack_require__(id);
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(function() {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
 	});
 }
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
-module.exports = webpackAsyncContext;
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
@@ -179,19 +167,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "./node_modules/ngx-bootstrap/tooltip/fesm5/ngx-bootstrap-tooltip.js");
 /* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/carousel */ "./node_modules/ngx-bootstrap/carousel/fesm5/ngx-bootstrap-carousel.js");
 /* harmony import */ var _events_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./events/index */ "./src/app/events/index.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _demo_demo_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./demo/demo.component */ "./src/app/demo/demo.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/navigation/navigation.component */ "./src/app/main/navigation/navigation.component.ts");
-/* harmony import */ var _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./licenses/licenses.component */ "./src/app/licenses/licenses.component.ts");
-/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
-/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
-/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
-/* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
-/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
-/* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
-/* harmony import */ var _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./common/collapsible-well.component */ "./src/app/common/collapsible-well.component.ts");
-/* harmony import */ var _common_toastr_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./common/toastr.service */ "./src/app/common/toastr.service.ts");
+/* harmony import */ var _common_toastr_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./common/toastr.service */ "./src/app/common/toastr.service.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _demo_demo_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./demo/demo.component */ "./src/app/demo/demo.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/navigation/navigation.component */ "./src/app/main/navigation/navigation.component.ts");
+/* harmony import */ var _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./licenses/licenses.component */ "./src/app/licenses/licenses.component.ts");
+/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
+/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
+/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
+/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
+/* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
+/* harmony import */ var _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./common/collapsible-well.component */ "./src/app/common/collapsible-well.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -225,22 +213,22 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _demo_demo_component__WEBPACK_IMPORTED_MODULE_9__["DemoComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
-                _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_11__["NavigationComponent"],
-                _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_12__["LicensesComponent"],
-                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_13__["FooterComponent"],
-                _main_header_header_component__WEBPACK_IMPORTED_MODULE_14__["HeaderComponent"],
-                _main_main_component__WEBPACK_IMPORTED_MODULE_15__["MainComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _demo_demo_component__WEBPACK_IMPORTED_MODULE_10__["DemoComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
+                _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_12__["NavigationComponent"],
+                _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_13__["LicensesComponent"],
+                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_14__["FooterComponent"],
+                _main_header_header_component__WEBPACK_IMPORTED_MODULE_15__["HeaderComponent"],
+                _main_main_component__WEBPACK_IMPORTED_MODULE_16__["MainComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventThumbnailComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventDetailsComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["CreateEventComponent"],
-                _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__["CreateSessionComponent"],
-                _errors_error_404_component__WEBPACK_IMPORTED_MODULE_16__["Error404Component"],
+                _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_19__["CreateSessionComponent"],
+                _errors_error_404_component__WEBPACK_IMPORTED_MODULE_17__["Error404Component"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["SessionListComponent"],
-                _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_19__["CollapsibleWellComponent"],
+                _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_20__["CollapsibleWellComponent"],
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["DurationPipe"],
             ],
             imports: [
@@ -258,11 +246,12 @@ var AppModule = /** @class */ (function () {
                 // we suppling the string canDeactivateCreateEvent and attaching a function
                 { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListResolverService"],
-                _user_auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
-                _common_toastr_service__WEBPACK_IMPORTED_MODULE_20__["ToastrService"]
+                _user_auth_service__WEBPACK_IMPORTED_MODULE_18__["AuthService"],
+                // ToastrService,
+                { provide: _common_toastr_service__WEBPACK_IMPORTED_MODULE_8__["TOASTR_TOKEN"], useValue: toastr }
             ],
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]
             ]
         })
     ], AppModule);
@@ -345,44 +334,35 @@ var CollapsibleWellComponent = /** @class */ (function () {
 /*!******************************************!*\
   !*** ./src/app/common/toastr.service.ts ***!
   \******************************************/
-/*! exports provided: ToastrService */
+/*! exports provided: TOASTR_TOKEN */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastrService", function() { return ToastrService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOASTR_TOKEN", function() { return TOASTR_TOKEN; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
 // import { toastr } from 'toastr/build/';
 
-var ToastrService = /** @class */ (function () {
-    function ToastrService() {
-    }
-    ToastrService.prototype.success = function (message, title) {
-        toastr.success(message, title);
-    };
-    ToastrService.prototype.info = function (message, title) {
-        toastr.info(message, title);
-    };
-    ToastrService.prototype.warning = function (message, title) {
-        toastr.warning(message, title);
-    };
-    ToastrService.prototype.error = function (message, title) {
-        toastr.error(message, title);
-    };
-    ToastrService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        })
-    ], ToastrService);
-    return ToastrService;
-}());
-
+// import { OpaqueToken } from '@angular/core';
+// export let TOASTR_TOKEN = new OpaqueToken('toastr');
+var TOASTR_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('toastr');
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class ToastrService {
+//   success(message: string, title?: string) {
+//     toastr.success(message, title);
+//   }
+//   info(message: string, title?: string) {
+//     toastr.info(message, title);
+//   }
+//   warning(message: string, title?: string) {
+//     toastr.warning(message, title);
+//   }
+//   error(message: string, title?: string) {
+//     toastr.error(message, title);
+//   }
+// }
 
 
 /***/ }),
@@ -420,35 +400,30 @@ module.exports = ".card {\n  border-radius: 6px;\n  box-shadow: 0 2px 2px rgba(2
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DemoComponent", function() { return DemoComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _common_toastr_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/toastr.service */ "./src/app/common/toastr.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 
-
+// import { ToastrService } from '../common/toastr.service';
 var DemoComponent = /** @class */ (function () {
-    function DemoComponent(toastrService) {
-        this.toastrService = toastrService;
+    function DemoComponent() {
         this.pageTitle = 'Demo Page - playground area';
     }
+    // constructor(private toastrService: ToastrService) { }
     DemoComponent.prototype.ngOnInit = function () {
     };
     DemoComponent.prototype.handleClick = function () {
-        this.toastrService.success('YOOHOOOO');
+        // this.toastrService.success('YOOHOOOO');
     };
     DemoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'aa-demo',
             template: __webpack_require__(/*! ./demo.component.html */ "./src/app/demo/demo.component.html"),
             styles: [__webpack_require__(/*! ./demo.component.scss */ "./src/app/demo/demo.component.scss")]
-        }),
-        __metadata("design:paramtypes", [_common_toastr_service__WEBPACK_IMPORTED_MODULE_1__["ToastrService"]])
+        })
     ], DemoComponent);
     return DemoComponent;
 }());

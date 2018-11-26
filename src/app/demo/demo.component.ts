@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from '../common/toastr.service';
+// import { ToastrService } from '../common/toastr.service';
 
 @Component({
   selector: 'aa-demo',
@@ -8,13 +8,13 @@ import { ToastrService } from '../common/toastr.service';
 })
 export class DemoComponent implements OnInit {
   pageTitle = 'Demo Page - playground area';
-  constructor(private toastrService: ToastrService) { }
+  // constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
 
   handleClick() {
-    this.toastrService.success('YOOHOOOO');
+    // this.toastrService.success('YOOHOOOO');
   }
 }
 

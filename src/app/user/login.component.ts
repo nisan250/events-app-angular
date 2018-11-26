@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { ToastrService } from '../common/toastr.service';
-
+// import { ToastrService } from '../common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';
 @Component({
   selector: 'aa-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,8 @@ import { ToastrService } from '../common/toastr.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private toastrService: ToastrService) { }
+  constructor(private authService: AuthService, private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr) { } // , private toastrService: ToastrService
 
   ngOnInit() {
     console.log();
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   login(formValues) {
     this.authService.loginUser(formValues.userName, formValues.password);
     this.router.navigate(['events']);
-    this.toastrService.success('Success');
+    // this.toastrService.success('Success');
+    this.toastr.success('Success');
   }
 
   cancel() {
