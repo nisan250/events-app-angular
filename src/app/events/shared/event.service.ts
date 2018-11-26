@@ -219,7 +219,7 @@ const EVENTS: IEvent[] = [
     date: new Date('5/4/2037'),
     time: '9:00 am',
     price: 359.00,
-    imageUrl: 'assets/images/angularb.png',
+    imageUrl: 'assets/images/react.png',
     location: {
       address: 'Sokolov 50',
       city: 'TLV',

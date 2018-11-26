@@ -8,7 +8,7 @@
       <img [src]="event.imageUrl" width=200>
     </div>
     <div class="col-md-6">
-      <div><strong>Date:</strong>{{event?.date | date: 'shortDate'}}</div>
+      <div><strong>Date:</strong> {{event?.date | date: 'shortDate'}}</div>
       <div [ngClass]="{'font-weight-bold': event?.time === '8:00 am'}">
         <strong>Time:</strong> {{event?.time}} -
         <span [ngSwitch]="event?.time">
