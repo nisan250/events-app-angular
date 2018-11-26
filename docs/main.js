@@ -1270,7 +1270,7 @@ var EVENTS = [
         date: new Date('9/26/2026'),
         time: '10:00 am',
         price: 299.99,
-        imageUrl: '/assets/images/angularb.png',
+        imageUrl: 'assets/images/angularb.png',
         location: {
             address: 'Igal Alon 30',
             city: 'TLV',
@@ -1330,7 +1330,7 @@ var EVENTS = [
         date: new Date('3/3/2020'),
         time: '9:00 am',
         price: 199.00,
-        imageUrl: '/assets/images/ng-conf.png',
+        imageUrl: 'assets/images/ng-conf.png',
         location: {
             address: 'Igal Alon 100',
             city: 'TLV',
@@ -1381,7 +1381,7 @@ var EVENTS = [
         date: new Date('5/4/2037'),
         time: '9:00 am',
         price: 359.00,
-        imageUrl: '/assets/images/angularb.png',
+        imageUrl: 'assets/images/angularb.png',
         location: {
             address: 'Sokolov 50',
             city: 'TLV',
@@ -1450,7 +1450,7 @@ var EVENTS = [
         date: new Date('6/10/2037'),
         time: '8:00 am',
         price: 1000.00,
-        imageUrl: '/assets/images/angularb.png',
+        imageUrl: 'assets/images/angularb.png',
         location: {
             address: 'Hertsel 17',
             city: 'TLV',
@@ -1492,7 +1492,7 @@ var EVENTS = [
         date: new Date('2/10/2037'),
         time: '9:00 am',
         price: 550.00,
-        imageUrl: '/assets/images/angularb.png',
+        imageUrl: 'assets/images/angularb.png',
         location: {
             address: 'Sokolov 222',
             city: 'TLV',
