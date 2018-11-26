@@ -1,16 +1,26 @@
-<footer class="footer-area d-flex justify-content-between">
-  <nav class="pull-left">
-      <ul>
+<footer class="footer-area fluid-container">
+  <!-- <nav class="navbar navbar-expand-lg">
+      <ul class="navbar-nav mr-auto">
           <li>
-              <a [routerLink]="['/license']">
-                  License
+              <a  class="nav-link" >
+
               </a>
           </li>
       </ul>
+  </nav> -->
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li ><a routerLinkActive="active" class="nav-link" [routerLink]="['/license']">License</a></li>
+      </ul>
+      <div class="navbar-header">
+          <div class="footer-copyright">© 2018 Copyright:
+            <a [routerLink]="['/home']"> Web Ninja NS</a>
+          </div>
+      </div>
+    </div>
   </nav>
-  <div class="copyright pull-right">
-      2018, made with
-      <i class="fa fa-heart heart"></i>
-      by <a [routerLink]="['/home']">Web Ninja NS</a>
-  </div>
+
+
 </footer>
