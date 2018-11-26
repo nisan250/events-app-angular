@@ -54,6 +54,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
+    { path: 'user', loadChildren: './user/user.module#UserModule' },
     { path: 'events/new', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["CreateEventComponent"], canDeactivate: ['canDeactivateCreateEvent'] },
     { path: 'events', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventsListComponent"],
         resolve: { events: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventsListResolverService"] } },
@@ -64,8 +65,6 @@ var routes = [
     { path: 'license', component: _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_5__["LicensesComponent"] },
     { path: '404', component: _errors_error_404_component__WEBPACK_IMPORTED_MODULE_6__["Error404Component"] },
     { path: '', redirectTo: '/events', pathMatch: 'full' },
-    // { path: '**', component: HomeComponent},
-    { path: 'user', loadChildren: './user/user.module#UserModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
