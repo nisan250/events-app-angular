@@ -5,6 +5,10 @@
 //I overriden styles in _appTheme and imported it here
 @import "../src/scss/appTheme";
 
+
+
+
+//-------MOVED ALL TO angular.cli file ----------------------
 /*NS - I personally prefer to import all my styles in src/style.scss since it’s
         been declared in angular.json already. */
 // @import "../node_modules/bootstrap/scss/bootstrap.scss";
@@ -12,10 +16,13 @@
 
 // @import "../src/scss/template-override";
 
-@import "~font-awesome/css/font-awesome.css";
+
 
 .app-container {
   display: flex;
   height: 100%;
   flex-direction: column;
+}
+.app-main-container {
+  flex: 1;
 }

@@ -1,35 +1,53 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg "><!-- navbar-dark bg-dark fixed-top -->
-    <div class="container-fluid"><!-- <div class="container-fluid">-->
+<div class="navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0"><!-- navbar-expand-lg -->
+  <div class="container-fluid"><!-- <div class="container-fluid">-->
+
+    <div class="navbar-header">
       <a class="navbar-brand" [routerLink]="['/home']">
-        <img class="company-logo" src="assets/img/logo-cut.png" alt="">
+        <img class="company-logo" height=70 src="assets/img/logo-cut.png" alt="">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto" >
-          <li class="nav-item"  routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/home']">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-            true}">
-            <a  [routerLink]="['/events']" class="nav-link">All Events</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-            true}">
-              <a class="nav-link" [routerLink]="['/events/new']">Create Event</a>
-          </li>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-between">
+      <ul class="nav navbar-nav">
+        <li class="nav-item"  routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/home']">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <a  [routerLink]="['/events']" class="nav-link">All Events</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">
+            <a class="nav-link" [routerLink]="['/events/new']">Create Event</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a [routerLink]="['/demo']" class="nav-link" >Demo</a>
+        </li>
+        <!-- <li class="nav-item user-link" routerLinkActive="active">
+          <a *ngIf="!auth?.isAuthenticated()" [routerLink]="['/user/login']"  class="nav-link" > Login</a>
+          <a *ngIf="auth?.isAuthenticated()" [routerLink]="['/user/profile']" class="nav-link" >Hi {{auth?.currentUser?.firstName}}</a>
+        </li> -->
+      </ul>
+
+      <div class="d-inline-flex">
+        <form id="searchForm"  class="form-inline mr-sm-4">
+          <div class="form-group">
+            <input type="text" class="form-control mr-sm-2" placeholder="Search Sessions" >
+          </div>
+          <button class="btn btn-outline-secondary" >
+            Search
+          </button>
+        </form>
+        <ul class="navbar-nav">
           <li class="nav-item" routerLinkActive="active">
-            <a [routerLink]="['/demo']" class="nav-link" >Demo</a>
-          </li>
-          <li class="nav-item user-link" routerLinkActive="active">
-            <a *ngIf="!auth?.isAuthenticated()" [routerLink]="['/user/login']"  class="nav-link" > Login</a>
-            <a *ngIf="auth?.isAuthenticated()" [routerLink]="['/user/profile']" class="nav-link" >Hi {{auth?.currentUser?.firstName}}</a>
+            <a *ngIf="!auth?.isAuthenticated()" [routerLink]="['/user/login']"  class="nav-link"> Login</a>
+            <a *ngIf="auth?.isAuthenticated()" [routerLink]="['/user/profile']" class="nav-link">Hi {{auth?.currentUser?.firstName}}</a>
           </li>
         </ul>
       </div>
     </div>
-  </nav>
+  </div>
+</div>
