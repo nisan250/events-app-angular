@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from '../common/toastr.service';
 
 @Component({
   selector: 'aa-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastrService: ToastrService) { }
 
   ngOnInit() {
     console.log();
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   login(formValues) {
     this.authService.loginUser(formValues.userName, formValues.password);
     this.router.navigate(['events']);
+    this.toastrService.success('Success');
   }
 
   cancel() {

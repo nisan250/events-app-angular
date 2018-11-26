@@ -191,12 +191,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
 /* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
 /* harmony import */ var _common_collapsible_well_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./common/collapsible-well.component */ "./src/app/common/collapsible-well.component.ts");
+/* harmony import */ var _common_toastr_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./common/toastr.service */ "./src/app/common/toastr.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -256,7 +258,8 @@ var AppModule = /** @class */ (function () {
                 // we suppling the string canDeactivateCreateEvent and attaching a function
                 { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListResolverService"],
-                _user_auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"]
+                _user_auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
+                _common_toastr_service__WEBPACK_IMPORTED_MODULE_20__["ToastrService"]
             ],
             bootstrap: [
                 _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]
@@ -338,6 +341,52 @@ var CollapsibleWellComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/toastr.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/common/toastr.service.ts ***!
+  \******************************************/
+/*! exports provided: ToastrService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastrService", function() { return ToastrService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+// import { toastr } from 'toastr/build/';
+
+var ToastrService = /** @class */ (function () {
+    function ToastrService() {
+    }
+    ToastrService.prototype.success = function (message, title) {
+        toastr.success(message, title);
+    };
+    ToastrService.prototype.info = function (message, title) {
+        toastr.info(message, title);
+    };
+    ToastrService.prototype.warning = function (message, title) {
+        toastr.warning(message, title);
+    };
+    ToastrService.prototype.error = function (message, title) {
+        toastr.error(message, title);
+    };
+    ToastrService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], ToastrService);
+    return ToastrService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/demo/demo.component.html":
 /*!******************************************!*\
   !*** ./src/app/demo/demo.component.html ***!
@@ -371,6 +420,7 @@ module.exports = ".card {\n  border-radius: 6px;\n  box-shadow: 0 2px 2px rgba(2
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DemoComponent", function() { return DemoComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_toastr_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/toastr.service */ "./src/app/common/toastr.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -381,14 +431,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var DemoComponent = /** @class */ (function () {
-    function DemoComponent() {
+    function DemoComponent(toastrService) {
+        this.toastrService = toastrService;
         this.pageTitle = 'Demo Page - playground area';
     }
     DemoComponent.prototype.ngOnInit = function () {
     };
-    DemoComponent.prototype.handleClick = function (text) {
-        toastr.success('YOOHOOOO');
+    DemoComponent.prototype.handleClick = function () {
+        this.toastrService.success('YOOHOOOO');
     };
     DemoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -396,7 +448,7 @@ var DemoComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./demo.component.html */ "./src/app/demo/demo.component.html"),
             styles: [__webpack_require__(/*! ./demo.component.scss */ "./src/app/demo/demo.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_common_toastr_service__WEBPACK_IMPORTED_MODULE_1__["ToastrService"]])
     ], DemoComponent);
     return DemoComponent;
 }());

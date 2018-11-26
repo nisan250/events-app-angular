@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare var toastr: any;
+import { ToastrService } from '../common/toastr.service';
+
 @Component({
   selector: 'aa-demo',
   templateUrl: './demo.component.html',
@@ -7,13 +8,13 @@ declare var toastr: any;
 })
 export class DemoComponent implements OnInit {
   pageTitle = 'Demo Page - playground area';
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
 
-  handleClick(text) {
-    toastr.success('YOOHOOOO');
+  handleClick() {
+    this.toastrService.success('YOOHOOOO');
   }
 }
 

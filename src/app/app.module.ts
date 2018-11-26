@@ -31,6 +31,7 @@ import { Error404Component } from './errors/error-404.component';
 import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
+import { ToastrService } from './common/toastr.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
     // we suppling the string canDeactivateCreateEvent and attaching a function
     {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
     EventsListResolverService,
-    AuthService
+    AuthService,
+    ToastrService
   ],
   bootstrap: [
     AppComponent
