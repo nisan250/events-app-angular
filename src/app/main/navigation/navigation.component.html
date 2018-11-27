@@ -47,11 +47,7 @@
     </div>
   </div>
 </div>
-<button [routerLink]="['/events', 1]">1</button>
-<button [routerLink]="['/events', 2]">2</button>
-<button [routerLink]="['/events', 3]">3</button>
-<button [routerLink]="['/events', 4]">4</button>
-<button [routerLink]="['/events', 5]">5</button>
+
 <aa-simple-modal elementId="searchResults" title="Matching Sessions">
   <div class="list-group">
     <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">
