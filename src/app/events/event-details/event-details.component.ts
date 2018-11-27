@@ -11,10 +11,8 @@ import { IEvent, ISession } from '../shared/index';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean;
-  // tslint:disable-next-line:no-inferrable-types
-  filterBy: string = 'all';
-  // tslint:disable-next-line:no-inferrable-types
-  sortBy: string = 'votes';
+  filterBy = 'all';
+  sortBy = 'votes';
   pageTitle = 'Event Deatail';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) { }

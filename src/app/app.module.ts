@@ -18,7 +18,7 @@ import {
   EventsListResolverService,
   DurationPipe,
  } from './events/index';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './common/index';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { HomeComponent } from './home/home.component';
@@ -30,10 +30,11 @@ import { MainComponent } from './main/main.component';
 import { Error404Component } from './errors/error-404.component';
 import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
+
 // import { ToastrService } from './common/toastr.service';
 
 export declare let toastr: Toastr;
+export declare let jQuery: Object;adding logic for search sessiong in the header.
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ export declare let toastr: Toastr;
     EventsListResolverService,
     AuthService,
     // ToastrService,
-    { provide: TOASTR_TOKEN, useValue: toastr }
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery }
   ],
   bootstrap: [
     AppComponent

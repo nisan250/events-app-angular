@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   mouseoverLogin;
 
   ngOnInit() {
-    console.log();
+
   }
 
   login(formValues) {

@@ -1,6 +1,6 @@
 <!-- Navigation -->
-<div class="navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0"><!-- navbar-expand-lg -->
-  <div class="container-fluid"><!-- <div class="container-fluid">-->
+<div class="navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0">
+  <div class="container-fluid">
 
     <div class="navbar-header">
       <a class="navbar-brand" [routerLink]="['/home']">
@@ -26,16 +26,12 @@
         <li class="nav-item" routerLinkActive="active">
           <a [routerLink]="['/demo']" class="nav-link" >Demo</a>
         </li>
-        <!-- <li class="nav-item user-link" routerLinkActive="active">
-          <a *ngIf="!auth?.isAuthenticated()" [routerLink]="['/user/login']"  class="nav-link" > Login</a>
-          <a *ngIf="auth?.isAuthenticated()" [routerLink]="['/user/profile']" class="nav-link" >Hi {{auth?.currentUser?.firstName}}</a>
-        </li> -->
       </ul>
 
       <div class="d-inline-flex">
-        <form id="searchForm"  class="form-inline mr-sm-4">
+        <form (ngSubmit)="searchSessions(searchTerm)" id="searchForm"  class="form-inline mr-sm-4">
           <div class="form-group">
-            <input type="text" class="form-control mr-sm-2" placeholder="Search Sessions" >
+            <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control mr-sm-2" placeholder="Search Sessions" >
           </div>
           <button class="btn btn-outline-secondary" >
             Search

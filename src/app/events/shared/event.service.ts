@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 // import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // import { Subject } from 'rxjs/RX';
 import { Subject, Observable } from 'rxjs';
-import { IEvent } from './event.model';
+import { IEvent, ISession } from './event.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +37,33 @@ export class EventService {
     // throw new Error('Method not implemented.');
   }
 
+  searchSessions(searchTerm: string): any  {
+    const term = searchTerm.toLowerCase();
+    let results: ISession[] = [];
+
+    EVENTS.forEach(event => {
+      // results.push(event.map());
+      let matchingSessions = event.sessions.filter(session =>
+        session.name.toLowerCase().indexOf(term) > -1);
+
+        matchingSessions = matchingSessions.map((session: any) => {
+          session.eventId = event.id;
+          return session;
+        });
+        results = results.concat(matchingSessions);
+    });
+
+    // tslint:disable-next-line:prefer-const
+    let emitter: EventEmitter<any> = new EventEmitter(true);
+
+    setTimeout(() => {
+      emitter.emit(results);
+
+    }, 100);
+    return emitter;
+  }
 }
+
 const EVENTS: IEvent[] = [
   {
     id: 1,
@@ -102,7 +128,7 @@ const EVENTS: IEvent[] = [
       },
       {
         id: 4,
-        name: 'Angular On Steroids',
+        name: 'Angular On Breakfast',
         presenter: 'David Walsh',
         duration: 2,
         level: 'Advanced',
@@ -118,7 +144,7 @@ const EVENTS: IEvent[] = [
       },
       {
         id: 5,
-        name: 'Angular On Steroids',
+        name: 'Angular Now',
         presenter: 'Douglas Crockford',
         duration: 2,
         level: 'Beginner',
@@ -435,7 +461,3 @@ const EVENTS: IEvent[] = [
     ]
   }
 ];
-
-
-
-
