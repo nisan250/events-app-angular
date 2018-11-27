@@ -18,7 +18,15 @@ import {
   EventsListResolverService,
   DurationPipe,
  } from './events/index';
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './common/index';
+
+import {
+  JQ_TOKEN, TOASTR_TOKEN,
+  Toastr,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective,
+} from './common/index';
+
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { HomeComponent } from './home/home.component';
@@ -54,6 +62,8 @@ export declare let jQuery: Object;
     SessionListComponent,
     CollapsibleWellComponent,
     DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective,
   ],
   imports: [
     BrowserModule,
