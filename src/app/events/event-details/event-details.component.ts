@@ -22,6 +22,9 @@ export class EventDetailsComponent implements OnInit {
 
     this.route.params.forEach((params: Params) => {
       this.event = this.eventService.getEvent(+params['id']);
+      this.addMode = false;
+      this.filterBy = 'all';
+      this.sortBy = 'votes';
     });
     // good only when i come from different component
     // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);

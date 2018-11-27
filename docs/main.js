@@ -464,7 +464,7 @@ var ModalTriggerDirective = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"{{elementId}}\" class=\"modal fade\" tabindex=\"-1\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n\n      <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{title}}</h4>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n            <span>&times;</span>\n          </button>\n      </div>\n\n      <div class=\"modal-body\">\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div id=\"{{elementId}}\" #modalcontainer class=\"modal fade\" tabindex=\"-1\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n\n      <div class=\"modal-header\">\n        <h4 class=\"modal-title\">{{title}}</h4>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n            <span>&times;</span>\n          </button>\n      </div>\n\n      <div class=\"modal-body\" (click)=\"closeModal()\">\n        <ng-content></ng-content>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -490,6 +490,7 @@ module.exports = ".modal-body {\n  height: 250px;\n  overflow-y: scroll; }\n\n/*
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimpleModalComponent", function() { return SimpleModalComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _jQuery_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jQuery.service */ "./src/app/common/jQuery.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -499,11 +500,21 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
 
 var SimpleModalComponent = /** @class */ (function () {
-    function SimpleModalComponent() {
+    function SimpleModalComponent($) {
+        this.$ = $;
     }
     SimpleModalComponent.prototype.ngOnInit = function () {
+    };
+    SimpleModalComponent.prototype.closeModal = function () {
+        if (this.closeOnBodyClick === 'true') {
+            this.$(this.containerEl.nativeElement).modal('hide');
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -513,13 +524,22 @@ var SimpleModalComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
     ], SimpleModalComponent.prototype, "elementId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], SimpleModalComponent.prototype, "closeOnBodyClick", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('modalcontainer'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], SimpleModalComponent.prototype, "containerEl", void 0);
     SimpleModalComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'aa-simple-modal',
             template: __webpack_require__(/*! ./simple-modal.component.html */ "./src/app/common/simple-modal.component.html"),
             styles: [__webpack_require__(/*! ./simple-modal.component.scss */ "./src/app/common/simple-modal.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_jQuery_service__WEBPACK_IMPORTED_MODULE_1__["JQ_TOKEN"])),
+        __metadata("design:paramtypes", [Object])
     ], SimpleModalComponent);
     return SimpleModalComponent;
 }());
@@ -921,6 +941,9 @@ var EventDetailsComponent = /** @class */ (function () {
         var _this = this;
         this.route.params.forEach(function (params) {
             _this.event = _this.eventService.getEvent(+params['id']);
+            _this.addMode = false;
+            _this.filterBy = 'all';
+            _this.sortBy = 'votes';
         });
         // good only when i come from different component
         // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
@@ -2178,7 +2201,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Navigation -->\n<div class=\"navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/home']\">\n        <img class=\"company-logo\" height=70 src=\"assets/img/logo-cut.png\" alt=\"\">\n      </a>\n    </div>\n\n    <div class=\"collapse navbar-collapse justify-content-between\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"nav-item\"  routerLinkActive=\"active\">\n          <a class=\"nav-link\" [routerLink]=\"['/home']\">Home\n            <span class=\"sr-only\">(current)</span>\n          </a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\n          true}\">\n          <a  [routerLink]=\"['/events']\" class=\"nav-link\">All Events</a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\n          true}\">\n            <a class=\"nav-link\" [routerLink]=\"['/events/new']\">Create Event</a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <a [routerLink]=\"['/demo']\" class=\"nav-link\" >Demo</a>\n        </li>\n      </ul>\n\n      <div class=\"d-inline-flex\">\n        <form (ngSubmit)=\"searchSessions(searchTerm)\" id=\"searchForm\"  class=\"form-inline mr-sm-4\">\n          <div class=\"form-group\">\n            <input [(ngModel)]=\"searchTerm\" name=\"searchTerm\" type=\"text\" class=\"form-control mr-sm-2\" placeholder=\"Search Sessions\" >\n          </div>\n          <button class=\"btn btn-outline-secondary\" aaModalTrigger=\"searchResults\">\n            Search\n          </button>\n        </form>\n        <ul class=\"navbar-nav\">\n          <li class=\"nav-item\" routerLinkActive=\"active\">\n            <a *ngIf=\"!auth?.isAuthenticated()\" [routerLink]=\"['/user/login']\"  class=\"nav-link\"> Login</a>\n            <a *ngIf=\"auth?.isAuthenticated()\" [routerLink]=\"['/user/profile']\" class=\"nav-link\">Hi {{auth?.currentUser?.firstName}}</a>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</div>\n\n<aa-simple-modal elementId=\"searchResults\" title=\"Matching Sessions\">\n  <div class=\"list-group\">\n    <a class=\"list-group-item\" *ngFor=\"let session of foundSessions\" [routerLink]=\"['/events', session.eventId]\">\n      {{session.name}}\n    </a>\n  </div>\n</aa-simple-modal>\n"
+module.exports = "<!-- Navigation -->\n<div class=\"navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/home']\">\n        <img class=\"company-logo\" height=70 src=\"assets/img/logo-cut.png\" alt=\"\">\n      </a>\n    </div>\n\n    <div class=\"collapse navbar-collapse justify-content-between\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"nav-item\"  routerLinkActive=\"active\">\n          <a class=\"nav-link\" [routerLink]=\"['/home']\">Home\n            <span class=\"sr-only\">(current)</span>\n          </a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\n          true}\">\n          <a  [routerLink]=\"['/events']\" class=\"nav-link\">All Events</a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\n          true}\">\n            <a class=\"nav-link\" [routerLink]=\"['/events/new']\">Create Event</a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <a [routerLink]=\"['/demo']\" class=\"nav-link\" >Demo</a>\n        </li>\n      </ul>\n\n      <div class=\"d-inline-flex\">\n        <form (ngSubmit)=\"searchSessions(searchTerm)\" id=\"searchForm\"  class=\"form-inline mr-sm-4\">\n          <div class=\"form-group\">\n            <input [(ngModel)]=\"searchTerm\" name=\"searchTerm\" type=\"text\" class=\"form-control mr-sm-2\" placeholder=\"Search Sessions\" >\n          </div>\n          <button class=\"btn btn-outline-secondary\" aaModalTrigger=\"searchResults\">\n            Search\n          </button>\n        </form>\n        <ul class=\"navbar-nav\">\n          <li class=\"nav-item\" routerLinkActive=\"active\">\n            <a *ngIf=\"!auth?.isAuthenticated()\" [routerLink]=\"['/user/login']\"  class=\"nav-link\"> Login</a>\n            <a *ngIf=\"auth?.isAuthenticated()\" [routerLink]=\"['/user/profile']\" class=\"nav-link\">Hi {{auth?.currentUser?.firstName}}</a>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</div>\n\n<aa-simple-modal closeOnBodyClick=\"true\" elementId=\"searchResults\" title=\"Matching Sessions\">\n  <div class=\"list-group\">\n    <a class=\"list-group-item\" *ngFor=\"let session of foundSessions\" [routerLink]=\"['/events', session.eventId]\">\n      {{session.name}}\n    </a>\n  </div>\n</aa-simple-modal>\n\n"
 
 /***/ }),
 

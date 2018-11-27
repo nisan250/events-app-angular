@@ -1,4 +1,4 @@
-<div id="{{elementId}}" class="modal fade" tabindex="-1">
+<div id="{{elementId}}" #modalcontainer class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -9,7 +9,7 @@
           </button>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body" (click)="closeModal()">
         <ng-content></ng-content>
       </div>
     </div>
