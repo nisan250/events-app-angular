@@ -34,7 +34,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
 // import { ToastrService } from './common/toastr.service';
 
 export declare let toastr: Toastr;
-export declare let jQuery: Object;adding logic for search sessiong in the header.
+export declare let jQuery: Object;
 @NgModule({
   declarations: [
     AppComponent,
