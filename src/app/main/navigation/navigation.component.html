@@ -33,7 +33,7 @@
           <div class="form-group">
             <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control mr-sm-2" placeholder="Search Sessions" >
           </div>
-          <button class="btn btn-outline-secondary" aaModalTrigger>
+          <button class="btn btn-outline-secondary" aaModalTrigger="searchResults">
             Search
           </button>
         </form>
@@ -47,12 +47,12 @@
     </div>
   </div>
 </div>
-<!-- <button [routerLink]="['/events', 1]">1</button>
+<button [routerLink]="['/events', 1]">1</button>
 <button [routerLink]="['/events', 2]">2</button>
 <button [routerLink]="['/events', 3]">3</button>
 <button [routerLink]="['/events', 4]">4</button>
-<button [routerLink]="['/events', 5]">5</button> -->
-<aa-simple-modal title="Matching Sessions">
+<button [routerLink]="['/events', 5]">5</button>
+<aa-simple-modal elementId="searchResults" title="Matching Sessions">
   <div class="list-group">
     <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">
       {{session.name}}

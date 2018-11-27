@@ -19,7 +19,6 @@ export class NavigationComponent {
   searchSessions(searchTerm) {
     this.eventService.searchSessions(searchTerm).subscribe(sessions => {
       this.foundSessions = sessions;
-      console.log(this.foundSessions, '2');
     });
     // this.eventService.searchSessions(searchTerm).pipe(map((sessions) => {
     //   this.foundSessions = sessions;
