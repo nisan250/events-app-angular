@@ -19,6 +19,7 @@ import {
   DurationPipe,
   UpvoteComponent,
   VoterService,
+  LocationValidatorDirective,
  } from './events/index';
 
 import {
@@ -67,6 +68,7 @@ export declare let jQuery: Object;
     SimpleModalComponent,
     ModalTriggerDirective,
     UpvoteComponent,
+    LocationValidatorDirective,
   ],
   imports: [
     BrowserModule,
