@@ -1,15 +1,18 @@
 import { Injectable, EventEmitter } from '@angular/core';
-// import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Http } from '@angular/http';
 // import { Subject } from 'rxjs/RX';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, throwError } from 'rxjs';
+import { tap, catchError, map } from 'rxjs/operators';
+
 import { IEvent, ISession } from './event.model';
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
   private EventsUrl = 'api/events-data.json';
-
-  constructor() {}
+  
+  constructor(private http: Http) {} // private http: HttpClient
 
   getAllEvents(): Observable<IEvent[]> {
     // let subject = new Subject();

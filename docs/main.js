@@ -173,23 +173,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "./node_modules/ngx-bootstrap/tooltip/fesm5/ngx-bootstrap-tooltip.js");
-/* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/carousel */ "./node_modules/ngx-bootstrap/carousel/fesm5/ngx-bootstrap-carousel.js");
-/* harmony import */ var _events_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./events/index */ "./src/app/events/index.ts");
-/* harmony import */ var _common_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./common/index */ "./src/app/common/index.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _demo_demo_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./demo/demo.component */ "./src/app/demo/demo.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/navigation/navigation.component */ "./src/app/main/navigation/navigation.component.ts");
-/* harmony import */ var _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./licenses/licenses.component */ "./src/app/licenses/licenses.component.ts");
-/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
-/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
-/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
-/* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
-/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
-/* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "./node_modules/ngx-bootstrap/tooltip/fesm5/ngx-bootstrap-tooltip.js");
+/* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/carousel */ "./node_modules/ngx-bootstrap/carousel/fesm5/ngx-bootstrap-carousel.js");
+/* harmony import */ var _events_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./events/index */ "./src/app/events/index.ts");
+/* harmony import */ var _common_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./common/index */ "./src/app/common/index.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _demo_demo_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./demo/demo.component */ "./src/app/demo/demo.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/navigation/navigation.component */ "./src/app/main/navigation/navigation.component.ts");
+/* harmony import */ var _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./licenses/licenses.component */ "./src/app/licenses/licenses.component.ts");
+/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
+/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
+/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _errors_error_404_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./errors/error-404.component */ "./src/app/errors/error-404.component.ts");
+/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user/auth.service */ "./src/app/user/auth.service.ts");
+/* harmony import */ var _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./events/event-details/create-session.component */ "./src/app/events/event-details/create-session.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -216,57 +217,59 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
-                _demo_demo_component__WEBPACK_IMPORTED_MODULE_10__["DemoComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
-                _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_12__["NavigationComponent"],
-                _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_13__["LicensesComponent"],
-                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_14__["FooterComponent"],
-                _main_header_header_component__WEBPACK_IMPORTED_MODULE_15__["HeaderComponent"],
-                _main_main_component__WEBPACK_IMPORTED_MODULE_16__["MainComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventThumbnailComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventDetailsComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["CreateEventComponent"],
-                _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_19__["CreateSessionComponent"],
-                _errors_error_404_component__WEBPACK_IMPORTED_MODULE_17__["Error404Component"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["SessionListComponent"],
-                _common_index__WEBPACK_IMPORTED_MODULE_8__["CollapsibleWellComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["DurationPipe"],
-                _common_index__WEBPACK_IMPORTED_MODULE_8__["SimpleModalComponent"],
-                _common_index__WEBPACK_IMPORTED_MODULE_8__["ModalTriggerDirective"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["UpvoteComponent"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["LocationValidatorDirective"],
+                _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
+                _demo_demo_component__WEBPACK_IMPORTED_MODULE_11__["DemoComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
+                _main_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_13__["NavigationComponent"],
+                _licenses_licenses_component__WEBPACK_IMPORTED_MODULE_14__["LicensesComponent"],
+                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_15__["FooterComponent"],
+                _main_header_header_component__WEBPACK_IMPORTED_MODULE_16__["HeaderComponent"],
+                _main_main_component__WEBPACK_IMPORTED_MODULE_17__["MainComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventsListComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventThumbnailComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventDetailsComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["CreateEventComponent"],
+                _events_event_details_create_session_component__WEBPACK_IMPORTED_MODULE_20__["CreateSessionComponent"],
+                _errors_error_404_component__WEBPACK_IMPORTED_MODULE_18__["Error404Component"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["SessionListComponent"],
+                _common_index__WEBPACK_IMPORTED_MODULE_9__["CollapsibleWellComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["DurationPipe"],
+                _common_index__WEBPACK_IMPORTED_MODULE_9__["SimpleModalComponent"],
+                _common_index__WEBPACK_IMPORTED_MODULE_9__["ModalTriggerDirective"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["UpvoteComponent"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["LocationValidatorDirective"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_6__["CarouselModule"].forRoot(),
-                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_5__["TooltipModule"].forRoot(),
+                ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_7__["CarouselModule"].forRoot(),
+                ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"].forRoot(),
             ],
             providers: [
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventService"],
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventRouteActivatorService"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventService"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventRouteActivatorService"],
                 // we suppling the string canDeactivateCreateEvent and attaching a function
                 { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["EventsListResolverService"],
-                _user_auth_service__WEBPACK_IMPORTED_MODULE_18__["AuthService"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventsListResolverService"],
+                _user_auth_service__WEBPACK_IMPORTED_MODULE_19__["AuthService"],
                 // ToastrService,
-                { provide: _common_index__WEBPACK_IMPORTED_MODULE_8__["TOASTR_TOKEN"], useValue: toastr },
-                { provide: _common_index__WEBPACK_IMPORTED_MODULE_8__["JQ_TOKEN"], useValue: jQuery },
-                _events_index__WEBPACK_IMPORTED_MODULE_7__["VoterService"]
+                { provide: _common_index__WEBPACK_IMPORTED_MODULE_9__["TOASTR_TOKEN"], useValue: toastr },
+                { provide: _common_index__WEBPACK_IMPORTED_MODULE_9__["JQ_TOKEN"], useValue: jQuery },
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["VoterService"]
             ],
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]
             ]
         })
     ], AppModule);
@@ -1698,7 +1701,8 @@ var DurationPipe = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventService", function() { return EventService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1709,16 +1713,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 // import { Subject } from 'rxjs/RX';
 
 var EventService = /** @class */ (function () {
-    function EventService() {
+    function EventService(http) {
+        this.http = http;
         this.EventsUrl = 'api/events-data.json';
-    }
+    } // private http: HttpClient
     EventService.prototype.getAllEvents = function () {
         // let subject = new Subject();
-        var subject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        var subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         // return this.http.get(this.EventsUrl);
         setTimeout(function () {
             subject.next(EVENTS);
@@ -1764,7 +1769,7 @@ var EventService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"]])
     ], EventService);
     return EventService;
 }());
