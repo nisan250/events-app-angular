@@ -3,7 +3,7 @@
     <div *ngIf="!auth.isAuthenticated()" class="mt-4">
       please Log-In to see votes
     </div>
-    <div *ngIf="auth.isAuthenticated()" >
+    <div *ngIf="auth.isAuthenticated()">
         <aa-upvote
         (vote)="toggleVote(session)"
         [count]="session.voters.length"

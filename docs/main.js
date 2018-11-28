@@ -1075,7 +1075,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngFor=\"let session of visibleSessions\">\n  <div class=\"col-md-1\">\n    <div *ngIf=\"!auth.isAuthenticated()\" class=\"mt-4\">\n      please Log-In to see votes\n    </div>\n    <div *ngIf=\"auth.isAuthenticated()\" >\n        <aa-upvote\n        (vote)=\"toggleVote(session)\"\n        [count]=\"session.voters.length\"\n        [voted]=\"userHasVoted(session)\">\n      </aa-upvote>\n    </div>\n  </div>\n  <div class=\"col-md-10\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\" *ngFor=\"let session of visibleSessions\">\n  <div class=\"col-md-1\">\n    <div *ngIf=\"!auth.isAuthenticated()\" class=\"mt-4\">\n      please Log-In to see votes\n    </div>\n    <div *ngIf=\"auth.isAuthenticated()\">\n        <aa-upvote\n        (vote)=\"toggleVote(session)\"\n        [count]=\"session.voters.length\"\n        [voted]=\"userHasVoted(session)\">\n      </aa-upvote>\n    </div>\n  </div>\n  <div class=\"col-md-10\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1202,7 +1202,7 @@ function sortByVotesDesc(s1, s2) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"votingWidgetContainer upvote\" (click)=\"onClick()\">\n  <div class=\"well votingWidget\">\n    <div class=\"votingButton\">\n      <i *ngIf=\"voted\" class=\"fa fa-heart fa-1x\"></i>\n      <i *ngIf=\"!voted\" class=\"fa fa-heart fa-1x unvoted-heart\"></i>\n    </div>\n    <div class=\"badge badge-inverse votingCount\">\n      <div>{{count}}</div>\n    </div>\n  </div>\n</div>\n\n\n"
+module.exports = "<div class=\"votingWidgetContainer upvote\" (click)=\"onClick()\">\n  <div class=\"well votingWidget\">\n    <div class=\"votingButton\">\n      <i  class=\"fa fa-heart fa-1x unvoted-heart\" [style.color]=\"iconColor\"></i>\n    </div>\n    <div class=\"badge badge-inverse votingCount\">\n      <div>{{count}}</div>\n    </div>\n  </div>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -1242,6 +1242,13 @@ var UpvoteComponent = /** @class */ (function () {
     function UpvoteComponent() {
         this.vote = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
+    Object.defineProperty(UpvoteComponent.prototype, "voted", {
+        set: function (val) {
+            this.iconColor = val ? 'red' : 'white';
+        },
+        enumerable: true,
+        configurable: true
+    });
     UpvoteComponent.prototype.onClick = function () {
         this.vote.emit({});
     };
@@ -1251,8 +1258,9 @@ var UpvoteComponent = /** @class */ (function () {
     ], UpvoteComponent.prototype, "count", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Boolean)
-    ], UpvoteComponent.prototype, "voted", void 0);
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], UpvoteComponent.prototype, "voted", null);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
