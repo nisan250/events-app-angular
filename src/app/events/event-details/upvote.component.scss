@@ -1,0 +1,16 @@
+.upvote {
+  background: #6c757db5;
+  border: 2px solid #6c757d;
+  display: flex;
+  margin: auto;
+  height: 100px;
+  margin-top: 20px;
+  cursor: pointer;
+
+  .well  {
+    margin: auto;
+  }
+}
+.unvoted-heart {
+  color: #6c757db5;
+}

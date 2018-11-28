@@ -1,5 +1,17 @@
 <div class="row" *ngFor="let session of visibleSessions">
-  <div class="col-md-12">
+  <div class="col-md-1">
+    <div *ngIf="!auth.isAuthenticated()" class="mt-4">
+      please Log-In to see votes
+    </div>
+    <div *ngIf="auth.isAuthenticated()" >
+        <aa-upvote
+        (vote)="toggleVote(session)"
+        [count]="session.voters.length"
+        [voted]="userHasVoted(session)">
+      </aa-upvote>
+    </div>
+  </div>
+  <div class="col-md-10">
     <aa-collapsible-well [title]="session.name">
       <div class="title" well-title>
           {{session.name}}

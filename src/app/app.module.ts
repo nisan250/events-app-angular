@@ -17,6 +17,8 @@ import {
   CreateEventComponent,
   EventsListResolverService,
   DurationPipe,
+  UpvoteComponent,
+  VoterService,
  } from './events/index';
 
 import {
@@ -64,6 +66,7 @@ export declare let jQuery: Object;
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
+    UpvoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ export declare let jQuery: Object;
     AuthService,
     // ToastrService,
     { provide: TOASTR_TOKEN, useValue: toastr },
-    { provide: JQ_TOKEN, useValue: jQuery }
+    { provide: JQ_TOKEN, useValue: jQuery },
+    VoterService
   ],
   bootstrap: [
     AppComponent

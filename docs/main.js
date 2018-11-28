@@ -241,6 +241,7 @@ var AppModule = /** @class */ (function () {
                 _events_index__WEBPACK_IMPORTED_MODULE_7__["DurationPipe"],
                 _common_index__WEBPACK_IMPORTED_MODULE_8__["SimpleModalComponent"],
                 _common_index__WEBPACK_IMPORTED_MODULE_8__["ModalTriggerDirective"],
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["UpvoteComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -260,7 +261,8 @@ var AppModule = /** @class */ (function () {
                 _user_auth_service__WEBPACK_IMPORTED_MODULE_18__["AuthService"],
                 // ToastrService,
                 { provide: _common_index__WEBPACK_IMPORTED_MODULE_8__["TOASTR_TOKEN"], useValue: toastr },
-                { provide: _common_index__WEBPACK_IMPORTED_MODULE_8__["JQ_TOKEN"], useValue: jQuery }
+                { provide: _common_index__WEBPACK_IMPORTED_MODULE_8__["JQ_TOKEN"], useValue: jQuery },
+                _events_index__WEBPACK_IMPORTED_MODULE_7__["VoterService"]
             ],
             bootstrap: [
                 _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]
@@ -1033,7 +1035,7 @@ var EventRouteActivatorService = /** @class */ (function () {
 /*!***********************************************!*\
   !*** ./src/app/events/event-details/index.ts ***!
   \***********************************************/
-/*! exports provided: CreateSessionComponent, EventDetailsComponent, EventRouteActivatorService, SessionListComponent */
+/*! exports provided: CreateSessionComponent, EventDetailsComponent, EventRouteActivatorService, SessionListComponent, UpvoteComponent, VoterService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1050,6 +1052,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session-list.component */ "./src/app/events/event-details/session-list.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _session_list_component__WEBPACK_IMPORTED_MODULE_3__["SessionListComponent"]; });
 
+/* harmony import */ var _upvote_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./upvote.component */ "./src/app/events/event-details/upvote.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpvoteComponent", function() { return _upvote_component__WEBPACK_IMPORTED_MODULE_4__["UpvoteComponent"]; });
+
+/* harmony import */ var _voter_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./voter.service */ "./src/app/events/event-details/voter.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoterService", function() { return _voter_service__WEBPACK_IMPORTED_MODULE_5__["VoterService"]; });
+
+
+
 
 
 
@@ -1065,7 +1075,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngFor=\"let session of visibleSessions\">\n  <div class=\"col-md-12\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\" *ngFor=\"let session of visibleSessions\">\n  <div class=\"col-md-1\">\n    <div *ngIf=\"!auth.isAuthenticated()\" class=\"mt-4\">\n      please Log-In to see votes\n    </div>\n    <div *ngIf=\"auth.isAuthenticated()\" >\n        <aa-upvote\n        (vote)=\"toggleVote(session)\"\n        [count]=\"session.voters.length\"\n        [voted]=\"userHasVoted(session)\">\n      </aa-upvote>\n    </div>\n  </div>\n  <div class=\"col-md-10\">\n    <aa-collapsible-well [title]=\"session.name\">\n      <div class=\"title\" well-title>\n          {{session.name}}\n          <!--class=\"glyphicon glyphicon-fire on-fire\"-->\n          <i *ngIf=\"session.voters.length > 2\" class=\"fa fa-fire fa-1x\" style=\"color: red\"></i>\n      </div>\n      <div class=\"body\" well-body>\n          <h6>{{session.presenter}}</h6>\n          <span>Duration: {{session.duration | duration}}</span><br />\n          <span>Level: {{session.level}}</span>\n          <div>{{session.abstract}}</div>\n      </div>\n    </aa-collapsible-well>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1091,6 +1101,8 @@ module.exports = ".title {\n  padding: 10px; }\n\n.body {\n  padding: 10px;\n  c
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return SessionListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _user_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../user/auth.service */ "./src/app/user/auth.service.ts");
+/* harmony import */ var _voter_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./voter.service */ "./src/app/events/event-details/voter.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1101,8 +1113,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var SessionListComponent = /** @class */ (function () {
-    function SessionListComponent() {
+    function SessionListComponent(auth, voterService) {
+        this.auth = auth;
+        this.voterService = voterService;
         this.visibleSessions = [];
     }
     SessionListComponent.prototype.ngOnChanges = function () {
@@ -1111,6 +1127,20 @@ var SessionListComponent = /** @class */ (function () {
             this.filterSessions(this.filterBy);
             this.sortBy === 'name' ? this.visibleSessions.sort(sortByNameAsc) : this.visibleSessions.sort(sortByVotesDesc);
         }
+    };
+    SessionListComponent.prototype.toggleVote = function (session) {
+        if (this.userHasVoted(session)) {
+            this.voterService.deleteVoter(session, this.auth.currentUser.userName);
+        }
+        else {
+            this.voterService.addVoter(session, this.auth.currentUser.userName);
+        }
+        if (this.sortBy === 'votes') {
+            this.visibleSessions.sort(sortByVotesDesc);
+        }
+    };
+    SessionListComponent.prototype.userHasVoted = function (session) {
+        return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
     };
     SessionListComponent.prototype.filterSessions = function (filter) {
         // console.log(filter);
@@ -1141,7 +1171,7 @@ var SessionListComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./session-list.component.html */ "./src/app/events/event-details/session-list.component.html"),
             styles: [__webpack_require__(/*! ./session-list.component.scss */ "./src/app/events/event-details/session-list.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_user_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _voter_service__WEBPACK_IMPORTED_MODULE_2__["VoterService"]])
     ], SessionListComponent);
     return SessionListComponent;
 }());
@@ -1161,6 +1191,129 @@ function sortByNameAsc(s1, s2) {
 function sortByVotesDesc(s1, s2) {
     return s2.voters.length - s1.voters.length;
 }
+
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/upvote.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/events/event-details/upvote.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"votingWidgetContainer upvote\" (click)=\"onClick()\">\n  <div class=\"well votingWidget\">\n    <div class=\"votingButton\">\n      <i *ngIf=\"voted\" class=\"fa fa-heart fa-1x\"></i>\n      <i *ngIf=\"!voted\" class=\"fa fa-heart fa-1x unvoted-heart\"></i>\n    </div>\n    <div class=\"badge badge-inverse votingCount\">\n      <div>{{count}}</div>\n    </div>\n  </div>\n</div>\n\n\n"
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/upvote.component.scss":
+/*!************************************************************!*\
+  !*** ./src/app/events/event-details/upvote.component.scss ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".upvote {\n  background: #6c757db5;\n  border: 2px solid #6c757d;\n  display: flex;\n  margin: auto;\n  height: 100px;\n  margin-top: 20px;\n  cursor: pointer; }\n  .upvote .well {\n    margin: auto; }\n  .unvoted-heart {\n  color: #6c757db5; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXZlbnRzL2V2ZW50LWRldGFpbHMvRDpcXGFwcHNcXGV2ZW50cy1hcHAtYW5ndWxhci9zcmNcXGFwcFxcZXZlbnRzXFxldmVudC1kZXRhaWxzXFx1cHZvdGUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxzQkFBcUI7RUFDckIsMEJBQXlCO0VBQ3pCLGNBQWE7RUFDYixhQUFZO0VBQ1osY0FBYTtFQUNiLGlCQUFnQjtFQUNoQixnQkFBZSxFQUtoQjtFQVpEO0lBVUksYUFBWSxFQUNiO0VBRUg7RUFDRSxpQkFBZ0IsRUFDakIiLCJmaWxlIjoic3JjL2FwcC9ldmVudHMvZXZlbnQtZGV0YWlscy91cHZvdGUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudXB2b3RlIHtcclxuICBiYWNrZ3JvdW5kOiAjNmM3NTdkYjU7XHJcbiAgYm9yZGVyOiAycHggc29saWQgIzZjNzU3ZDtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIG1hcmdpbjogYXV0bztcclxuICBoZWlnaHQ6IDEwMHB4O1xyXG4gIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG5cclxuICAud2VsbCAge1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gIH1cclxufVxyXG4udW52b3RlZC1oZWFydCB7XHJcbiAgY29sb3I6ICM2Yzc1N2RiNTtcclxufVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/upvote.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/events/event-details/upvote.component.ts ***!
+  \**********************************************************/
+/*! exports provided: UpvoteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpvoteComponent", function() { return UpvoteComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var UpvoteComponent = /** @class */ (function () {
+    function UpvoteComponent() {
+        this.vote = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    UpvoteComponent.prototype.onClick = function () {
+        this.vote.emit({});
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], UpvoteComponent.prototype, "count", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], UpvoteComponent.prototype, "voted", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], UpvoteComponent.prototype, "vote", void 0);
+    UpvoteComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'aa-upvote',
+            template: __webpack_require__(/*! ./upvote.component.html */ "./src/app/events/event-details/upvote.component.html"),
+            styles: [__webpack_require__(/*! ./upvote.component.scss */ "./src/app/events/event-details/upvote.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], UpvoteComponent);
+    return UpvoteComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/events/event-details/voter.service.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/events/event-details/voter.service.ts ***!
+  \*******************************************************/
+/*! exports provided: VoterService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VoterService", function() { return VoterService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var VoterService = /** @class */ (function () {
+    function VoterService() {
+    }
+    VoterService.prototype.deleteVoter = function (session, voterName) {
+        session.voters = session.voters.filter(function (voter) { return voter !== voterName; });
+    };
+    VoterService.prototype.addVoter = function (session, voterName) {
+        session.voters.push(voterName);
+    };
+    VoterService.prototype.userHasVoted = function (session, voterName) {
+        return session.voters.some(function (voter) { return voter === voterName; });
+    };
+    VoterService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], VoterService);
+    return VoterService;
+}());
+
 
 
 /***/ }),
@@ -1374,7 +1527,7 @@ var EventsListComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/events/index.ts ***!
   \*********************************/
-/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, restrictedWords, DurationPipe, EventDetailsComponent, EventRouteActivatorService, SessionListComponent */
+/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, EventService, restrictedWords, DurationPipe, EventDetailsComponent, EventRouteActivatorService, SessionListComponent, UpvoteComponent, VoterService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1406,6 +1559,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventRouteActivatorService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["SessionListComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpvoteComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["UpvoteComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoterService", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["VoterService"]; });
 
 
 
