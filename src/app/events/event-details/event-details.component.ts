@@ -14,17 +14,28 @@ export class EventDetailsComponent implements OnInit {
   filterBy = 'all';
   sortBy = 'votes';
   pageTitle = 'Event Deatail';
-
+  errorMessage;
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     // console.log(this.route.snapshot.params['id']);
 
+    // this.route.params.forEach((params: Params) => {
+    //   this.event = this.eventService.getEvent(+params['id']);
+    //   this.addMode = false;
+    //   this.filterBy = 'all';
+    //   this.sortBy = 'votes';
+    // });
+
     this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
-      this.addMode = false;
-      this.filterBy = 'all';
-      this.sortBy = 'votes';
+      this.eventService.getEvent(+params['id']).subscribe(
+        event => {
+          this.event = event;
+          this.addMode = false;
+          this.filterBy = 'all';
+          this.sortBy = 'votes';
+        },
+        error => this.errorMessage = <any>error);
     });
     // good only when i come from different component
     // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);

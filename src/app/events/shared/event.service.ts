@@ -31,8 +31,10 @@ export class EventService {
     // });
   }
 
-  getEvent(eventId: number): IEvent {
-    return EVENTS.find((event) => eventId === event.id);
+  getEvent(eventId: number): Observable<IEvent | undefined> {
+    return this.getAllEvents().pipe(
+      map((events: IEvent[]) => events.find(e => e.id === eventId))
+    );
   }
 
   saveEvent (event: IEvent) {
