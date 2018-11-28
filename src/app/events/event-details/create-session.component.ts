@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession, restrictedWords } from '../shared/index';
-import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'aa-create-session',

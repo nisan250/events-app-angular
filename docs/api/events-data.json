@@ -1,67 +1,5 @@
 [
   {
-    "albumId": 1,
-    "albumName": "Meddle",
-    "artist" : "Pink FLoyd",
-    "genre": "Progressive rock",
-    "releaseDate": "October 31, 1971",
-    "price":10,
-    "rating": 4.7,
-    "image": "https://upload.wikimedia.org/wikipedia/en/d/d4/MeddleCover.jpeg"
-  },
-  {
-    "albumId": 2,
-    "albumName": "In the Court of the Crimson King",
-    "artist" : "King Crimson",
-    "genre": "Progressive rock",
-    "releaseDate": "October 10, 1969",
-    "price": 12,
-    "rating": 4,
-    "image": "https://upload.wikimedia.org/wikipedia/en/8/84/In_the_Court_of_the_Crimson_King_-_40th_Anniversary_Box_Set_-_Front_cover.jpeg"
-  },
-  {
-    "albumId": 5,
-    "albumName": "Random Access Memories",
-    "artist" : "Daft Punk",
-    "genre": "Electro",
-    "releaseDate": "May 17, 2013",
-    "price": 11,
-    "rating": 5,
-    "image": "https://upload.wikimedia.org/wikipedia/en/a/a7/Random_Access_Memories.jpg"
-  },
-  {
-    "albumId": 8,
-    "albumName": "Reflektor",
-    "artist" : "Arcade Fire",
-    "genre": "Art rock",
-    "releaseDate": "October 28, 2013",
-    "price": 9,
-    "rating": 3.8,
-    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/57/ArcadeFireReflektor.jpg/220px-ArcadeFireReflektor.jpg"
-  },
-  {
-    "albumId": 10,
-    "albumName": "La Professional",
-    "artist" : "Ennio Morricone",
-    "genre": "classical",
-    "releaseDate": "October 21, 1981",
-    "price": 30,
-    "rating": 4.9,
-    "image": "https://i.ebayimg.com/images/g/4McAAOSwLF1X5aIX/s-l1600.jpg"
-  },
-  {
-    "albumId": 11,
-    "albumName": "Voices",
-    "artist" : "Vangelis",
-    "genre": "Electronica",
-    "releaseDate": "October 24, 1995",
-    "price": 30,
-    "rating": 4.9,
-    "image": "https://upload.wikimedia.org/wikipedia/en/8/86/Vangelis_voices.jpg"
-  }
-]
-[
-  {
     "id": 1,
     "name": "Angular Engage",
     "date": "9/26/2026",
@@ -80,14 +18,7 @@
         "presenter": "Kyle Simpson",
         "duration": 1,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges", "vardaraz"]
       },
       {
@@ -96,14 +27,7 @@
         "presenter": "Tracy Lee",
         "duration": 1,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["jackdaniel", "nisansabag", "jeffbridges", "vardaraz"]
       },
       {
@@ -112,14 +36,7 @@
         "presenter": "Kyle Simpson",
         "duration": 2,
         "level": "Advanced",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": []
       },
       {
@@ -128,14 +45,7 @@
         "presenter": "David Walsh",
         "duration": 2,
         "level": "Advanced",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": []
       },
       {
@@ -144,14 +54,7 @@
         "presenter": "Douglas Crockford",
         "duration": 2,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges"]
       }
     ]
@@ -175,14 +78,7 @@
         "presenter": "David Walsh",
         "duration": 4,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges"]
       },
       {
@@ -191,14 +87,7 @@
         "presenter": "David Walsh",
         "duration": 3,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges", "jackdaniel"]
       },
       {
@@ -207,14 +96,7 @@
         "presenter": "Wes Bos",
         "duration": 2,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["vardaraz"]
       },
       {
@@ -223,16 +105,9 @@
         "presenter": "Kyle Simpson",
         "duration": 1,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag"]
-      },
+      }
     ]
   },
   {
@@ -254,14 +129,7 @@
         "presenter": "Kyle Simpson",
         "duration": 2,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "vardaraz", "jeffbridges"]
       },
       {
@@ -270,14 +138,7 @@
         "presenter": "Kyle Simpson",
         "duration": 2,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "vardaraz"]
       },
       {
@@ -286,14 +147,7 @@
         "presenter": "Kyle Simpson",
         "duration": 1,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "vardaraz", "jackdaniel"]
       },
       {
@@ -302,14 +156,7 @@
         "presenter": "David Walsh",
         "duration": 1,
         "level": "Advanced",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "vardaraz", "jeffbridges", "jackdaniel"]
       },
       {
@@ -318,14 +165,7 @@
         "presenter": "David Walsh",
         "duration": 2,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "vardaraz"]
       },
       {
@@ -334,16 +174,9 @@
         "presenter": "Douglas Crockford",
         "duration": 2,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "vardaraz"]
-      },
+      }
     ]
   },
   {
@@ -365,14 +198,7 @@
         "presenter": "David Walsh",
         "duration": 2,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges"]
       },
       {
@@ -381,14 +207,7 @@
         "presenter": "Kyle Simpson",
         "duration": 2,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges", "jackdaniel"]
       },
       {
@@ -397,16 +216,9 @@
         "presenter": "Paul Irish",
         "duration": 3,
         "level": "Advanced",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["jeffbridges", "jackdaniel"]
-      },
+      }
     ]
   },
   {
@@ -428,14 +240,7 @@
         "presenter": "Douglas Crockford",
         "duration": 1,
         "level": "Intermediate",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "blabla",
         "voters": ["nisansabag", "jeffbridges"]
       },
       {
@@ -444,14 +249,7 @@
         "presenter": "Paul Irish",
         "duration": 2,
         "level": "Beginner",
-        "abstract": "Lorem ipsum dolor sit amet, aenean urna duis rerum, id nulla sagittis,
-        in nunc lacus non libero magna. Tempus ante id tempus id aliquam dolore, nulla
-        viverra nulla, lectus ligula non, vestibulum tincidunt nullam quisque hendrerit
-        nec donec. Feugiat eu vulputate a. Et integer est, tortor lectus nulla pharetra
-        nisl felis, tempor volutpat vestibulum ut, eget vehicula nulla amet quam metus amet,
-        vel in amet. In in at quam fringilla, mauris arcu. Nullam eu elit libero ullamcorper
-        tempor, vestibulum adipiscing sed, sed vel tortor penatibus risus magna dui, gravida
-        convallis ullamcorper, in senectus.",
+        "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
         "voters": ["nisansabag", "jeffbridges", "jackdaniel"]
       }
     ]

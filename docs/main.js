@@ -818,6 +818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _shared_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/index */ "./src/app/events/shared/index.ts");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -827,6 +828,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1417,8 +1419,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsListResolverService", function() { return EventsListResolverService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_event_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared/event.service */ "./src/app/events/shared/event.service.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1430,17 +1431,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
+// import { catchError } from 'rxjs/operators';
 
 var EventsListResolverService = /** @class */ (function () {
     function EventsListResolverService(eventService) {
         this.eventService = eventService;
     }
     EventsListResolverService.prototype.resolve = function () {
+        // return this.eventService.getAllEvents();
+        // console.log('Event List Component initiated!!');
+        this.eventService.getAllEvents().subscribe(function (events) { return events; });
         // this.eventService.getAllEvents().map(res => res.json()).subscribe(items => console.log(items));
-        this.eventService.getAllEvents().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (events) {
-            return events;
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (err) { return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(err.json().error); })); // NOT WORKING
+        // this.eventService.getAllEvents().pipe().subscribe((events) => {
+        //   return events;
+        // });
+        // this.eventService.getAllEvents().pipe(map((events) => {
+        //   return events;
+        // }),
+        // catchError( (err) => Observable.throw(err.json().error) )
+        // );
     };
     EventsListResolverService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1512,9 +1521,11 @@ var EventsListComponent = /** @class */ (function () {
         var _this = this;
         // we dont need that anymore  we get it from resolver
         this.eventService.getAllEvents().subscribe(function (events) {
+            console.log('events', events);
             _this.events = events;
         });
         // console.log(this.route.snapshot.data, 'this.route.snapshot.data');
+        // console.log(this.route.snapshot, 'this.route.snapshot');
         // this.events = this.route.snapshot.data['events'];
         // setTimeout(() => {
         //   console.log(this.route.snapshot.data, 'this.route.snapshot.data');
@@ -1701,8 +1712,9 @@ var DurationPipe = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventService", function() { return EventService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1716,20 +1728,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 // import { Subject } from 'rxjs/RX';
 
+
 var EventService = /** @class */ (function () {
     function EventService(http) {
         this.http = http;
         this.EventsUrl = 'api/events-data.json';
     } // private http: HttpClient
     EventService.prototype.getAllEvents = function () {
-        // let subject = new Subject();
-        var subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        // return this.http.get(this.EventsUrl);
-        setTimeout(function () {
-            subject.next(EVENTS);
-            subject.complete();
-        }, 100);
-        return subject;
+        return this.http.get(this.EventsUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log(JSON.stringify(data)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        // const subject = new Subject<IEvent[]>();
+        // setTimeout(() => {
+        //   subject.next(EVENTS); subject.complete();
+        // }, 10000);
+        // console.log('subject returned', subject);
+        // return subject;
+        // return this.http.get(this.EventsUrl).map((response) => {
+        //   return <IEvent[]>response.json();
+        // });
     };
     EventService.prototype.getEvent = function (eventId) {
         return EVENTS.find(function (event) { return eventId === event.id; });
@@ -1765,11 +1780,24 @@ var EventService = /** @class */ (function () {
         }, 100);
         return emitter;
     };
+    EventService.prototype.handleError = function (err) {
+        var errorMessage = '';
+        if (err.error instanceof ErrorEvent) {
+            // client-side or network error
+            errorMessage = "error  " + err.error.message;
+        }
+        else {
+            // backend error with response code
+            errorMessage = "error " + err.error.message;
+        }
+        console.error(errorMessage);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMessage);
+    };
     EventService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], EventService);
     return EventService;
 }());
@@ -2429,7 +2457,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Navigation -->\n<div class=\"navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/home']\">\n        <img class=\"company-logo\" height=70 src=\"assets/img/logo-cut.png\" alt=\"\">\n      </a>\n    </div>\n\n    <div class=\"collapse navbar-collapse justify-content-between\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"nav-item\"  routerLinkActive=\"active\">\n          <a class=\"nav-link\" [routerLink]=\"['/home']\">Home\n            <span class=\"sr-only\">(current)</span>\n          </a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\n          true}\">\n          <a  [routerLink]=\"['/events']\" class=\"nav-link\">All Events</a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\n          true}\">\n            <a class=\"nav-link\" [routerLink]=\"['/events/new']\">Create Event</a>\n        </li>\n        <li class=\"nav-item\" routerLinkActive=\"active\">\n          <a [routerLink]=\"['/demo']\" class=\"nav-link\" >Demo</a>\n        </li>\n      </ul>\n\n      <div class=\"d-inline-flex\">\n        <form (ngSubmit)=\"searchSessions(searchTerm)\" id=\"searchForm\"  class=\"form-inline mr-sm-4\">\n          <div class=\"form-group\">\n            <input [(ngModel)]=\"searchTerm\" name=\"searchTerm\" type=\"text\" class=\"form-control mr-sm-2\" placeholder=\"Search Sessions\" >\n          </div>\n          <button class=\"btn btn-outline-secondary\" aaModalTrigger=\"searchResults\">\n            Search\n          </button>\n        </form>\n        <ul class=\"navbar-nav\">\n          <li class=\"nav-item\" routerLinkActive=\"active\">\n            <a *ngIf=\"!auth?.isAuthenticated()\" [routerLink]=\"['/user/login']\"  class=\"nav-link\"> Login</a>\n            <a *ngIf=\"auth?.isAuthenticated()\" [routerLink]=\"['/user/profile']\" class=\"nav-link\">Hi {{auth?.currentUser?.firstName}}</a>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</div>\n\n<aa-simple-modal closeOnBodyClick=\"true\" elementId=\"searchResults\" title=\"Matching Sessions\">\n  <div class=\"list-group\">\n    <a class=\"list-group-item\" *ngFor=\"let session of foundSessions\" [routerLink]=\"['/events', session.eventId]\">\n      {{session.name}}\n    </a>\n  </div>\n</aa-simple-modal>\n\n"
+module.exports = "<!-- Navigation -->\r\n<div class=\"navbar navbar-default navbar-dark bg-dark navbar-expand-lg p-0\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"navbar-header\">\r\n      <a class=\"navbar-brand\" [routerLink]=\"['/home']\">\r\n        <img class=\"company-logo\" height=70 src=\"assets/img/logo-cut.png\" alt=\"\">\r\n      </a>\r\n    </div>\r\n\r\n    <div class=\"collapse navbar-collapse justify-content-between\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li class=\"nav-item\"  routerLinkActive=\"active\">\r\n          <a class=\"nav-link\" [routerLink]=\"['/home']\">Home\r\n            <span class=\"sr-only\">(current)</span>\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\r\n          true}\">\r\n          <a  [routerLink]=\"['/events']\" class=\"nav-link\">All Events</a>\r\n        </li>\r\n        <li class=\"nav-item\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:\r\n          true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/events/new']\">Create Event</a>\r\n        </li>\r\n        <li class=\"nav-item\" routerLinkActive=\"active\">\r\n          <a [routerLink]=\"['/demo']\" class=\"nav-link\" >Demo</a>\r\n        </li>\r\n      </ul>\r\n\r\n      <div class=\"d-inline-flex\">\r\n        <form (ngSubmit)=\"searchSessions(searchTerm)\" id=\"searchForm\"  class=\"form-inline mr-sm-4\">\r\n          <div class=\"form-group\">\r\n            <input [(ngModel)]=\"searchTerm\" name=\"searchTerm\" type=\"text\" class=\"form-control mr-sm-2\" placeholder=\"Search Sessions\" >\r\n          </div>\r\n          <button class=\"btn btn-outline-secondary\" aaModalTrigger=\"searchResults\">\r\n            Search\r\n          </button>\r\n        </form>\r\n        <ul class=\"navbar-nav\">\r\n          <li class=\"nav-item\" routerLinkActive=\"active\">\r\n            <a *ngIf=\"!auth?.isAuthenticated()\" [routerLink]=\"['/user/login']\"  class=\"nav-link\"> Login</a>\r\n            <a *ngIf=\"auth?.isAuthenticated()\" [routerLink]=\"['/user/profile']\" class=\"nav-link\">Hi {{auth?.currentUser?.firstName}}</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<aa-simple-modal closeOnBodyClick=\"true\" elementId=\"searchResults\" title=\"Matching Sessions\">\r\n  <div class=\"list-group\">\r\n    <a class=\"list-group-item\" *ngFor=\"let session of foundSessions\" [routerLink]=\"['/events', session.eventId]\">\r\n      {{session.name}}\r\n    </a>\r\n  </div>\r\n</aa-simple-modal>\r\n\r\n"
 
 /***/ }),
 

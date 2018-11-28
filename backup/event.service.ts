@@ -11,7 +11,7 @@ import { Http, Response } from '@angular/http';
 })
 export class EventService {
   private EventsUrl = 'api/events-data.json';
-  
+
   constructor(private http: Http) {}
 
   getAllEvents(): Observable<IEvent[]> {
@@ -21,7 +21,7 @@ export class EventService {
     //   subject.next(EVENTS); subject.complete();
     // }, 100);
     // return subject;
-  
+
     // first approach
     // return this.http.get(this.EventsUrl).map((response: Response) => {
     //   return <IEvent[]>response.json();

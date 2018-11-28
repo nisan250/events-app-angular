@@ -11,17 +11,24 @@ import { IEvent, ISession } from './event.model';
 })
 export class EventService {
   private EventsUrl = 'api/events-data.json';
-  
-  constructor(private http: Http) {} // private http: HttpClient
+
+  constructor(private http: HttpClient) {} // private http: HttpClient
 
   getAllEvents(): Observable<IEvent[]> {
-    // let subject = new Subject();
-    const subject = new Subject<IEvent[]>();
-    // return this.http.get(this.EventsUrl);
-    setTimeout(() => {
-      subject.next(EVENTS); subject.complete();
-    }, 100);
-    return subject;
+    return this.http.get<IEvent[]>(this.EventsUrl).pipe(
+      tap(data => console.log(JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+    // const subject = new Subject<IEvent[]>();
+    // setTimeout(() => {
+    //   subject.next(EVENTS); subject.complete();
+    // }, 10000);
+    // console.log('subject returned', subject);
+    // return subject;
+
+    // return this.http.get(this.EventsUrl).map((response) => {
+    //   return <IEvent[]>response.json();
+    // });
   }
 
   getEvent(eventId: number): IEvent {
@@ -64,6 +71,19 @@ export class EventService {
 
     }, 100);
     return emitter;
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      // client-side or network error
+      errorMessage = `error  ${err.error.message}`;
+    } else {
+      // backend error with response code
+      errorMessage = `error ${err.error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }
 

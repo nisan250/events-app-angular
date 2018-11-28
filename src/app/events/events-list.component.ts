@@ -16,10 +16,14 @@ export class EventsListComponent implements OnInit {
   ngOnInit() {
     // we dont need that anymore  we get it from resolver
     this.eventService.getAllEvents().subscribe((events) => {
+      console.log('events', events);
       this.events = events;
     } );
     // console.log(this.route.snapshot.data, 'this.route.snapshot.data');
+    // console.log(this.route.snapshot, 'this.route.snapshot');
     // this.events = this.route.snapshot.data['events'];
+
+
     // setTimeout(() => {
     //   console.log(this.route.snapshot.data, 'this.route.snapshot.data');
     //   this.events = this.route.snapshot.data['events'];
