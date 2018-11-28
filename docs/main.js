@@ -947,11 +947,19 @@ var EventDetailsComponent = /** @class */ (function () {
     EventDetailsComponent.prototype.ngOnInit = function () {
         // console.log(this.route.snapshot.params['id']);
         var _this = this;
+        // this.route.params.forEach((params: Params) => {
+        //   this.event = this.eventService.getEvent(+params['id']);
+        //   this.addMode = false;
+        //   this.filterBy = 'all';
+        //   this.sortBy = 'votes';
+        // });
         this.route.params.forEach(function (params) {
-            _this.event = _this.eventService.getEvent(+params['id']);
-            _this.addMode = false;
-            _this.filterBy = 'all';
-            _this.sortBy = 'votes';
+            _this.eventService.getEvent(+params['id']).subscribe(function (event) {
+                _this.event = event;
+                _this.addMode = false;
+                _this.filterBy = 'all';
+                _this.sortBy = 'votes';
+            }, function (error) { return _this.errorMessage = error; });
         });
         // good only when i come from different component
         // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
@@ -1747,7 +1755,7 @@ var EventService = /** @class */ (function () {
         // });
     };
     EventService.prototype.getEvent = function (eventId) {
-        return EVENTS.find(function (event) { return eventId === event.id; });
+        return this.getAllEvents().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (events) { return events.find(function (e) { return e.id === eventId; }); }));
     };
     EventService.prototype.saveEvent = function (event) {
         event.id = 999;
