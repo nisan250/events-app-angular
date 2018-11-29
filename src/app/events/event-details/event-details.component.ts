@@ -35,7 +35,7 @@ export class EventDetailsComponent implements OnInit {
       // console.log('+params[id]', this.eventService.getEvent(+params['id']));
       this.eventService.getEvent(+params['id']).subscribe(
         event => {
-          console.log('event detail - ', event);
+          // console.log('event detail - ', event);
           this.event = event;
           this.addMode = false;
           this.filterBy = 'all';

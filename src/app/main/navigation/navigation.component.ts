@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './../../user/auth.service';
 import { ISession, EventService } from 'src/app/events';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'aa-navigation',

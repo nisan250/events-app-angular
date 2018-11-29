@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { EventService } from '../shared/event.service';
-import { tap, catchError, map } from 'rxjs/operators';
 // import { Observable, throwError } from 'rxjs';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 // NS
 // Guarding Against Route Activation
 //  if a detail page not exist   than 404 will show

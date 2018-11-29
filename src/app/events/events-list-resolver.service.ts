@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { EventService } from './shared/event.service';
-// import { catchError } from 'rxjs/operators';
-import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'

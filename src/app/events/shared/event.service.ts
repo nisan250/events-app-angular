@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Http } from '@angular/http';
+// import { Http } from '@angular/http';
 // import { Subject } from 'rxjs/RX';
 import { Subject, Observable, throwError } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
