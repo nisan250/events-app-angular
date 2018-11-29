@@ -15,18 +15,18 @@ export class EventService {
   constructor(private http: HttpClient) {} // private http: HttpClient
 
   getAllEvents(): Observable<IEvent[]> {
-    return this.http.get<IEvent[]>(this.eventsUrl).pipe(
-      tap(data => console.log('getAllEvents')),
-      catchError(this.handleError)
-    );
+    // return this.http.get<IEvent[]>(this.eventsUrl).pipe(
+    //   tap(data => console.log('getAllEvents')),
+    //   catchError(this.handleError)
+    // );
 
     // old - for local data
-    // const subject = new Subject<IEvent[]>();
-    // setTimeout(() => {
-    //   subject.next(EVENTS); subject.complete();
-    // }, 10000);
+    const subject = new Subject<IEvent[]>();
+    setTimeout(() => {
+      subject.next(EVENTS); subject.complete();
+    }, 100);
     // console.log('subject returned', subject);
-    // return subject;
+    return subject;
 
     // return this.http.get(this.EventsUrl).map((response) => {
     //   return <IEvent[]>response.json();
@@ -34,9 +34,9 @@ export class EventService {
   }
 
   getEvent(eventId: number): Observable<IEvent | undefined> {
-    return this.getAllEvents().pipe(
-      map((events: IEvent[]) => events.find(event => event.id === eventId))
-    );
+    // return this.getAllEvents().pipe(
+    //   map((events: IEvent[]) => events.find(event => event.id === eventId))
+    // );
 
     // good if i had server that gives me : "api/events/:1"
     // return this.http.get<IEvent>(this.eventUrl).pipe(
@@ -45,9 +45,9 @@ export class EventService {
     // );
 
     // old - for local data
-    // return this.getAllEvents().pipe(
-    //   map((events: IEvent[]) => events.find(e => e.id === eventId))
-    // );
+    return this.getAllEvents().pipe(
+      map((events: IEvent[]) => events.find(e => e.id === eventId))
+    );
   }
 
   saveEvent (event: IEvent) {
