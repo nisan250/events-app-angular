@@ -14,10 +14,10 @@ import {
   EventThumbnailComponent,
   EventService,
   EventDetailsComponent,
-  EventRouteActivatorService,
   SessionListComponent,
   CreateEventComponent,
   EventsListResolverService,
+  EventResolverService,
   DurationPipe,
   UpvoteComponent,
   VoterService,
@@ -84,10 +84,10 @@ export declare let jQuery: Object;
   ],
   providers: [
     EventService, // shorthand {provide: EventService, useValue: EventService}
-    EventRouteActivatorService,
     // we suppling the string canDeactivateCreateEvent and attaching a function
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
     EventsListResolverService,
+    EventResolverService,
     AuthService,
     // ToastrService,
     { provide: TOASTR_TOKEN, useValue: toastr },

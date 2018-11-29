@@ -18,17 +18,21 @@ export class EventDetailsComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // console.log(this.route.snapshot.params['id']);
 
-    // this.route.params.forEach((params: Params) => {
-    //   this.event = this.eventService.getEvent(+params['id']);
+    // WITH RESOLVER
+    //   this.route.data.forEach((data) => {
+    //   console.log('onComponentInit event-detail:  this.route.snapshot.data["event"]',
+    //                 data['event']);
+
+    //   this.event = data['event'];
     //   this.addMode = false;
     //   this.filterBy = 'all';
     //   this.sortBy = 'votes';
     // });
 
+    // WITHOUT RESOLVER
     this.route.params.forEach((params: Params) => {
-      console.log('+params[id]', this.eventService.getEvent(+params['id']));
+      // console.log('+params[id]', this.eventService.getEvent(+params['id']));
       this.eventService.getEvent(+params['id']).subscribe(
         event => {
           console.log('event detail - ', event);
@@ -39,6 +43,18 @@ export class EventDetailsComponent implements OnInit {
         },
         error => this.errorMessage = <any>error);
     });
+
+
+
+    // console.log(this.route.snapshot.params['id']);
+
+    // this.route.params.forEach((params: Params) => {
+    //   this.event = this.eventService.getEvent(+params['id']);
+    //   this.addMode = false;
+    //   this.filterBy = 'all';
+    //   this.sortBy = 'votes';
+    // });
+
     // good only when i come from different component
     // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
   }

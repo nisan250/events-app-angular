@@ -70,7 +70,7 @@ var routes = [
     { path: 'events/new', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["CreateEventComponent"], canDeactivate: ['canDeactivateCreateEvent'] },
     { path: 'events', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventsListComponent"],
         resolve: { events: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventsListResolverService"] } },
-    { path: 'events/:id', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventDetailsComponent"], canActivate: [_events_index__WEBPACK_IMPORTED_MODULE_2__["EventRouteActivatorService"]] },
+    { path: 'events/:id', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventDetailsComponent"], resolve: { event: _events_index__WEBPACK_IMPORTED_MODULE_2__["EventResolverService"] } },
     { path: 'event/session/new', component: _events_index__WEBPACK_IMPORTED_MODULE_2__["CreateSessionComponent"] },
     { path: 'demo', component: _demo_demo_component__WEBPACK_IMPORTED_MODULE_4__["DemoComponent"] },
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
@@ -258,10 +258,10 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [
                 _events_index__WEBPACK_IMPORTED_MODULE_8__["EventService"],
-                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventRouteActivatorService"],
                 // we suppling the string canDeactivateCreateEvent and attaching a function
                 { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
                 _events_index__WEBPACK_IMPORTED_MODULE_8__["EventsListResolverService"],
+                _events_index__WEBPACK_IMPORTED_MODULE_8__["EventResolverService"],
                 _user_auth_service__WEBPACK_IMPORTED_MODULE_19__["AuthService"],
                 // ToastrService,
                 { provide: _common_index__WEBPACK_IMPORTED_MODULE_9__["TOASTR_TOKEN"], useValue: toastr },
@@ -945,16 +945,19 @@ var EventDetailsComponent = /** @class */ (function () {
         this.pageTitle = 'Event Deatail';
     }
     EventDetailsComponent.prototype.ngOnInit = function () {
-        // console.log(this.route.snapshot.params['id']);
+        // WITH RESOLVER
+        //   this.route.data.forEach((data) => {
+        //   console.log('onComponentInit event-detail:  this.route.snapshot.data["event"]',
+        //                 data['event']);
         var _this = this;
-        // this.route.params.forEach((params: Params) => {
-        //   this.event = this.eventService.getEvent(+params['id']);
+        //   this.event = data['event'];
         //   this.addMode = false;
         //   this.filterBy = 'all';
         //   this.sortBy = 'votes';
         // });
+        // WITHOUT RESOLVER
         this.route.params.forEach(function (params) {
-            console.log('+params[id]', _this.eventService.getEvent(+params['id']));
+            // console.log('+params[id]', this.eventService.getEvent(+params['id']));
             _this.eventService.getEvent(+params['id']).subscribe(function (event) {
                 console.log('event detail - ', event);
                 _this.event = event;
@@ -963,6 +966,13 @@ var EventDetailsComponent = /** @class */ (function () {
                 _this.sortBy = 'votes';
             }, function (error) { return _this.errorMessage = error; });
         });
+        // console.log(this.route.snapshot.params['id']);
+        // this.route.params.forEach((params: Params) => {
+        //   this.event = this.eventService.getEvent(+params['id']);
+        //   this.addMode = false;
+        //   this.filterBy = 'all';
+        //   this.sortBy = 'votes';
+        // });
         // good only when i come from different component
         // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
     };
@@ -996,80 +1006,11 @@ var EventDetailsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/events/event-details/event-route-activator.service.ts":
-/*!***********************************************************************!*\
-  !*** ./src/app/events/event-details/event-route-activator.service.ts ***!
-  \***********************************************************************/
-/*! exports provided: EventRouteActivatorService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return EventRouteActivatorService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _shared_event_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/event.service */ "./src/app/events/shared/event.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-// NS
-// Guarding Against Route Activation
-//  if a detail page not exist   than 404 will show
-var EventRouteActivatorService = /** @class */ (function () {
-    function EventRouteActivatorService(eventService, router) {
-        this.eventService = eventService;
-        this.router = router;
-    }
-    EventRouteActivatorService.prototype.canActivate = function (route) {
-        return !!this.eventService.getEvent(+route.params['id']);
-        // this.eventService.getEvent(+route.params['id']).subscribe(
-        //   event => {
-        //     debugger;
-        //     if (event) {
-        //       console.log('eventeventevent', !!event);
-        //       return !!this.eventService.getEvent(+route.params['id']);
-        //     } else {
-        //       this.router.navigate(['/404']);
-        //     }
-        //   },
-        //   error => {
-        //     this.router.navigate(['/404']);
-        //   }
-        // );
-        // old - with local data
-        // let eventExists;
-        // const eventExists = !!this.eventService.getEvent(+route.params['id']);
-        // if (!eventExists) {
-        //     this.router.navigate(['/404']);
-        // }
-        // return eventExists;
-    };
-    EventRouteActivatorService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({ providedIn: 'root' }),
-        __metadata("design:paramtypes", [_shared_event_service__WEBPACK_IMPORTED_MODULE_2__["EventService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
-    ], EventRouteActivatorService);
-    return EventRouteActivatorService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/events/event-details/index.ts":
 /*!***********************************************!*\
   !*** ./src/app/events/event-details/index.ts ***!
   \***********************************************/
-/*! exports provided: CreateSessionComponent, EventDetailsComponent, EventRouteActivatorService, SessionListComponent, UpvoteComponent, VoterService */
+/*! exports provided: CreateSessionComponent, EventDetailsComponent, SessionListComponent, UpvoteComponent, VoterService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1077,23 +1018,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_details_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event-details.component */ "./src/app/events/event-details/event-details.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventDetailsComponent", function() { return _event_details_component__WEBPACK_IMPORTED_MODULE_0__["EventDetailsComponent"]; });
 
-/* harmony import */ var _event_route_activator_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event-route-activator.service */ "./src/app/events/event-details/event-route-activator.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return _event_route_activator_service__WEBPACK_IMPORTED_MODULE_1__["EventRouteActivatorService"]; });
+/* harmony import */ var _create_session_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create-session.component */ "./src/app/events/event-details/create-session.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return _create_session_component__WEBPACK_IMPORTED_MODULE_1__["CreateSessionComponent"]; });
 
-/* harmony import */ var _create_session_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create-session.component */ "./src/app/events/event-details/create-session.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CreateSessionComponent", function() { return _create_session_component__WEBPACK_IMPORTED_MODULE_2__["CreateSessionComponent"]; });
+/* harmony import */ var _session_list_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session-list.component */ "./src/app/events/event-details/session-list.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _session_list_component__WEBPACK_IMPORTED_MODULE_2__["SessionListComponent"]; });
 
-/* harmony import */ var _session_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session-list.component */ "./src/app/events/event-details/session-list.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _session_list_component__WEBPACK_IMPORTED_MODULE_3__["SessionListComponent"]; });
+/* harmony import */ var _upvote_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./upvote.component */ "./src/app/events/event-details/upvote.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpvoteComponent", function() { return _upvote_component__WEBPACK_IMPORTED_MODULE_3__["UpvoteComponent"]; });
 
-/* harmony import */ var _upvote_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./upvote.component */ "./src/app/events/event-details/upvote.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpvoteComponent", function() { return _upvote_component__WEBPACK_IMPORTED_MODULE_4__["UpvoteComponent"]; });
-
-/* harmony import */ var _voter_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./voter.service */ "./src/app/events/event-details/voter.service.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoterService", function() { return _voter_service__WEBPACK_IMPORTED_MODULE_5__["VoterService"]; });
+/* harmony import */ var _voter_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./voter.service */ "./src/app/events/event-details/voter.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VoterService", function() { return _voter_service__WEBPACK_IMPORTED_MODULE_4__["VoterService"]; });
 
 
-
+// export * from './event-route-activator.service';
 
 
 
@@ -1360,6 +1298,50 @@ var VoterService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/events/event-resolver.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/events/event-resolver.service.ts ***!
+  \**************************************************/
+/*! exports provided: EventResolverService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventResolverService", function() { return EventResolverService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_event_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared/event.service */ "./src/app/events/shared/event.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EventResolverService = /** @class */ (function () {
+    function EventResolverService(eventService) {
+        this.eventService = eventService;
+    }
+    EventResolverService.prototype.resolve = function (route) {
+        console.log('in EventResolverService -> i return -> this.eventService.getEvent(route.params["i"])', this.eventService.getEvent(route.params['i']));
+        return this.eventService.getEvent(route.params['i']);
+    };
+    EventResolverService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_shared_event_service__WEBPACK_IMPORTED_MODULE_1__["EventService"]])
+    ], EventResolverService);
+    return EventResolverService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/events/event-thumbnail.component.html":
 /*!*******************************************************!*\
   !*** ./src/app/events/event-thumbnail.component.html ***!
@@ -1466,9 +1448,10 @@ var EventsListResolverService = /** @class */ (function () {
         this.eventService = eventService;
     }
     EventsListResolverService.prototype.resolve = function () {
-        // return this.eventService.getAllEvents();
-        // console.log('Event List Component initiated!!');
-        this.eventService.getAllEvents().subscribe(function (events) { return events; });
+        this.eventService.getAllEvents().subscribe(function (events) {
+            console.log('in EventsListResolverService -> i return events', events);
+            return events;
+        });
         // this.eventService.getAllEvents().map(res => res.json()).subscribe(items => console.log(items));
         // this.eventService.getAllEvents().pipe().subscribe((events) => {
         //   return events;
@@ -1546,15 +1529,16 @@ var EventsListComponent = /** @class */ (function () {
         this.pageTitle = 'Events';
     }
     EventsListComponent.prototype.ngOnInit = function () {
+        // WITH RESOLVER
+        // console.log(' onComponentInit events-list:  this.route.snapshot.data["events"]', this.route.snapshot.data['events'] );
+        // this.events = this.route.snapshot.data['events'];
         var _this = this;
-        // we dont need that anymore  we get it from resolver
+        // WITHOUT RESOLVER
+        this.events = this.route.snapshot.data['events'];
         this.eventService.getAllEvents().subscribe(function (events) {
-            console.log('events', events);
             _this.events = events;
         });
-        // console.log(this.route.snapshot.data, 'this.route.snapshot.data');
-        // console.log(this.route.snapshot, 'this.route.snapshot');
-        // this.events = this.route.snapshot.data['events'];
+        // for local data demonstration
         // setTimeout(() => {
         //   console.log(this.route.snapshot.data, 'this.route.snapshot.data');
         //   this.events = this.route.snapshot.data['events'];
@@ -1578,7 +1562,7 @@ var EventsListComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/events/index.ts ***!
   \*********************************/
-/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, LocationValidatorDirective, EventService, restrictedWords, DurationPipe, EventDetailsComponent, EventRouteActivatorService, SessionListComponent, UpvoteComponent, VoterService */
+/*! exports provided: CreateEventComponent, EventThumbnailComponent, EventsListResolverService, EventsListComponent, CreateSessionComponent, LocationValidatorDirective, EventResolverService, EventService, restrictedWords, DurationPipe, EventDetailsComponent, SessionListComponent, UpvoteComponent, VoterService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1607,8 +1591,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventDetailsComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventDetailsComponent"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventRouteActivatorService", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["EventRouteActivatorService"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SessionListComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["SessionListComponent"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpvoteComponent", function() { return _event_details___WEBPACK_IMPORTED_MODULE_5__["UpvoteComponent"]; });
@@ -1617,6 +1599,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _location_validator_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./location-validator.directive */ "./src/app/events/location-validator.directive.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LocationValidatorDirective", function() { return _location_validator_directive__WEBPACK_IMPORTED_MODULE_6__["LocationValidatorDirective"]; });
+
+/* harmony import */ var _event_resolver_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./event-resolver.service */ "./src/app/events/event-resolver.service.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventResolverService", function() { return _event_resolver_service__WEBPACK_IMPORTED_MODULE_7__["EventResolverService"]; });
+
 
 
 

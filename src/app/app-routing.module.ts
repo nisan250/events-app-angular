@@ -4,9 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   EventsListComponent,
   EventDetailsComponent,
-  EventRouteActivatorService,
   CreateEventComponent,
   EventsListResolverService,
+  EventResolverService,
   CreateSessionComponent,
  } from './events/index';
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
   { path: 'events', component: EventsListComponent,
     resolve: { events: EventsListResolverService }},
-  { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivatorService]},
+  { path: 'events/:id', component: EventDetailsComponent, resolve: { event: EventResolverService }},
   { path: 'event/session/new', component: CreateSessionComponent},
   { path: 'demo', component: DemoComponent},
   { path: 'home', component: HomeComponent},
