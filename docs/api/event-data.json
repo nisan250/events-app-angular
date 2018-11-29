@@ -1,0 +1,60 @@
+{
+  "id": 1,
+  "name": "Angular Engage",
+  "date": "9/26/2026",
+  "time": "10:00 am",
+  "price": 299.99,
+  "imageUrl": "assets/images/angularb.png",
+  "location": {
+    "address": "Igal Alon 30",
+    "city": "TLV",
+    "country": "Israel"
+  },
+  "sessions": [
+    {
+      "id": 1,
+      "name": "Angular Best Practices",
+      "presenter": "Kyle Simpson",
+      "duration": 1,
+      "level": "Intermediate",
+      "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+      "voters": ["nisansabag", "jeffbridges", "vardaraz"]
+    },
+    {
+      "id": 2,
+      "name": "Angular Deployment",
+      "presenter": "Tracy Lee",
+      "duration": 1,
+      "level": "Intermediate",
+      "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+      "voters": ["jackdaniel", "nisansabag", "jeffbridges", "vardaraz"]
+    },
+    {
+      "id": 3,
+      "name": "Angular Performance",
+      "presenter": "Kyle Simpson",
+      "duration": 2,
+      "level": "Advanced",
+      "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+      "voters": []
+    },
+    {
+      "id": 4,
+      "name": "Angular On Breakfast",
+      "presenter": "David Walsh",
+      "duration": 2,
+      "level": "Advanced",
+      "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+      "voters": []
+    },
+    {
+      "id": 5,
+      "name": "Angular Now",
+      "presenter": "Douglas Crockford",
+      "duration": 2,
+      "level": "Beginner",
+      "abstract": "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+      "voters": ["nisansabag", "jeffbridges"]
+    }
+  ]
+}

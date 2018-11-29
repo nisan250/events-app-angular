@@ -28,8 +28,10 @@ export class EventDetailsComponent implements OnInit {
     // });
 
     this.route.params.forEach((params: Params) => {
+      console.log('+params[id]', this.eventService.getEvent(+params['id']));
       this.eventService.getEvent(+params['id']).subscribe(
         event => {
+          console.log('event detail - ', event);
           this.event = event;
           this.addMode = false;
           this.filterBy = 'all';

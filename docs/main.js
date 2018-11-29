@@ -954,7 +954,9 @@ var EventDetailsComponent = /** @class */ (function () {
         //   this.sortBy = 'votes';
         // });
         this.route.params.forEach(function (params) {
+            console.log('+params[id]', _this.eventService.getEvent(+params['id']));
             _this.eventService.getEvent(+params['id']).subscribe(function (event) {
+                console.log('event detail - ', event);
                 _this.event = event;
                 _this.addMode = false;
                 _this.filterBy = 'all';
@@ -1028,15 +1030,33 @@ var EventRouteActivatorService = /** @class */ (function () {
         this.router = router;
     }
     EventRouteActivatorService.prototype.canActivate = function (route) {
-        var eventExists = !!this.eventService.getEvent(+route.params['id']);
-        if (!eventExists) {
-            this.router.navigate(['/404']);
-        }
-        return eventExists;
+        return !!this.eventService.getEvent(+route.params['id']);
+        // this.eventService.getEvent(+route.params['id']).subscribe(
+        //   event => {
+        //     debugger;
+        //     if (event) {
+        //       console.log('eventeventevent', !!event);
+        //       return !!this.eventService.getEvent(+route.params['id']);
+        //     } else {
+        //       this.router.navigate(['/404']);
+        //     }
+        //   },
+        //   error => {
+        //     this.router.navigate(['/404']);
+        //   }
+        // );
+        // old - with local data
+        // let eventExists;
+        // const eventExists = !!this.eventService.getEvent(+route.params['id']);
+        // if (!eventExists) {
+        //     this.router.navigate(['/404']);
+        // }
+        // return eventExists;
     };
     EventRouteActivatorService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({ providedIn: 'root' }),
-        __metadata("design:paramtypes", [_shared_event_service__WEBPACK_IMPORTED_MODULE_2__["EventService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_shared_event_service__WEBPACK_IMPORTED_MODULE_2__["EventService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], EventRouteActivatorService);
     return EventRouteActivatorService;
 }());
@@ -1740,10 +1760,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var EventService = /** @class */ (function () {
     function EventService(http) {
         this.http = http;
-        this.EventsUrl = 'api/events-data.json';
+        this.eventsUrl = 'api/events-data.json';
+        this.eventUrl = 'api/event-data.json';
     } // private http: HttpClient
     EventService.prototype.getAllEvents = function () {
-        return this.http.get(this.EventsUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log(JSON.stringify(data)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        return this.http.get(this.eventsUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log('getAllEvents'); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        // old - for local data
         // const subject = new Subject<IEvent[]>();
         // setTimeout(() => {
         //   subject.next(EVENTS); subject.complete();
@@ -1755,7 +1777,16 @@ var EventService = /** @class */ (function () {
         // });
     };
     EventService.prototype.getEvent = function (eventId) {
-        return this.getAllEvents().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (events) { return events.find(function (e) { return e.id === eventId; }); }));
+        return this.getAllEvents().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (events) { return events.find(function (event) { return event.id === eventId; }); }));
+        // good if i had server that gives me : "api/events/:1"
+        // return this.http.get<IEvent>(this.eventUrl).pipe(
+        //   tap(data => console.log(JSON.stringify(data))),
+        //   catchError(this.handleError)
+        // );
+        // old - for local data
+        // return this.getAllEvents().pipe(
+        //   map((events: IEvent[]) => events.find(e => e.id === eventId))
+        // );
     };
     EventService.prototype.saveEvent = function (event) {
         event.id = 999;
