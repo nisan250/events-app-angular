@@ -4,13 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This is an app for managing Events.
 
-using:<br>
-font awesome.<br>
-jquery.<br>
-bootstrap<br>
-and CRUD Operations with local data.(variables)<br>
-login with local data. (variables)<br>
-Toastr - external library.
+Using:<br>
+* font awesome.<br>
+* jquery.<br>
+* bootstrap<br>
+* and CRUD Operations with local data.(variables)<br>
+* login with local data. (variables)<br>
+* Toastr - external library.
 
 # Run This Project
 to run this project:
