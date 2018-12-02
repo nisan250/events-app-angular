@@ -14,5 +14,4 @@ Using:<br>
 
 # Run This Project
 to run this project:
-1. download the data/data.json file to your local computer 
-2. run json server on your local machine with the data.json: json-server db.json
+got to this link https://nisan250.github.io/events-app-angular/
