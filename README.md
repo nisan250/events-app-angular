@@ -14,4 +14,4 @@ Using:<br>
 
 # Run This Project
 to run this project:
-got to this link https://nisan250.github.io/events-app-angular/
+click this link https://nisan250.github.io/events-app-angular/
