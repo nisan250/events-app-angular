@@ -71,3 +71,38 @@ a.nav-link:not([href]) {
   color: #ab9768;
 }
 
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .navbar-brand {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .show {
+    // padding: 0 28px;
+
+    > div {
+      padding-bottom: 10px;
+    }
+
+    .nav-link {
+      padding: 0.5rem 28px;
+
+      &:hover {
+        //
+        background: rgba(0, 0, 0, 0.1607843137254902);
+      }
+    }
+    .nav-area {
+      padding: 16px 28px;
+      border-top: 2px solid #333;
+      width: 100%;
+    }
+
+    .active {
+      .nav-link{
+        background: rgba(0, 0, 0, 0.360784);
+      }
+    }
+  }
+}
+

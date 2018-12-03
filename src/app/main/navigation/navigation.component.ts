@@ -8,6 +8,7 @@ import { ISession, EventService } from 'src/app/events';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
+  navbarOpen = false;
   searchTerm = '';
   foundSessions: ISession[];
 
@@ -23,6 +24,10 @@ export class NavigationComponent {
     //   this.foundSessions = sessions;
     //   console.log(this.foundSessions, '2');
     // })
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 }
 
